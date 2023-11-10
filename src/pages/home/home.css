@@ -1,0 +1,10 @@
+
+
+.my-element {
+    background-color: var(--main-color);
+    color: white;
+}
+div{
+    background: var(--hello-color);
+}
+  
