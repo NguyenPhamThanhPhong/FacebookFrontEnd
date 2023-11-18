@@ -1,13 +1,14 @@
 // <<style here>>
 import './home.css';
-// import {ThemeController} from '../../ui-configuration/theme.js';
-// import TopBar from '../../components/header/top-bar';
 import '../../index.css'
+//css here
+
+// component here
+import Topbar from '../../components/header/top-bar';
+// component here
 
 import React, { useState } from 'react';
 import HomeIcon from '@mui/icons-material/Home';
-import Topbar from '../../components/header/top-bar';
-// import { Checkbox } from '@mui/material';
 
 
 
@@ -25,7 +26,6 @@ function Home(props) {
             setDarkMode();
         else
         setLightMode();
-        // console.log(document.querySelector("body").getAttribute("data-theme"));
     };
 
     return (
@@ -36,7 +36,6 @@ function Home(props) {
             </h1>
             <input type='checkbox' onChange={handleThemeChange}>
             </input>
-            {/* <button type='text' onChange={handleThemeChange} >Switch Theme</button> */}
         </div>
     );
 }
