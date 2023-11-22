@@ -1,19 +1,24 @@
 :root{
-  --main-color: #ff0000;
-  --hello-color: blue;
-  --side-color: green;
+  --background-color: #f0f2f5;
+  --container-color: #ffffff;
+  --hover-color: #e4e6e9;
+  --sub-text-color:#e4e6e9; /*chữ chia sẻ, thanh scroll*/
+  --shadow-color: black;
+  --text-color: black;
+  --note-tag-color: #39393a;
 }
 
+
 [data-theme="dark"]{
-  --main-color: pink;
-  --hello-color: aqua;
-  --side-color: rgb(74, 185, 74);
+  --background-color: #282c34;
+  --container-color: #3a3b3c;
+  --hover-color: #303031;
+  --sub-text-color:#5e5e5f; /*chữ chia sẻ, thanh scroll*/
+  --shadow-color: white;
+  --text-color: white;
+  --note-tag-color: #c8c8c8;
 }
-[data-theme="autumn"]{
-  --main-color: rgb(44, 0, 7);
-  --hello-color: rgb(74, 185, 74);
-  --side-color: rgb(74, 185, 74);
-}
+
 
 body {
   margin: 0;
