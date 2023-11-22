@@ -11,7 +11,6 @@ import React, { useState } from 'react';
 import HomeIcon from '@mui/icons-material/Home';
 
 
-
 function Home(props) {
     const setDarkMode = ()=>{
         document.querySelector("body").setAttribute("data-theme", "dark");
@@ -30,12 +29,16 @@ function Home(props) {
 
     return (
         <div>
+            <div>
             <Topbar />
             <h1 className='my-element'>
                 this is home <HomeIcon />
             </h1>
             <input type='checkbox' onChange={handleThemeChange}>
             </input>
+            </div>
+
+
         </div>
     );
 }
