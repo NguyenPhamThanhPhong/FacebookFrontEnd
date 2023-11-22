@@ -1,23 +1,31 @@
 
-import React, { useState } from 'react'
+import React, { useState,useEffect } from 'react'
 import "react-chat-elements/dist/main.css"
 import { MessageBox } from "react-chat-elements";
+
+import FirstColumn from './first-column';
+import "./messages.css"
 
 
 
 function Messages(props) {
 
-    const [users, setUsers] = useState([
-        "hello1",
-        "hello2",
-        "hello3",
-        "hello4",
-        "hello5"
-    ])
+    const [products, setProducts] = useState([]);
 
-    function handleClick() {
-        setUsers([...users, "helloadded"])
-    }
+    const fetchData = async () => {
+      try {
+        const response = await fetch('https://api.sampleapis.com/beers/ale');
+        const data = await response.json();
+        setProducts(data);
+      } catch (error) {
+        console.error('Error fetching data:', error);
+      }
+    };
+  
+    useEffect(() => {
+      fetchData();
+    }, []);
+
 
     return (
         <div>
@@ -40,16 +48,9 @@ function Messages(props) {
                     date={new Date()}
                 />
             </div>
-            <div>
-                {
-                    users.map((item, index) => {
-                        return (
-                            <div key={index}>{item} </div>
-                        )
-                    })
-                }
-            </div>
-            <button onClick={handleClick} > check this out</button>
+
+
+            <FirstColumn products={products}/>
         </div>
     )
 }
