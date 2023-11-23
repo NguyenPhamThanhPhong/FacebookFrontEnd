@@ -1,0 +1,9 @@
+.container-chat{
+    
+    width: 320px;
+    height: 160px;
+}
+
+.input{
+    border: solid 2px black;
+}
