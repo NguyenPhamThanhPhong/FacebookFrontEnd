@@ -1,0 +1,32 @@
+@import "../../../../index.css"; /* Using a string */
+
+
+ul{
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+a{
+    color: var(--text-color);
+    text-decoration: none;
+}
+
+.navbar{
+    height: 70px;
+    background-color: var(--header-color);
+    padding: 0 1rem;
+    border-bottom: var(--text-color);
+}
+
+.navbar-nav{
+    max-width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: flex-end;
+}
+.icon{
+    width: 80%;
+    height: 80%;
+    fill: var(--text-color);
+}

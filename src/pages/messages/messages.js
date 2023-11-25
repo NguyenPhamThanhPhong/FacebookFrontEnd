@@ -1,10 +1,16 @@
-
-import React, { useState,useEffect } from 'react'
-import "react-chat-elements/dist/main.css"
-import { MessageBox } from "react-chat-elements";
+// <============================Component here ============================>
 
 import FirstColumn from './first-column';
+import NavBarCustom from '../../components/phong-messages-components/header-bar/nav/Nav-bar';
+
+// <============================Library here ============================>
+
+import React, { useState,useEffect } from 'react'
+import { MessageBox } from "react-chat-elements";
+
+// <============================CSS HERE ============================>
 import "./messages.css"
+import "react-chat-elements/dist/main.css"
 
 
 
@@ -29,6 +35,7 @@ function Messages(props) {
 
     return (
         <div>
+            <NavBarCustom/>
             <h1>Messages</h1>
             <div>
                 <MessageBox
