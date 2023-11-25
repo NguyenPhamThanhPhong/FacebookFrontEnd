@@ -9,9 +9,11 @@ function NavItem(props) {
 
     const [open, setOpen] = useState(false);
 
+    console.log(props.children)
+    console.log(open);
     return (
         <li onClick={()=>setOpen(!open)} className="nav-item">
-            <a href="#" className="icon-button">
+            <a  className="icon-button">
                 {props.icon}
             </a>
             {open && props.children}
