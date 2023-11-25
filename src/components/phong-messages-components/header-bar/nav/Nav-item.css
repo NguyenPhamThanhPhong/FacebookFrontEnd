@@ -1,4 +1,4 @@
-@import "../../../../index.css"; 
+@import "@root/index.css"; 
 
 .nav-item{
     width: calc(var(--nav-size) * 0.8);
