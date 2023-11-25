@@ -1,8 +1,8 @@
 // <============================Component here ============================>
 
-import FirstColumn from './first-column';
-import NavBarCustom from '../../components/phong-messages-components/header-bar/nav/Nav-bar';
-
+// import FirstColumn from './first-column';
+import NavBarCustom from '@components/phong-messages-components/header-bar/nav/Nav-bar';
+import FirstColumn from '@pages/messages/first-column';
 // <============================Library here ============================>
 
 import React, { useState,useEffect } from 'react'
