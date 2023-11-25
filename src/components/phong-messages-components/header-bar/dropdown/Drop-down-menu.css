@@ -1,8 +1,14 @@
-
+@import '@root/index.css';
 
 .dropdown{
     position: absolute;
     top:58px;
     width: 300px;
     transform: translateX(-45%);
+    border-radius: 10px;
+    border: 1px solid black;
+    background-color: var(--container-color);
+    padding: 1rem;
+    overflow: hidden;
 }
+

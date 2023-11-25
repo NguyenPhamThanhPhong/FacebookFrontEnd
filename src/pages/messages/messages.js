@@ -15,6 +15,8 @@ import "react-chat-elements/dist/main.css"
 
 
 function Messages(props) {
+  document.querySelector("body").setAttribute("data-theme", "dark");
+
 
     const [products, setProducts] = useState([]);
 
@@ -37,7 +39,7 @@ function Messages(props) {
         <div>
             <NavBarCustom/>
             <h1>Messages</h1>
-            <div>
+            {/* <div>
                 <MessageBox
                     position='left'
                     title='Burhan'
@@ -54,7 +56,7 @@ function Messages(props) {
                     text="Click to join the meeting"
                     date={new Date()}
                 />
-            </div>
+            </div> */}
 
 
             <FirstColumn products={products}/>
