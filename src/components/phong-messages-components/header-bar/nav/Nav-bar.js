@@ -11,19 +11,17 @@ import { faGithub } from '@fortawesome/free-brands-svg-icons'
 
 function NavBarCustom(props) {
 
-    const iconStyle = {color: 'var(--color-text)',};
+    const iconStyle = { color: 'var(--color-text)',width:'80%',height:'80%' };
 
     return (
-        <nav className="navbar">
+        <ul className="navbar-nav">
 
-            <ul className="navbar-nav">
+            <NavItem icon={(<FontAwesomeIcon className="icon" icon={faGithub} style={iconStyle} />)} >
+                <DropDownMenu />
+            </NavItem>
+            {/* <NavItem  icon={(<FontAwesomeIcon className="icon" icon={faGithub} style={iconStyle} />)} /> */}
+        </ul>
 
-                <NavItem  icon={(<FontAwesomeIcon className="icon" icon={faGithub} style={iconStyle} />)} >
-                    <DropDownMenu />
-                </NavItem>
-                {/* <NavItem  icon={(<FontAwesomeIcon className="icon" icon={faGithub} style={iconStyle} />)} /> */}
-            </ul>
-        </nav>
     );
 }
 

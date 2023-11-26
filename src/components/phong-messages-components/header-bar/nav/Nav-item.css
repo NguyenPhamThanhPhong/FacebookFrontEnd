@@ -25,8 +25,4 @@
     filter: brightness(0.8);
 }
 
-.icon{
-    width: 80%;
-    height: 80%;
-    fill: var(--text-color);
-}
+

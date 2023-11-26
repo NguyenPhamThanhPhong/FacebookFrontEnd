@@ -1,0 +1,25 @@
+@import '@root/index.css';
+
+.round-button{
+    height: 70%;
+    width: 35px;
+    margin: 0 4px;
+    background-color: var(--container-color);
+    border-radius: 50%;
+    align-self: center; 
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    transition: filter 300ms;
+}
+.icon-round{
+    width: 60%;
+    height: 60%;
+    color: var(--sub-text-color);
+}
+
+.test-div{
+    height: 80%;
+    display: inline-flex;
+    background-color: blueviolet;
+}
