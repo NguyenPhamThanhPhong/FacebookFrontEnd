@@ -9,11 +9,9 @@ function NavItem(props) {
 
     const [open, setOpen] = useState(false);
 
-    console.log(props.children)
-    console.log(open);
     return (
-        <li onClick={()=>setOpen(!open)} className="nav-item">
-            <a  className="icon-button">
+        <li  className="nav-item">
+            <a onClick={()=>setOpen(!open)}  className="icon-button">
                 {props.icon}
             </a>
             {open && props.children}

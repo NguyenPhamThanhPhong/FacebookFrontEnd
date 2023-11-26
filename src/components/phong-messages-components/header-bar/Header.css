@@ -1,0 +1,38 @@
+@import '@root/index.css';
+
+.navbar{
+    height: 50px;
+    background-color: var(--header-color);
+    padding: 0 1rem;
+    border-bottom: var(--text-color);
+    background-color: red;
+    display: flex;
+    justify-content: space-between;
+}
+
+.my-div{
+    width: 40%;
+    background-color: bisque;
+    height: 100%;
+}
+
+.search-box-div{
+    background-color: bisque;
+    height: 100%;
+    
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.navbar-nav{
+    height: 100%;
+    display: flex;
+    background-color: var(--container-color);
+    list-style: none;
+    padding: 0;
+    justify-content: center;
+    align-items: flex-end;
+}
+
+

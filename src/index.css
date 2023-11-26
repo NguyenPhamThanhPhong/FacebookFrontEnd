@@ -5,7 +5,7 @@
   --container-color: #e4e6eb;
 
   --hover-color: #e4e6e9;
-  --sub-text-color:#e4e6e9; /*chữ chia sẻ, thanh scroll*/
+  --sub-text-color:rgba(175,177,182,255); /*chữ chia sẻ, thanh scroll*/
   --shadow-color: black;
   --text-color: black;
   --note-tag-color: #39393a;
@@ -20,9 +20,9 @@
 
   --header-color: #242526;
 
-  --container-color: #3a3b3c;
-  --hover-color: #303031;
-  --sub-text-color:#5e5e5f; /*chữ chia sẻ, thanh scroll*/
+  --container-color: rgba(58,59,60,255);
+  --hover-color: rgba(58,59,60,255);
+  --sub-text-color:rgba(175,177,182,255); /*chữ chia sẻ, thanh scroll*/
   --shadow-color: white;
   --text-color: white;
   --note-tag-color: #c8c8c8;
