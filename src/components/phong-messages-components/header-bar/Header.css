@@ -5,7 +5,7 @@
     background-color: var(--header-color);
     padding: 0 1rem;
     border-bottom: var(--text-color);
-    background-color: red;
+    background-color: var(--header-color);
     display: flex;
     justify-content: space-between;
 }
@@ -16,14 +16,7 @@
     height: 100%;
 }
 
-.search-box-div{
-    background-color: bisque;
-    height: 100%;
-    
-    display: flex;
-    justify-content: flex-start;
-    align-items: center;
-}
+
 
 .navbar-nav{
     height: 100%;

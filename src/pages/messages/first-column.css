@@ -3,8 +3,10 @@
 .scrollable-product-list {
     display: flex;
     flex-direction: column;
-    max-height: 300px; /* Set a max height for the scrollable area */
+    width: 25%;
+    max-height: 500px; /* Set a max height for the scrollable area */
     overflow-y: auto; /* Enable vertical scrolling when content overflows */
+    overflow-x: hidden; /* Disable horizontal scrolling */
   }
   
   .product {

@@ -4,22 +4,29 @@
     height: 70%;
     width: 35px;
     margin: 0 4px;
-    background-color: var(--container-color);
+    background-color: transparent;
     border-radius: 50%;
+    border-color: transparent;
     align-self: center; 
     display: inline-flex;
     align-items: center;
     justify-content: center;
     transition: filter 300ms;
+    cursor: pointer;
 }
+.round-button:hover{
+    background-color: var(--hover-color);
+}
+
 .icon-round{
     width: 60%;
     height: 60%;
     color: var(--sub-text-color);
+    background-color: transparent;
 }
-
-.test-div{
-    height: 80%;
-    display: inline-flex;
-    background-color: blueviolet;
+.round-button:hover .icon-round{
+    color: antiquewhite;
+}
+.round-button:hover{
+    background-color: var(--hover-color);
 }

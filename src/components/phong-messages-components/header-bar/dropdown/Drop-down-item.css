@@ -4,7 +4,7 @@
     height: 50px;
     display: flex;
     align-items: center;
-    border-radius: 5px;
+    border-radius: 8px;
     transition: background-color 0.2s ease;
     padding: 0.5rem;
 }
