@@ -12,10 +12,15 @@ a{
     text-decoration: none;
 }
 
+.test-div{
+    width: 200px;
+    height: 400px;
+    background-color: aquamarine;
+}
 
 
 .navbar-nav{
-    height: 100%;
+    /* height: 100%; */
     display: inline-flex;
     background-color: aqua;
 }

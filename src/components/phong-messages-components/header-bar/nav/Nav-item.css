@@ -5,6 +5,12 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    background-color: antiquewhite;
+}
+.test-div{
+    width: 300px;
+    height: 400px;
+    background-color: aqua;
 }
 
 .icon-button{

@@ -1,10 +1,18 @@
 @import '@root/index.css';
 
+.search-box-div{
+    /* background-color: bisque; */
+    height: 100%;
+    
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
 
 .textbox-container{
     background-color: var(--container-color);
     border-radius: 30px;
-    width: 300px;
+    width: 240px;
     height: 80%;
     padding: 0 10px 0px 0;
     display: inline-flex;
@@ -16,12 +24,15 @@
     border: none;
     outline: none;
     background: transparent;
-    width: 80%;
+    width: 90%;
     margin: 0;
     color: var(--text-color);
 }
 .icon{
-    width: 20%;
-    height: 30%;
+    margin: 0;
+    padding: 0 0 0 5px;
+    width: 10%;
+    height: 40%;
     color: var(--sub-text-color);
+    /* background-color: white; */
 }

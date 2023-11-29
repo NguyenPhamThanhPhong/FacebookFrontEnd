@@ -1,7 +1,6 @@
 import NavBarCustom from "@components/phong-messages-components/header-bar/nav/Nav-bar";
 import RoundSquareNav from "@components/phong-messages-components/header-bar/nav/Round-square-nav";
-import TextBox from "@components/phong-messages-components/header-bar/search/Text-box";
-import RoundButton from "@components/phong-messages-components/Round-button";
+import SearchBox from "@components/phong-messages-components/header-bar/search/Search-box";
 
 import './Header.css'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
@@ -13,10 +12,7 @@ function Header(props) {
 
     return (
         <nav className="navbar">
-            <div className="search-box-div">
-                <RoundButton />
-                <TextBox />
-            </div>
+            <SearchBox/>
             <div >
                 <ul className="navbar-nav">
                     <RoundSquareNav

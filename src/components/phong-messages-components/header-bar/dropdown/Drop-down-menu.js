@@ -20,11 +20,26 @@ function DropDownMenu(props) {
     }
     const nodeRef = useRef(null);
 
+    let isDisplayAvatar = true;
+
+    let avatarUrl = 'https://scontent.fsgn19-1.fna.fbcdn.net/v/t39.30808-6/383210613_1729916487446622_4326261461704479707_n.jpg?_nc_cat=107&ccb=1-7&_nc_sid=5f2048&_nc_ohc=OCidl3XFR48AX_259dl&_nc_ht=scontent.fsgn19-1.fna&oh=00_AfCXwL5OodnE9D-sWm_O6B_epq7oFoUFYdMnAFOzBCE0Ww&oe=6569A1EE'
+
+
 
     return (
         <div className="dropdown">
+            <div className="info-section">
+                <div className="round-avatar-div">
+                    <img className="round-avatar-div-img" src={avatarUrl} />
+                </div>
+                <div className="info-section-username">
+                    <h3 className="info-section-username-span"> Nguyễn Phạm Thanh Phong</h3>
+                </div>
+            </div>
+
+
             <CSSTransition nodeRef={nodeRef} in={activeMenu === 'main'} unmountOnExit timeout={500}
-            classNames="menu-primary">
+                classNames="menu-primary">
                 <div ref={nodeRef} >
                     <DropDownItem
                         leftIcon={<FontAwesomeIcon icon={faUser} />}

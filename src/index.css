@@ -10,6 +10,7 @@
   --text-color: black;
   --note-tag-color: #39393a;
 
+  --facebook-color: rgba(8,102,255,255);
   --nav-size: 80px;
 
 }
@@ -21,11 +22,12 @@
   --header-color: #242526;
 
   --container-color: rgba(58,59,60,255);
-  --hover-color: rgba(58,59,60,255);
+  --hover-color: rgba(78,79,80,255);
   --sub-text-color:rgba(175,177,182,255); /*chữ chia sẻ, thanh scroll*/
   --shadow-color: white;
   --text-color: white;
   --note-tag-color: #c8c8c8;
+  --facebook-color: rgba(8,102,255,255);
   --nav-size: 80px;
 }
 

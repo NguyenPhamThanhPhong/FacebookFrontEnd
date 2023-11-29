@@ -14,7 +14,10 @@ function NavItem(props) {
             <a onClick={()=>setOpen(!open)}  className="icon-button">
                 {props.icon}
             </a>
-            {open && props.children}
+            <div className="test-div">
+
+            </div>
+            {/* {open && props.children} */}
         </li>
     )
 }

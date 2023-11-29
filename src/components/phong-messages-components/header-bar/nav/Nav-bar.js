@@ -16,9 +16,13 @@ function NavBarCustom(props) {
     return (
         <ul className="navbar-nav">
 
-            <NavItem icon={(<FontAwesomeIcon className="icon" icon={faGithub} style={iconStyle} />)} >
+            {/* <NavItem icon={(<FontAwesomeIcon className="icon" icon={faGithub} style={iconStyle} />)} >
                 <DropDownMenu />
-            </NavItem>
+            </NavItem> */}
+            <div className="test-div">
+
+            </div>
+
             {/* <NavItem  icon={(<FontAwesomeIcon className="icon" icon={faGithub} style={iconStyle} />)} /> */}
         </ul>
 
