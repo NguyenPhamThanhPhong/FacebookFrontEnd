@@ -8,7 +8,7 @@ const Chat_input = ({ onSendMessage }) => {
   const [newMessage, setNewMessage] = useState('');
   const inputRef = useRef();
 
-  function handleSendMessage(){
+  const handleSendMessage = () => {
     if (newMessage.trim() !== '') {
       onSendMessage(newMessage);
       setNewMessage('');
@@ -28,7 +28,7 @@ const Chat_input = ({ onSendMessage }) => {
       minHeight={25}
       value={newMessage}
       onChange={(e) => setNewMessage(e.target.value)}
-      rightButtons=<Button text={"Send"} onClick={handleSendMessage} />
+      rightButtons=<Button text={"Send"} onClick={() => handleSendMessage()} />
       ref={inputRef}
     />
   );

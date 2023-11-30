@@ -9,6 +9,8 @@ import Topbar from '../../components/header/top-bar';
 
 import React, { useState } from 'react';
 import HomeIcon from '@mui/icons-material/Home';
+import Chatbox from '../../components/chat-box/chatbox';
+import Friend from '../../components/friends/friend';
 
 
 function Home(props) {
@@ -29,10 +31,15 @@ function Home(props) {
 
     return (
         <div>
+<<<<<<< HEAD
 
             <Topbar />
 
 
+=======
+            <Topbar/>
+            <Friend/>
+>>>>>>> tu/home-friend
         </div>
     );
 }
