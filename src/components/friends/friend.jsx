@@ -1,11 +1,18 @@
 import "./friend.css";
+import Chatbox from "../../components/chat-box/chatbox";
+
+
+
 
 const Friend = () => {
+  const openchatbox = () =>{
+      <Chatbox/>
+  }
   return (
     <div className="container">
       <div className="item">
         <span>Online Friends</span>
-        <div className="user">
+        <div className="user" onClick={() => openchatbox() }>
           <div className="userInfo">
             <img
               className="img-user"

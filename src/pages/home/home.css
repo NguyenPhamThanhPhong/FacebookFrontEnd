@@ -8,3 +8,9 @@
     background: var(--hello-color);
 }
    */
+
+.homecontainer{
+    display: flex;
+    width: 100%;
+    margin-top: 10px;
+}

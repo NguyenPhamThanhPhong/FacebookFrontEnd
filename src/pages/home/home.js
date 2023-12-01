@@ -1,3 +1,4 @@
+
 // <<style here>>
 import './home.css';
 import '../../index.css'
@@ -11,6 +12,8 @@ import React, { useState } from 'react';
 import HomeIcon from '@mui/icons-material/Home';
 import Chatbox from '../../components/chat-box/chatbox';
 import Friend from '../../components/friends/friend';
+import Mainpost from '../../components/post/main-post';
+import Leftmenu from '../../components/left-menu/left-menu';
 
 
 function Home(props) {
@@ -31,15 +34,12 @@ function Home(props) {
 
     return (
         <div>
-<<<<<<< HEAD
-
-            <Topbar />
-
-
-=======
             <Topbar/>
-            <Friend/>
->>>>>>> tu/home-friend
+            <div className='homecontainer'>
+                <Leftmenu/>
+                <Mainpost/>
+                <Friend/>
+            </div>
         </div>
     );
 }
