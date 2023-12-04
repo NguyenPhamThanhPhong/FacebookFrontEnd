@@ -14,7 +14,7 @@ function Header(props) {
         <nav className="navbar">
             <SearchBox/>
             <div >
-                <ul className="navbar-nav">
+                {/* <ul className="navbar-nav">
                     <RoundSquareNav
                     active = {true}
                         icon={faHome}>
@@ -22,7 +22,7 @@ function Header(props) {
                     <RoundSquareNav
                         icon={faHome}>
                     </RoundSquareNav>
-                </ul>
+                </ul> */}
             </div>
             <NavBarCustom />
         </nav>

@@ -2,7 +2,7 @@
 // <====style here =====>
 import "./Nav-item.css"
 // <====library here =====>
-import React,{useState} from "react";
+import React, { useState } from "react";
 
 
 function NavItem(props) {
@@ -10,15 +10,12 @@ function NavItem(props) {
     const [open, setOpen] = useState(false);
 
     return (
-        <li  className="nav-item">
-            <a onClick={()=>setOpen(!open)}  className="icon-button">
-                {props.icon}
-            </a>
-            <div className="test-div">
+        // <li  className="nav-item">
 
-            </div>
-            {/* {open && props.children} */}
-        </li>
+        // </li>
+        <a onClick={() => setOpen(!open)} className="icon-button">
+            {props.icon}
+        </a>
     )
 }
 

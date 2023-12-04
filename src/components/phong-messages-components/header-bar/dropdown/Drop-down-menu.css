@@ -1,8 +1,6 @@
 @import '@root/index.css';
 
-.dropdown{
-    /* position: absolute;
-    top:58px; */
+/* .dropdown{
     width: 350px;
     transform: translateX(-45%);
     border-radius: 10px;
@@ -10,9 +8,9 @@
     padding: 1rem;
     overflow: hidden;
     box-shadow: 
-    0 0 10px rgba(255, 255, 255, 0.3);/* White shadow on the right and bottom */
-    /* -5px -5px 10px rgba(255, 255, 255, 0.3); /* Black shadow on the left and top */
-} 
+    0 0 10px rgba(255, 255, 255, 0.3);
+
+}  */
 
 .info-section{
     display: flex;

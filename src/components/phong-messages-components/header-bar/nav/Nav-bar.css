@@ -12,11 +12,18 @@ a{
     text-decoration: none;
 }
 
-.test-div{
-    width: 200px;
-    height: 400px;
-    background-color: aquamarine;
+/* <=============nav icon button ==============> */
+.my-dropdown{
+    width: 340px;
+    transform: translateX(-45%);
+    border-radius: 10px;
+    background-color: var(--container-color);
+    padding: 1rem;
+    overflow: hidden;
+    box-shadow: 
+    0 0 10px rgba(255, 255, 255, 0.3);
 }
+
 
 
 .navbar-nav{
@@ -29,3 +36,37 @@ a{
     height: 80%;
     fill: var(--text-color);
 }
+/* *****************END icon button *******************/
+
+/* <==================info section====================> */
+.info-section{
+    display: flex;
+    align-items: center;
+    margin-bottom: 1rem;
+    padding: 10px 4px;
+    cursor: pointer;
+    border-radius: 10px;
+}
+.info-section:hover{
+    background-color: var(--hover-color);
+}
+
+
+.round-avatar-div{
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background-color: pink;
+    margin-right: 1rem;
+}
+.round-avatar-div-img{
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    object-fit: cover;
+}
+.info-section-username-span{
+    font-size: 18px;
+    color: var(--text-color);
+}
+/* <*****************END info section*******************/ 

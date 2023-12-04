@@ -12,6 +12,7 @@ import { MessageBox } from "react-chat-elements";
 import "./messages.css"
 import "react-chat-elements/dist/main.css"
 import { CSSTransition } from "react-transition-group"
+import CustomModal from './custom-modal';
 
 
 
@@ -35,13 +36,12 @@ function Messages(props) {
   //   fetchData();
   // }, []);
 
-
-
   return (
     <div>
       <Header />
 
       <h1>Messages</h1>
+      <CustomModal />
 
       <FirstColumn products={products} />
     </div>

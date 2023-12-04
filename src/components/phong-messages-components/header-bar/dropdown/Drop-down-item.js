@@ -7,11 +7,11 @@ function DropDownItem(props) {
 
     return (
         <a href="#" className="menu-item" 
-        onClick={()=>props.ChangeMenu(props.goToMenu)}>
+        onClick={()=>props.setActiveMenu(props.goToMenu)}>
             <span className="icon-button">
                 {props.leftIcon}
             </span>
-            {props.children }
+            {props.children}
             <span className="icon-right">
                 {props.rightIcon}
             </span>
