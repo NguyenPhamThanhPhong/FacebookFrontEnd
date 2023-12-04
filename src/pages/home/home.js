@@ -5,10 +5,12 @@ import '../../index.css'
 
 // component here
 import Topbar from '../../components/header/top-bar';
+import Sidebar from '../../components/SideBar/SideBar'
 // component here
 
 import React, { useState } from 'react';
 import HomeIcon from '@mui/icons-material/Home';
+
 
 
 function Home(props) {
@@ -27,9 +29,11 @@ function Home(props) {
         setLightMode();
     };
 
+
     return (
         <div>
             <div>
+                <Sidebar />
             <Topbar />
             <h1 className='my-element'>
                 this is home <HomeIcon />
@@ -37,7 +41,6 @@ function Home(props) {
             <input type='checkbox' onChange={handleThemeChange}>
             </input>
             </div>
-
 
         </div>
     );

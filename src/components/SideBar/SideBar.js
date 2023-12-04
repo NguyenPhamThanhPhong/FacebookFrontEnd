@@ -1,4 +1,4 @@
-import "./SidebBar.css";
+
 import {
   RssFeed,
   Chat,
@@ -9,9 +9,14 @@ import {
   WorkOutline,
   Event,
   School,
-} from "@material-ui/icons";
-import { Users } from "../../dummyData";
-import CloseFriend from "../closeFriend/CloseFriend";
+} from "@mui/icons-material";
+
+// import { Group } from "@mui/icons-material";
+
+// import { Users } from "../../dummyData";
+// import CloseFriend from "../closeFriend/CloseFriend";
+import "./Item.css"
+
 
 export default function Sidebar() {
   return (
@@ -57,11 +62,11 @@ export default function Sidebar() {
         </ul>
         <button className="sidebarButton">Show More</button>
         <hr className="sidebarHr" />
-        <ul className="sidebarFriendList">
+        {/* <ul className="sidebarFriendList">
           {Users.map((u) => (
             <CloseFriend key={u.id} user={u} />
           ))}
-        </ul>
+        </ul> */}
       </div>
     </div>
   );
