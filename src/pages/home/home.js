@@ -5,7 +5,8 @@ import '../../index.css'
 
 // component here
 import Topbar from '../../components/header/top-bar';
-import Sidebar from '../../components/SideBar/SideBar'
+import Sidebar from '../../components/SideBar/Left/SideBar'
+
 // component here
 
 import React, { useState } from 'react';

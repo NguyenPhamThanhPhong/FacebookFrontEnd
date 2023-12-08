@@ -15,7 +15,7 @@ import {
 
 // import { Users } from "../../dummyData";
 // import CloseFriend from "../closeFriend/CloseFriend";
-import "./Item.css"
+import "./SideBar.css"
 
 
 export default function Sidebar() {
