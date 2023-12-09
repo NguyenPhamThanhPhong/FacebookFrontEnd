@@ -1,0 +1,35 @@
+:root{
+  --background-color: #f0f2f5;
+  --container-color: #ffffff;
+  --hover-color: #e4e6e9;
+  --sub-text-color:#e4e6e9; /*chữ chia sẻ, thanh scroll*/
+  --shadow-color: black;
+  --text-color: black;
+  --note-tag-color: #39393a;
+}
+
+
+[data-theme="dark"]{
+  --background-color: #282c34;
+  --container-color: #3a3b3c;
+  --hover-color: #303031;
+  --sub-text-color:#5e5e5f; /*chữ chia sẻ, thanh scroll*/
+  --shadow-color: white;
+  --text-color: white;
+  --note-tag-color: #c8c8c8;
+}
+
+
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
