@@ -12,21 +12,30 @@ export default function Rightbar({ profile }) {
             <div className="birthdayContainer">
                 <img className="birthdayImg" src="assets/gift.png" alt="" />
                 <span className="birthdayText">
-                    {/* birthday message here text. ex: Lorem Ipsum and 3 other friends have a birhtday  today */}
+                    <b>Jane Doe</b> and 3 other people have a birthday today
             </span>
             </div>
             {/* ad block */}
             <img className="rightbarAd" src="assets/ad.png" alt="" />
-            <h4 className="rightbarTitle">Online Friends</h4>
+           
+            
+
+
+            {/* (outdated?) online friend section */}
+
+            {/* <h4 className="rightbarTitle">Online Friends</h4>
                 <ul className="rightbarFriendList">
                 {Users.map((u) => (
                     <Online key={u.id} user={u} />
                 ))}
-            </ul>
+            </ul> */}
         </>
     );
 };
 
+    
+    
+//unused "Online friend logic" for now
 const ProfileRightbar = () => {
     return (
     <>

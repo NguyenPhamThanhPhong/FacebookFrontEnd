@@ -6,8 +6,8 @@ import '../../index.css'
 
 // component here
 import Topbar from '../../components/header/top-bar';
-import Sidebar from '../../components/SideBar/Left/SideBar'
-
+import SidebarLeft from '../../components/SideBar/Left/SideBar';
+import SidebarRight from '../../components/SideBar/Right/SideBar-Right'
 // component here
 
 import React, { useState } from 'react';
@@ -15,7 +15,7 @@ import HomeIcon from '@mui/icons-material/Home';
 import Chatbox from '../../components/chat-box/chatbox';
 import Friend from '../../components/friends/friend';
 import Mainpost from '../../components/post/main-post';
-import Leftmenu from '../../components/left-menu/left-menu';
+
 
 
 function Home(props) {
@@ -40,9 +40,15 @@ function Home(props) {
             <Topbar/>
             <div className='homecontainer'>
             <div className='container-item' style={{marginTop:10}}>
-                <Sidebar/>
+                <SidebarLeft />
+                    
                 <Mainpost/>
-                <Friend/>
+                
+                    <div className="rightmenu">
+                        <SidebarRight />
+                        <Friend />
+                    </div>    
+                
             </div>
             </div>
         </div>

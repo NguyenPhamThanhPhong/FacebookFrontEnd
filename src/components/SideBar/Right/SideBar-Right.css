@@ -19,6 +19,7 @@
 .birthdayText {
     font-weight: 300;
     font-size: 15px;
+    color: white;
 }
 
 .rightbarAd {
@@ -29,6 +30,7 @@
 
 .rightbarTitle{
     margin-bottom: 20px;
+    color: white;
 }
 
 .rightbarFriendList {
@@ -53,7 +55,7 @@
 .rightbarInfoKey{
     font-weight: 500;
     margin-right: 15px;
-    color: #555;
+    color: white;
 }
 
 .rightbarInfoValue{
@@ -79,3 +81,4 @@
     object-fit: cover;
     border-radius: 5px;
 }
+
