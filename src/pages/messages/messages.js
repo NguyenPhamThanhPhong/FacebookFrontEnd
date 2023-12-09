@@ -1,7 +1,17 @@
-
 import React, { useState,useEffect } from 'react'
-import "react-chat-elements/dist/main.css"
+// <============================Component here ============================>
+
+// import FirstColumn from './first-column';
+import Header from '@components/phong-messages-components/header-bar/Header';
+// <============================Library here ============================>
+
 import { MessageBox } from "react-chat-elements";
+
+// <============================CSS HERE ============================>
+import "./messages.css"
+import { CSSTransition } from "react-transition-group"
+
+import "react-chat-elements/dist/main.css"
 
 import FirstColumn from './first-column';
 import "./messages.css"
@@ -9,49 +19,35 @@ import "./messages.css"
 
 
 function Messages(props) {
-
-    const [products, setProducts] = useState([]);
-
-    const fetchData = async () => {
-      try {
-        const response = await fetch('https://api.sampleapis.com/beers/ale');
-        const data = await response.json();
-        setProducts(data);
-      } catch (error) {
-        console.error('Error fetching data:', error);
-      }
-    };
-  
-    useEffect(() => {
-      fetchData();
-    }, []);
+  document.querySelector("body").setAttribute("data-theme", "dark");
 
 
-    return (
-        <div>
-            <h1>Messages</h1>
-            <div>
-                <MessageBox
-                    position='left'
-                    title='Burhan'
-                    type='text'
-                    text="Hi there !"
-                    date={new Date()}
-                    replyButton={true}
-                />
+  const [products, setProducts] = useState([]);
 
-                <MessageBox
-                    position="right"
-                    title="Emre"
-                    type="meetingLink"
-                    text="Click to join the meeting"
-                    date={new Date()}
-                />
-            </div>
+  const fetchData = async () => {
+    try {
+      const response = await fetch('https://api.sampleapis.com/beers/ale');
+      const data = await response.json();
+      setProducts(data);
+    } catch (error) {
+      console.error('Error fetching data:', error);
+    }
+  };
+
+  // useEffect(() => {
+  //   fetchData();
+  // }, []);
 
 
-            <FirstColumn products={products}/>
-        </div>
-    )
+
+  return (
+    <div>
+      <Header />
+
+      <h1>Messages</h1>
+
+      <FirstColumn products={products} />
+    </div>
+  )
 }
 export default Messages

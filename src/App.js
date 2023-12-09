@@ -3,7 +3,7 @@ import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 
 
 function App() {
-  document.querySelector("body").setAttribute("data-theme", "dark");
+  // document.querySelector("body").setAttribute("data-theme", "dark");
 
   return (
     <Router>

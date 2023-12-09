@@ -1,0 +1,31 @@
+@import "@root/index.css"; /* Using a string */
+
+
+ul{
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+a{
+    color: var(--text-color);
+    text-decoration: none;
+}
+
+.test-div{
+    width: 200px;
+    height: 400px;
+    background-color: aquamarine;
+}
+
+
+.navbar-nav{
+    /* height: 100%; */
+    display: inline-flex;
+    background-color: aqua;
+}
+.icon-nav{
+    width: 80%;
+    height: 80%;
+    fill: var(--text-color);
+}

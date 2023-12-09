@@ -6,6 +6,8 @@ import '../../index.css'
 
 // component here
 import Topbar from '../../components/header/top-bar';
+import Sidebar from '../../components/SideBar/Left/SideBar'
+
 // component here
 
 import React, { useState } from 'react';
@@ -32,12 +34,13 @@ function Home(props) {
         setLightMode();
     };
 
+
     return (
         <div className='homepage'>
             <Topbar/>
             <div className='homecontainer'>
             <div className='container-item' style={{marginTop:10}}>
-                <Leftmenu/>
+                <Sidebar/>
                 <Mainpost/>
                 <Friend/>
             </div>

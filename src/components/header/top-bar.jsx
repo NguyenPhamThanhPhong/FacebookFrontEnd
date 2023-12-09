@@ -1,33 +1,46 @@
-import React from "react";
-import "./header.css";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faFacebookMessenger } from "@fortawesome/free-brands-svg-icons";
-import { faBell,faMagnifyingGlass } from "@fortawesome/free-solid-svg-icons";
-import "bootstrap/dist/css/bootstrap.min.css";
-import Image from 'react-bootstrap/Image';
-import Navbar from "react-bootstrap/Navbar";
-import Button from "react-bootstrap/Button";
+import React from 'react';
+import SearchIcon from '@mui/icons-material/Search';
+import PersonIcon from '@mui/icons-material/Person';
+import ChatIcon from '@mui/icons-material/Chat';
+import NotificationsNoneIcon from '@mui/icons-material/NotificationsNone';
 
 function TopBar() {
-  return (
-    <div style={{background:'#242526', color:'white'}}>
-
-    <Navbar className="bg-body-tertiary-fixed header justify-content-between" >
-      <Navbar.Brand href="#home" style={{color:'white'}}>Facebook clone</Navbar.Brand>
-      <div className="search-bar">
-        <FontAwesomeIcon icon={faMagnifyingGlass} style={{margin:'10px',color:`var(--color-item-navbar)`}} />
-        <input type="text" className="search-input" placeholder="Tìm kiếm"></input>
-      </div>
-      <div className="container-button">
-        <div className="buttonstyle">
-          <FontAwesomeIcon icon={faFacebookMessenger} />
-        </div>
-        <div className="buttonstyle">
-          <FontAwesomeIcon icon={faBell} />
-        </div>
-        <Image src="https://th.bing.com/th/id/OIP.kVVWYJbqPc6WJpRrScsBswHaE7?rs=1&pid=ImgDetMain" roundedCircle className="image-user"/>
-      </div>
-    </Navbar>
+    return (
+        <div>
+            Hello world!
+            <div className="topbarLeft">
+                <span classname="logo">
+                    phongbook.com
+                </span>
+            </div>
+            <div className="topbarLeft">
+                <div className="searchbar">
+                    <SearchIcon/>
+                    <input placeholder='search for friends' className="searchInput" />
+                </div>
+            </div>
+            <div className="topbarLeft">
+                <div className="topbarLinks">
+                    <span className="TopbarLink">Home page</span>
+                    <span className="TopbarLink">Time line</span>
+                </div>
+                <div className="topbar-Icons">
+                    <div className="topbarIconItem">
+                        <PersonIcon/>
+                        <span className="topbarIconBadge">1</span>
+                    </div>
+                    <div className="topbarIconItem">
+                        <ChatIcon/>
+                        <span className="topbarIconBadge">1</span>
+                    </div>
+                    <div className="topbarIconItem">
+                        <NotificationsNoneIcon/>
+                        <span className="topbarIconBadge">1</span>
+                    </div>
+                </div>
+            </div>
+            {/* Your top bar content goes here */}
+        
     </div>
   );
 }
