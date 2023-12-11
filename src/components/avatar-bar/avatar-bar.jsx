@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import "./avatar-bar.css";
 
-function Avatar-Bar() {
+function AvatarBar() {
   return (
     <>
     <div>
