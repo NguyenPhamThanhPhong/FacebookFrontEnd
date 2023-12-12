@@ -19,6 +19,7 @@
 
 .sidebarWrapper {
     padding: 20px;
+    
 }
 
 .sidebarList {
@@ -43,6 +44,7 @@
     padding: 10px;
     border-radius: 5px;
     font-weight: 500;
+    margin:auto;
 }
 
 .sidebarHr {
@@ -53,4 +55,8 @@
     padding: 0;
     margin: 0;
     list-style: none;
+}
+.sidebarTitle{
+    margin-bottom: 0px;
+    color: white;
 }

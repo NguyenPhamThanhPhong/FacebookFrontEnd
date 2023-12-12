@@ -37,8 +37,9 @@ function Home(props) {
 
     return (
         <div className='homepage'>
-            <Topbar/>
+           
             <div className='homecontainer'>
+               
             <div className='container-item' style={{marginTop:10}}>
                 <SidebarLeft />
                     

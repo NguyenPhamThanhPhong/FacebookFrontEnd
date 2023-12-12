@@ -15,8 +15,11 @@ import {
 
 // import { Users } from "../../dummyData";
 // import CloseFriend from "../closeFriend/CloseFriend";
-import "./SideBar.css"
 
+import "./SideBar.css"
+import GroupList from "../../group-list/grouplist";
+import "bootstrap/dist/css/bootstrap.min.css";
+import Button from "react-bootstrap/Button";
 
 export default function Sidebar() {
   return (
@@ -60,13 +63,21 @@ export default function Sidebar() {
             <span className="sidebarListItemText">Courses</span>
           </li>
         </ul>
-        <button className="sidebarButton">Show More</button>
+        <Button variant="primary" className="sidebarButton">Show More</Button>{" "}
+        
         <hr className="sidebarHr" />
-        {/* <ul className="sidebarFriendList">
-          {Users.map((u) => (
-            <CloseFriend key={u.id} user={u} />
-          ))}
-        </ul> */}
+        
+        <h4 className="sidebarTitle">Your Groups</h4>
+
+        {/* Your group list */}
+        <ul className="sidebarGroupList">
+        
+        {/*Re-use friend component  */}
+          <GroupList name="grouplist1"/>
+          
+        </ul>
+
+        <hr className="sidebarHr" />
       </div>
     </div>
   );
