@@ -1,7 +1,6 @@
 .container{
-    flex: 2.5;
-    width: 360px;
-    height: 660px;
+    flex: 3.5;
+
     background-color: var(--background-home-dark);
     border-radius: 10px 0px 0px 10px;
     overflow: hidden;

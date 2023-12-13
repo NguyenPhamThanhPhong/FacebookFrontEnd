@@ -8,6 +8,7 @@ import '../../index.css'
 import Topbar from '../../components/header/top-bar';
 import SidebarLeft from '../../components/SideBar/Left/SideBar';
 import SidebarRight from '../../components/SideBar/Right/SideBar-Right'
+import MessageShortcutColumn from '../../components/message-shortcut/MessageShortcutColumn';
 // component here
 
 import React, { useState } from 'react';
@@ -45,11 +46,11 @@ function Home(props) {
                     
                 <Mainpost/>
                 
-                    <div className="rightmenu">
-                        <SidebarRight />
-                        <Friend />
-                    </div>    
-                
+                <div className="rightmenu">
+                    <SidebarRight/>
+                    <Friend />
+                </div>    
+                <MessageShortcutColumn/>
             </div>
             </div>
         </div>

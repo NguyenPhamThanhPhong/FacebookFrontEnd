@@ -1,6 +1,6 @@
 .sidebar {
     flex: 2.5;
-    height: 100vh;
+    height: 90vh;
     position: sticky;
     top: 50px;
     background-color: var(--background-home-dark);

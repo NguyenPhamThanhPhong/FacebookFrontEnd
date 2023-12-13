@@ -29,6 +29,7 @@
 }
 .rightmenu{
     width: 25%;
+    overflow-x: hidden;
 }
 
 @media screen and (min-width: 1080px) {
