@@ -5,14 +5,14 @@ import Header from '@components/phong-messages-components/header-bar/Header';
 import FirstColumn from '@pages/messages/first-column';
 // <============================Library here ============================>
 
-import React, { useState, useEffect,useRef } from 'react'
+import React, { useState, useEffect, useRef } from 'react'
 import { MessageBox } from "react-chat-elements";
 
 // <============================CSS HERE ============================>
 import "./messages.css"
 import "react-chat-elements/dist/main.css"
-import { CSSTransition } from "react-transition-group"
-import CustomModal from './custom-modal';
+// import { CSSTransition } from "react-transition-group"
+// import CustomModal from './custom-modal';
 
 
 
@@ -35,15 +35,42 @@ function Messages(props) {
   // useEffect(() => {
   //   fetchData();
   // }, []);
+  function titleCLick(){
+    console.log("title clicked")
+  }
 
   return (
-    <div>
+    <div >
       <Header />
 
-      <h1>Messages</h1>
-      <CustomModal />
+      <div className='message-page-wrapper-div'>
+        <div className='first-column-wrapper' >
+          <FirstColumn products={products} />
+        </div>
 
-      <FirstColumn products={products} />
+        <div className='chat-window'>
+          <div className='chat-box'>
+            <MessageBox
+              className='message-item'
+              type={"text"}
+              text="Here is a text type messagsddfsadsdafdasdfasdfasdfadsfe \n
+              basdfasdfasdfasdfadsfaadsfoxgsddfsadsdafdasgsddfsadsdafdasgsddfsadsdafdas"
+            />
+            <MessageBox
+            
+              className='message-item '
+              notchStyle={{fill:'var(--header-color)'}}
+              position='right'
+              type={"text"}
+              text="Here is a text type message \n
+              basdfasdfasdfasdfadsfaadsfox"
+            />
+          </div>
+
+        </div>
+      </div>
+
+
     </div>
   )
 }

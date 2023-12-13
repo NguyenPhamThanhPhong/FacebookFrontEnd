@@ -11,7 +11,6 @@ function ConversationItem(props) {
     return (
 
         <div className="conversation-item-container">
-            <div className="holding-container">
                 <div className="inner-container">
                     <div className="left">
                         <div className="flex-avatar-container">
@@ -29,13 +28,11 @@ function ConversationItem(props) {
                         </div>
                     </div>
                     <div className="content-div">
-                        <h3>{message}</h3>
+                        <h4>{message}</h4>
                         <p>{conversationName}</p>
                     </div>
 
                 </div>
-
-            </div>
         </div>
     )
 }

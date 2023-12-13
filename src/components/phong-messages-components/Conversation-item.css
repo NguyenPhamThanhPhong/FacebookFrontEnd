@@ -3,14 +3,11 @@
     padding: 8px 8px;
     border-radius: 10px;
 }
-.holding-container{
-  height: 60px;
-  width: 340px;
-}
+
 
 .inner-container{
-    width: 100%;
-    height: 100%;
+    width: 90%;
+    height: 90%;
     display: flex;
     justify-content: flex-start;
     align-items: center;
@@ -20,11 +17,11 @@
   width: 50px; /* Adjust the width and height as needed */
   height: 60px;
   display: grid;
-  grid-template-columns: 35px 10px 5px;
+  grid-template-columns: 35px 15px 5px;
 }
 .flex-avatar-container{
   height: 100%;
-  width: 50px;
+  width: 55px;
   grid-column: 1;
   column-span: 2;
   display: flex;
@@ -32,8 +29,8 @@
   align-items: center;
 }
 .avatar-container {
-  width: 45px;
-  height: 45px;
+  width: 55px;
+  height: 55px;
   overflow: hidden;
   border-radius: 50%; /* This creates a circular shape */
 }
@@ -56,21 +53,22 @@
 .online-status-div{
   grid-column: 3;
   column-span: 1;
-  width: 15px;
-  height: 15px;
+  width: 20px;
+  height: 20px;
   border: var(--background-color) 2px solid;
   background-color: rgba(49,162,76,255); /* or any color you prefer */
   border-radius: 50%; /* creates a round shape */
   z-index: 2;
-  margin-bottom: 7px;
+  margin-bottom: 3px;
 }
 
 .content-div{
   padding-left: 10px;
 }
 
-.content-div h3,
+.content-div h4,
 .content-div p{
   color: var(--text-color);
+  margin: 0;
 }
   

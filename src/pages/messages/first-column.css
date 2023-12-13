@@ -1,9 +1,9 @@
 /* FirstColumn.css */
 
 .scrollable-product-list {
-    display: flex;
+    display: inline-flex;
     flex-direction: column;
-    width: 25%;
+    width: 100%;
     max-height: 500px; /* Set a max height for the scrollable area */
     overflow-y: auto; /* Enable vertical scrolling when content overflows */
     overflow-x: hidden; /* Disable horizontal scrolling */

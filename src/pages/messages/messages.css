@@ -1,4 +1,36 @@
-.scroll-container{
-    height: 100px;
-    background-color: red;
+/* .wrapper-div{
+    background-color: ;
+} */
+
+.message-page-wrapper-div{
+    display: flex;
+    justify-items: flex-start;
+    align-items: flex-start;
 }
+.first-column-wrapper{
+    width: 25%;
+}
+
+.chat-window{
+    width: 75%;
+    background-color: aquamarine;
+}
+
+.chat-window.chat-box{
+    height: 100%;
+    width: 100%;
+    background-color: aquamarine;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: flex-start;
+}
+
+.message-item{
+    color: white;
+    max-width: 50%;
+}
+
+.rce-mbox {
+    background: var(--header-color) !important; 
+  }
