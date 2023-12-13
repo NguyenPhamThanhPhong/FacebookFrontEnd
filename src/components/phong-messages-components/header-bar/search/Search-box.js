@@ -26,8 +26,7 @@ function TextBox(props) {
         <div className="search-box-div">
             <RoundButton width={'38px'} height={'38px'} iconWidth={'28px'} iconHeight={'30px'}
             icon={faFacebookF} backgroundColor={'var(--facebook-color))'}
-            iconColor={'white'}
-     />
+            iconColor={'white'}/>
 
             <div onClick={clickInput} className="textbox-container">
                 <FontAwesomeIcon className="icon" icon={faSearch} />
