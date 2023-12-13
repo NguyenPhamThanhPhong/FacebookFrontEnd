@@ -5,17 +5,14 @@ import '../../index.css'
 //css here
 
 // component here
-import Topbar from '../../components/header/top-bar';
 import Sidebar from '../../components/SideBar/Left/SideBar'
 
 // component here
 
 import React, { useState } from 'react';
-import HomeIcon from '@mui/icons-material/Home';
-import Chatbox from '../../components/chat-box/chatbox';
 import Friend from '../../components/friends/friend';
 import Mainpost from '../../components/post/main-post';
-import Leftmenu from '../../components/left-menu/left-menu';
+import Header from '../../components/phong-messages-components/header-bar/Header';
 
 
 function Home(props) {
@@ -37,7 +34,6 @@ function Home(props) {
 
     return (
         <div className='homepage'>
-            <Topbar/>
             <div className='homecontainer'>
             <div className='container-item' style={{marginTop:10}}>
                 <Sidebar/>
