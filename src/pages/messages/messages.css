@@ -2,43 +2,47 @@
     background-color: ;
 } */
 
-.message-page-wrapper-div{
+.message-page-wrapper-div {
     display: flex;
     justify-items: flex-start;
     align-items: flex-start;
 }
-.first-column-wrapper{
+
+.first-column-wrapper {
     width: 25%;
 }
 
 
 
-.chat-window{
+.chat-window {
     width: 75%;
 }
-.chat-header{
+
+.chat-header {
     width: 100%;
     display: flex;
     justify-content: space-between;
     align-items: center;
 }
-.chat-title-group{
+
+.chat-title-group {
     display: flex;
     padding-left: 10px;
 }
-.chat-conversation-title{
+
+.chat-conversation-title {
     display: flex;
     justify-content: center;
     align-self: center;
 }
+
 .chat-conversation-title h5,
-.chat-notification-status
-{
+.chat-notification-status {
     margin: 0;
     color: var(--text-color);
 }
 
-.chat-window{
+.chat-window {
     height: 900px;
     width: 100%;
     display: flex;
@@ -46,21 +50,34 @@
     justify-content: space-between;
 }
 
-.chat-box{
+.chat-box {
     width: 100%;
     padding: 10px 10px;
     flex-grow: 1;
-    /* max-height: 90%; */
     margin-bottom: 10px;
-    overflow-y: auto; /* Enable vertical scrolling when content overflows */
-    overflow-x: hidden; /* Disable horizontal scrolling */
+    overflow-y: auto;
+    overflow-x: hidden;
 }
 
-.message-item{
-    color: white;
-    width: 100%;
+.chat-message-row{
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+    margin-bottom: 10px;
+
+}
+
+.message-item {
+    /* background-color: beige; */
+    flex-grow: 1;
+    color: var(--text-color);
 }
 
 .rce-mbox {
-    background: var(--header-color) !important; 
-  }
+    background: var(--message-color) !important;
+    max-width: 45%;
+}
+
+.rce-mbox-right {
+    background: var(--facebook-color) !important;
+}

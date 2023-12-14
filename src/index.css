@@ -11,6 +11,7 @@
   --note-tag-color: #39393a;
 
   --facebook-color: rgba(8,102,255,255);
+  --message-color: rgba(48,48,48,255);
   --nav-size: 80px;
 
 }
@@ -28,6 +29,7 @@
   --text-color: white;
   --note-tag-color: #c8c8c8;
   --facebook-color: rgba(8,102,255,255);
+  --message-color: rgba(48,48,48,255);
   --nav-size: 80px;
 }
 

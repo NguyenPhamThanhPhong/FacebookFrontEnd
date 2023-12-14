@@ -1,36 +1,39 @@
 import RoundButton from "@components/phong-messages-components/Round-button";
-
-
 import "./Search-box.css"
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faSearch } from '@fortawesome/free-solid-svg-icons'
+import { faSearch,faArrowLeft } from '@fortawesome/free-solid-svg-icons'
 import { faFacebookF } from "@fortawesome/free-brands-svg-icons";
-import { faArrowLeft } from '@fortawesome/free-solid-svg-icons'
 
-import React, { useRef } from 'react';
+import React, { useRef,useState } from 'react';
 
 function TextBox(props) {
     const inputRef = useRef(null);
+    const [isFocused, setIsFocused] = useState(false);
+
 
     function clickInput() {
-        // Focus on the input element when the div is clicked
         inputRef.current.focus();
     }
 
-    var temp = <RoundButton width={'38px'} height={'38px'} 
+    var arrow = props.backIcon
+    var temparrow = <RoundButton width={'35px'} height={'35px'} 
     icon={faArrowLeft}
-    iconWidth={'28px'} iconHeight={'20px'} />
+    iconWidth={'90%'} iconHeight={'90%px'} />
+
+    var facebook = props.customLogo
+    var tempFacebook = <RoundButton width={'45px'} height={'45px'} iconWidth={'90%'} iconHeight={'90%'}
+    icon={faFacebookF} backgroundColor={'var(--facebook-color)'}
+    iconColor={'white'}/>
+    
 
     return (
         <div className="search-box-div">
-            <RoundButton width={'38px'} height={'38px'} iconWidth={'28px'} iconHeight={'30px'}
-            icon={faFacebookF} backgroundColor={'var(--facebook-color))'}
-            iconColor={'white'}/>
-
-            <div onClick={clickInput} className="textbox-container">
-                <FontAwesomeIcon className="icon" icon={faSearch} />
-                <input ref={inputRef} className="input" type="text" />
+            {isFocused ? arrow : facebook}
+            <div onClick={clickInput} style={props.textboxContainerStyle} className="textbox-container">
+                {!isFocused && <FontAwesomeIcon className="search-box-icon" icon={faSearch} />}
+                <input ref={inputRef} onFocus={() => setIsFocused(true)} onBlur={() => setIsFocused(false)}
+                className="search-box-input" placeholder="Search here" type="text" />
             </div>
         </div>
     )

@@ -10,7 +10,7 @@ import ChatTextbox from '@root/components/phong-messages-components/chat-window/
 import React, { useState, useEffect, useRef } from 'react'
 import { MessageBox, Avatar } from "react-chat-elements";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faBellSlash, faVideo, faCircleInfo, faPhone } from '@fortawesome/free-solid-svg-icons';
+import { faBellSlash, faVideo, faCircleInfo, faPhone,faArrowLeft } from '@fortawesome/free-solid-svg-icons';
 // <============================CSS HERE ============================>
 import "./messages.css"
 import "react-chat-elements/dist/main.css"
@@ -44,13 +44,13 @@ function Messages(props) {
     color: 'red',
     margin: '0 10px'
   }
-  let myMessages =[{position: ''},{position: 'right'},{position: ''},{position: ''},{position: ''},{position: ''}]
+  let myMessages = [{ position: '', text: "\n" }, { position: 'right' }, { position: '' }, { position: '' }, { position: '' }, { position: '' }]
 
   for (let i = 0; i < 50; i++) {
-    if(i%2===0)
-     myMessages.push({position: 'right'})
+    if (i % 2 === 0)
+      myMessages.push({ position: 'right' })
     else
-      myMessages.push({position: ''})
+      myMessages.push({ position: '' })
   }
   return (
     <div >
@@ -62,6 +62,7 @@ function Messages(props) {
         </div>
 
         <div className='chat-window'>
+
           <div className='chat-header'>
             <div className='chat-title-group'>
               <div style={{ Display: 'inline' }}>
@@ -90,30 +91,33 @@ function Messages(props) {
           <div className='chat-box'>
             {myMessages.map((message, index) => {
               return (
-                <MessageBox
-                  key={index}
-                  className='message-item '
-                  notchStyle={{ fill: 'var(--header-color)' }}
-                  position={message.position}
-                  type={"text"}
-                  text="Here is a text type message \n
+                <div className='chat-message-row'>
+                  {message.position === '' && <Avatar src="https://avatars.githubusercontent.com/u/80540635?v=4"
+                    alt="avatar"
+                    size="xlarge"
+                    type="circle"
+                  />}
+                  <MessageBox
+                    key={index}
+                    className='message-item '
+                    notchStyle={{ fill: message.position === 'right' ? 'var(--facebook-color)' : 'var(--message-color)' }}
+                    position={message.position}
+                    type={"text"}
+                    text="Here is a text type message adsfkasd;lfkopwq3eiqw,ennjsa,djf
+                    kasd;lfkopwq3eiqw,ennjsa,djf kasd;lfkopwq3eiqw,ennjsa,djf
                 basdfasdfasdfasdfadsfaadsfox"
-                />
+                  />
+                </div>
+
               )
             })}
-            <MessageBox
-              className='message-item '
-              notchStyle={{ fill: 'var(--header-color)' }}
-              position='right'
-              type={"text"}
-              text="Here is a text type message \n
-              basdfasdfasdfasdfadsfaadsfox"
-            />
+
+
 
           </div>
           <div className='chat-footer'>
-          <ChatTextbox />
-            
+            <ChatTextbox />
+
           </div>
         </div>
       </div>
