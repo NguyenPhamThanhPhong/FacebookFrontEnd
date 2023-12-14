@@ -8,7 +8,7 @@ function Signup(){
     const [startDate, setStartDate] = useState(null);
     const [statusMessage, setStatusMessage] = useState('');
     const [errorField, setErrorField] = useState('');
-    const [errorMessageClass, setErrorMessageClass] = useState('');
+    const [messageColorClass, setmessageColorClass] = useState('');
     const [confirmPassword, setConfirmPassword] = useState('');
 
     useEffect(() => {
@@ -40,7 +40,7 @@ function Signup(){
         if (!isValid) {
             setErrorField(errorField);
             setStatusMessage(getErrorMessage(errorField));
-            setErrorMessageClass('text-danger');
+            setmessageColorClass('text-danger');
             setTimeout(() => {
                 setErrorField('');
             }, 200);
@@ -48,16 +48,15 @@ function Signup(){
             if (formElements.password.value !== confirmPassword) {
                 setErrorField('confirmPassword');
                 setStatusMessage("Passwords do not match.");
-                setErrorMessageClass('text-danger');
+                setmessageColorClass('text-danger');
                 formElements.confirmPassword.value = "";
                 setTimeout(() => {
                     setErrorField('');
-                    setConfirmPassword('');
                 }, 200);
                 return;
             }
             setStatusMessage("Registration successful!");
-            setErrorMessageClass('text-success');
+            setmessageColorClass('text-success');
             formElements.firstName.value = "";
             formElements.lastName.value = "";
             formElements.email.value = "";
@@ -167,9 +166,9 @@ function Signup(){
                     </div>
                 </div>
             </div>
-            {statusMessage && <div className={`mb-2 fw-bold ${errorMessageClass}`}>{statusMessage}</div>}
+            {statusMessage && <div className={`mb-2 fw-bold ${messageColorClass}`}>{statusMessage}</div>}
                 <div className='d-grid'>
-                    <button type="submit" className='btn btn-success fw-bold'>Register</button>
+                    <button type="submit" className='btn btn-info fw-bold' style={{ color: 'white' }}>Register</button>
                 </div>
                 <br></br>
                 <p className='text-center'>

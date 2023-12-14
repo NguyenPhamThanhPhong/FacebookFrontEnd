@@ -25,7 +25,7 @@ function Login(){
         setStatusMessage("");
         if (!email) {
             setEmailError(true);
-            setStatusMessage("The email address or phone number you entered isn't connected to an account.");
+            setStatusMessage("The email address or phone number you entered is not connected to an account.");
             setTimeout(() => {
                 setEmailError(false);
             }, 200); 
@@ -79,7 +79,7 @@ function Login(){
                             </label>
                         </div>
                         <p className='mb-0' style={{ fontSize: '14px', textAlign: 'right'}}>
-                            <a href="" className='textref-link'>Forgot Password?</a>
+                            <Link to="/recoverpass" className='textref-link'>Forgot Password?</Link>
                         </p>
                 </div>
                 {statusMessage && <div className="mb-2 text-danger fw-bold">{statusMessage}</div>}

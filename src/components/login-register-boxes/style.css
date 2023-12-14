@@ -60,6 +60,11 @@
     transition: border-color 0.2s ease-in-out;
 }
 
+.form_control[readonly] {
+    color: #a4a4a4;
+    border-color: #939292;
+}
+
 .textref-link {
     color: #f0e4ff;
     text-decoration: none;
