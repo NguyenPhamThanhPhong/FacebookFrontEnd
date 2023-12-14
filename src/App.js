@@ -1,21 +1,16 @@
+import React, { useState } from "react";
 import { publicRoutes } from './Routes/routes.js';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import AvatarBar from "./components/avatar-bar/avatar-bar.jsx";
 
 
 function App() {
   document.querySelector("body").setAttribute("data-theme", "dark");
 
   return (
-    <Router>
-      <div className='App' >
-        <Routes>
-          {publicRoutes.map((route, index) => {
-            const Page = route.component;
-            return <Route key={index} path={route.path} element={<Page/>} />
-          })}
-        </Routes>
-      </div>
-    </Router>
+     <AvatarBar>
+
+     </AvatarBar>
   );
 }
 
