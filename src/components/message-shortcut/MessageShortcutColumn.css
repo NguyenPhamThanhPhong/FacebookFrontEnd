@@ -48,7 +48,7 @@ margin-top: 10px;
 margin-bottom: 20px;
 height: 90%;
 overflow-y: hidden; 
-border: 1px var(--background-home-dark) solid;
+/* border: 1px var(--background-home-dark) solid; */
 margin-left: 3px;
 }
 
@@ -66,4 +66,9 @@ background-color: #646667;
 
 .ongoing-chat:hover{
 overflow-y: auto;
+}
+@media screen and (max-width: 400px){
+  .ongoing-chat{
+    visibility: hidden;
+  }
 }

@@ -10,6 +10,9 @@ import Modal from "react-bootstrap/Modal";
 import Image from "react-bootstrap/Image";
 import "./post.css";
 
+import Comment from "./comment";
+import { ModalBody } from "react-bootstrap";
+
 const CommentModal = (props) => {
   const [show, setShow] = useState(false);
 
@@ -58,9 +61,9 @@ const CommentModal = (props) => {
                 <span>lượt chia sẻ</span>
               </div>
             </div>
-          </div>
+            </div>
         </Modal.Body>
-        <Modal.Footer>
+        <Modal.Body>
           <div className="button-interact" style={{ width: "100%" }}>
             <Button>Thích</Button>
             <Button variant="primary">Bình luận</Button>
@@ -73,10 +76,29 @@ const CommentModal = (props) => {
               <Dropdown.Item eventKey="1">Dropdown link</Dropdown.Item>
               <Dropdown.Item eventKey="2">Dropdown link</Dropdown.Item>
             </DropdownButton>
-          </div>
+            </div>  
+        </Modal.Body>
+        <Modal.Footer>
+          {/* <div className="button-interact" style={{ width: "100%" }}>
+            <Button>Thích</Button>
+            <Button variant="primary">Bình luận</Button>
+
+            <DropdownButton
+              as={ButtonGroup}
+              title="Chia sẻ"
+              id="bg-nested-dropdown"
+            >
+              <Dropdown.Item eventKey="1">Dropdown link</Dropdown.Item>
+              <Dropdown.Item eventKey="2">Dropdown link</Dropdown.Item>
+            </DropdownButton>
+          </div> */}
+            <Comment/> 
+
+
         </Modal.Footer>
         </div>
       </Modal>
+      
     </div>
   );
 };
