@@ -55,24 +55,24 @@
     margin-left: auto;
 }
 
-.menu-primary-enter {
+.menu-primary.enter {
     transform: translateX(100%);
     opacity: 0;
 }
-.menu-primary-enter-active {
+.menu-primary.enter-active {
     transform: translateX(0);
     opacity: 1;
     transition: transform 500ms, opacity 500ms;
 }
-.menu-primary-enter-done {
+.menu-primary.enter-done {
     width: 100%;
 }
 
-.menu-primary-exit {
+.menu-primary.exit {
     transform: translateX(0);
     opacity: 1;
 }
-.menu-primary-exit-active {
+.menu-primary.exit-active {
     transform: translateX(100%);
     opacity: 0;
     transition: transform 500ms, opacity 500ms;

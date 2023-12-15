@@ -38,6 +38,11 @@
   box-sizing: border-box;
 }
 
+.space-between-flex{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
 
 
 body {

@@ -1,8 +1,8 @@
-/* .wrapper-div{
-    background-color: ;
-} */
-
+.message-page-container{
+    height: 93vh;
+}
 .message-page-wrapper-div {
+    height: 100%;
     display: flex;
     justify-items: flex-start;
     align-items: flex-start;
@@ -11,8 +11,6 @@
 .first-column-wrapper {
     width: 25%;
 }
-
-
 
 .chat-window {
     width: 75%;
@@ -43,15 +41,17 @@
 }
 
 .chat-window {
-    height: 900px;
+    height: 100%;
+    padding-top: 10px;
     width: 100%;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
 }
 
-.chat-box {
+.chat-window-chat-body {
     width: 100%;
+
     padding: 10px 10px;
     flex-grow: 1;
     margin-bottom: 10px;

@@ -4,7 +4,7 @@
   display: inline-flex;
   flex-direction: column;
   width: 100%;
-  max-height: 500px;
+  max-height: 800px;
   /* Set a max height for the scrollable area */
   overflow-y: auto;
   /* Enable vertical scrolling when content overflows */

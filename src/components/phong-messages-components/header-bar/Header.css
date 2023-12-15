@@ -1,13 +1,22 @@
 @import '@root/index.css';
 
-.navbar{
-    height: 50px;
+.header-navbar{
+    height: 56px;
     background-color: var(--header-color);
     padding: 0 1rem;
-    border-bottom: var(--text-color);
+    border-bottom: rgba(47,48,49,255) 3px solid;
     background-color: var(--header-color);
     display: flex;
     justify-content: space-between;
+    align-items: center;
+}
+.header-navbar-navs{
+    /* background-color: bisque; */
+    width: 40%;
+
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
 }
 
 .my-div{

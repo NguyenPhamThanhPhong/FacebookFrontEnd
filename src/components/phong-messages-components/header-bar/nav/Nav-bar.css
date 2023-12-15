@@ -17,13 +17,25 @@ a{
     width: 340px;
     transform: translateX(-45%);
     border-radius: 10px;
-    background-color: var(--container-color);
+    background-color: var(--header-color);
     padding: 1rem;
     overflow: hidden;
     box-shadow: 
     0 0 10px rgba(255, 255, 255, 0.3);
 }
+.my-dropdown-title-group{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 5px;
+}
 
+.my-dropdown-chat-title{
+    margin: 0;
+    padding-top: 2px;
+    font-weight: bold;
+    color: var(--text-color);
+}
 
 
 .navbar-nav{

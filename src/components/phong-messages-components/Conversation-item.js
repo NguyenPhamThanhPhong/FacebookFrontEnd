@@ -10,7 +10,7 @@ function ConversationItem(props) {
 
     return (
 
-        <div className="conversation-item-container">
+        <div style={props.style} className="conversation-item-container">
                 <div className="inner-container">
                     <div className="left">
                         <div className="flex-avatar-container">

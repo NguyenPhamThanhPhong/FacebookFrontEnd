@@ -38,9 +38,9 @@ function DropDownMenu(props) {
             </div>
 
 
-            <CSSTransition nodeRef={nodeRef} in={activeMenu === 'main'} unmountOnExit timeout={500}
+            <CSSTransition in={activeMenu === 'main'} unmountOnExit timeout={500}
                 classNames="menu-primary">
-                <div ref={nodeRef} >
+                <div>
                     <DropDownItem
                         leftIcon={<FontAwesomeIcon icon={faUser} />}
                         rightIcon={<FontAwesomeIcon icon={faCog} />}

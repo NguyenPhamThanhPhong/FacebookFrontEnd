@@ -6,19 +6,18 @@
     justify-content: center;
     align-items: center;
 } */
-li{
-    margin-right: 10px; /* Adjust spacing between items as needed */
 
-}
-
-.icon-nav {
+.round-square-nav-normal{
     width: 100px;
     height: 40px;
-    border-radius: 10px;
     padding: 5px;
     display: flex;
     align-items: center;
     justify-content: center;
+}
+
+.icon-nav {
+    border-radius: 10px;
     transition: filter 300ms;
     cursor: pointer;
   }
@@ -26,13 +25,9 @@ li{
     background-color: var(--hover-color);
     filter: brightness(2.0);
 }
+
 .icon-clicked{
-    width: 100px;
-    height: 40px;
-    padding: 5px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    border-radius: 0;
     border-bottom: 3px solid #0866ff;
     cursor: pointer;
 }
