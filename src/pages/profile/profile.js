@@ -1,59 +1,60 @@
 
-import React, { useState } from 'react'
-import "react-chat-elements/dist/main.css"
-import { MessageBox } from "react-chat-elements";
+// <<style here>>
+import './profile.css';
+import '../../index.css'
+//css here
+
+// component here
+import Topbar from '../../components/header/top-bar';
+import SidebarLeft from '../../components/SideBar/Left/SideBar';
+import SidebarRight from '../../components/SideBar/Right/SideBar-Right'
+import MessageShortcutColumn from '../../components/message-shortcut/MessageShortcutColumn';
+import Sidebar from '../../components/SideBar/Left/SideBar'
+// component here
+
+import React, { useState } from 'react';
+import Friend from '../../components/friends/friend';
+import Mainpost from '../../components/post/main-post';
+import Header from '../../components/phong-messages-components/header-bar/Header';
+import AvatarBar from '../../components/avatar-bar/avatar-bar';
+import ProfileMenus from '../../components/avatar-bar/profilemenu';
 
 
-
-import "./profile.css"
-
-function Profile(props) {
-
-    const [users,setUsers]=useState([
-        "hello1",
-        "hello2",
-        "hello3",
-        "hello4",
-        "hello5"
-    ])
-
-    function handleClick(){
-        setUsers([...users,"helloadded"])
+function Home(props) {
+    const setDarkMode = ()=>{
+        document.querySelector("body").setAttribute("data-theme", "dark");
     }
-    console.log("reloaded")
+    const setLightMode = ()=>{
+        document.querySelector("body").setAttribute("data-theme", "light");
+    }
+
+    const handleThemeChange = (e) => {
+
+        if(e.target.checked)
+            setDarkMode();
+        else
+        setLightMode();
+    };
+
+
     return (
-        <div>
-            <h1>PersonDetail</h1>
-            <div>
-            <MessageBox
-  position='left'
-  title='Burhan'
-  type='text'
-  text="Hi there !"
-  date={new Date()}
-  replyButton={true}
-/>
+        
+        <div className='homepage'>
 
-<MessageBox
-  position="right"
-  title="Emre"
-  type="meetingLink"
-  text="Click to join the meeting"
-  date={new Date()}
-/>
+           <h4>
+           <div className='sidebar-container'>
+                <Sidebar/>
+                </div>
+                <div className='avatarbarcontainer'>
+                    <AvatarBar />
+                </div>
+            </h4>
+            
+            <div className='homecontainer'>
+                <ProfileMenus/>        
+                <MessageShortcutColumn/>
             </div>
-            <div>
-                {
-                    users.map((item, index) => {
-                        return (
-                            <div key={index}>{item} </div>
-                        )
-                    })
-                }
-            </div>
-            <button onClick={handleClick} > check this out</button>
         </div>
-    )
+    );
 }
-
-export default Profile
+export default Home
