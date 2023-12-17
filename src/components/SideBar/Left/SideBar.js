@@ -20,8 +20,15 @@ import "./SideBar.css"
 import GroupList from "../../group-list/grouplist";
 import "bootstrap/dist/css/bootstrap.min.css";
 import Button from "react-bootstrap/Button";
+import React, {useState} from "react";
 
-export default function Sidebar() {
+
+  const Sidebar = () => {
+    const [isClicked, setIsClicked] = useState(false);
+  
+    const handleClick = () => {
+      setIsClicked(!isClicked);
+    };
   return (
     <div className="sidebar">
       <div className="sidebarWrapper">
@@ -82,3 +89,4 @@ export default function Sidebar() {
     </div>
   );
 }
+export default Sidebar;

@@ -51,7 +51,7 @@ function Home(props) {
                     <SidebarRight/>
                     <Friend />
                 </div>    
-                <MessageShortcutColumn/>
+                {/* <MessageShortcutColumn/> */}
             </div>
             </div>
         </div>

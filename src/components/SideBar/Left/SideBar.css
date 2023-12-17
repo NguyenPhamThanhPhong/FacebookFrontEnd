@@ -31,7 +31,8 @@
 .sidebarListItem {
     display: flex;
     align-items: center;
-    margin-bottom: 20px;
+    margin-bottom: 15px;
+    height: 35px;
 }
 
 .sidebarIcon {
@@ -59,4 +60,10 @@
 .sidebarTitle{
     margin-bottom: 0px;
     color: white;
+}
+
+.sidebarListItem:hover{
+    background-color: #4e4f50;
+    transition: background-color 0.3s ease; 
+    cursor: pointer;
 }
