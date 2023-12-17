@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import Friend from '../../components/friends/friend';
 import Mainpost from '../../components/post/main-post';
 import "./profilemenu.css";
-
+import About from '../../pages/profile/about';
 //React-API here
 import Nav from 'react-bootstrap/Nav';
 import NavLink from 'react-bootstrap/NavLink'
@@ -39,14 +39,7 @@ function ProfileMenus() {
               <Nav.Link eventKey="7">More</Nav.Link>
             </Nav.Item>
             <Nav.Item>
-            <Nav.Link eventKey="8">
-            <NavDropdown as ='nav-item' title="..." id="nav-dropdown">
-            <NavDropdown.Item eventKey="8.1">Sports</NavDropdown.Item>
-            <NavDropdown.Item eventKey="8.2">Music</NavDropdown.Item>
-            <NavDropdown.Item eventKey="8.3">Films</NavDropdown.Item>
-            <NavDropdown.Item eventKey="8.4">Games</NavDropdown.Item>
-            </NavDropdown>
-            </Nav.Link>
+            <Nav.Link eventKey="8">...</Nav.Link>
             </Nav.Item>
             
           </Nav>
@@ -55,7 +48,9 @@ function ProfileMenus() {
             <Tab.Pane  eventKey="1">
                 <Mainpost/>
             </Tab.Pane>
-
+            <Tab.Pane  eventKey="2">
+                <About/>
+            </Tab.Pane>
             <Tab.Pane eventKey="3">
                 <Friend/>
             </Tab.Pane>
