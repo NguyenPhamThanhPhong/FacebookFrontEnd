@@ -8,14 +8,24 @@ import Forgotpass from '@components/login-register-boxes/forgotpass.js'
 import Resetpass from '@components/login-register-boxes/resetpass.js'
 
 
+export const pathNames = {
+    home: "/",
+    login_register: "/login-register",
+    messages: "/messages",
+    profile: "/profile",
+    login: "/login",
+    signup: "/signup",
+    recoverpass: "/recoverpass",
+    resetpass: "/resetpass"
+}
 
 export const publicRoutes = [
-    {path: "/login", component: Login},
-    {path: "/signup", component: Signup},
-    {path: "/recoverpass", component: Forgotpass},
-    {path: "/resetpass", component: Resetpass},
-    {path: "/", component: home},
-    {path: "/login-register", component: login_register},
-    {path: "/messages", component: messages},
-    {path: "/profile", component: profile}
+    {path: pathNames.login, component: Login},
+    {path: pathNames.signup, component: Signup},
+    {path: pathNames.recoverpass, component: Forgotpass},
+    {path: pathNames.resetpass, component: Resetpass},
+    {path: pathNames.home, component: home},
+    {path: pathNames.login_register, component: login_register},
+    {path: pathNames.messages, component: messages},
+    {path: pathNames.profile, component: profile}
 ]

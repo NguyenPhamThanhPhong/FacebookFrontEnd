@@ -8,6 +8,9 @@ import './Header.css'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faHouse,faUser, faUserGroup, faArrowLeft } from '@fortawesome/free-solid-svg-icons'
 import { faFacebookF,faFacebookMessenger } from "@fortawesome/free-brands-svg-icons";
+import { pathNames } from "@root/Routes/routes.js";
+import { useLocation } from "react-router-dom";
+
 
 function Header(props) {
 
@@ -25,6 +28,13 @@ function Header(props) {
     let iconNormalStyle = { color: 'var(--sub-text-color)' }
     let  iconActiveStyle={ color: 'var(--facebook-color)' }
 
+    let hidePaths = [pathNames.login_register, pathNames.login, pathNames.signup, pathNames.recoverpass, pathNames.resetpass]
+
+    let currentPath = useLocation().pathname;
+
+    
+    if(hidePaths.includes(currentPath)) 
+        return null;
     return (
         <nav className="header-navbar">
             <SearchBox />

@@ -1,7 +1,6 @@
 // <============================Component here ============================>
 
 // import FirstColumn from './first-column';
-import Header from '@components/phong-messages-components/header-bar/Header';
 import FirstColumn from '@pages/messages/first-column';
 import RoundButton from '@root/components/phong-messages-components/Round-button';
 import ChatTextbox from '@root/components/phong-messages-components/chat-window/Chat-textbox';
@@ -55,7 +54,6 @@ function Messages(props) {
   return (
     <div >
       <div className='message-page-container'>
-        <Header />
 
         <div className='message-page-wrapper-div'>
           <div className='first-column-wrapper' >
