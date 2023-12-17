@@ -1,3 +1,4 @@
+
 // <<style here>>
 import './home.css';
 import '../../index.css'
@@ -5,10 +6,18 @@ import '../../index.css'
 
 // component here
 import Topbar from '../../components/header/top-bar';
+import SidebarLeft from '../../components/SideBar/Left/SideBar';
+import SidebarRight from '../../components/SideBar/Right/SideBar-Right'
+import MessageShortcutColumn from '../../components/message-shortcut/MessageShortcutColumn';
+import Sidebar from '../../components/SideBar/Left/SideBar'
+
 // component here
 
 import React, { useState } from 'react';
-import HomeIcon from '@mui/icons-material/Home';
+import Friend from '../../components/friends/friend';
+import Mainpost from '../../components/post/main-post';
+
+import Header from '../../components/phong-messages-components/header-bar/Header';
 
 
 function Home(props) {
@@ -27,18 +36,24 @@ function Home(props) {
         setLightMode();
     };
 
+
     return (
-        <div>
-            <div>
-            <Topbar />
-            <h1 className='my-element'>
-                this is home <HomeIcon />
-            </h1>
-            <input type='checkbox' onChange={handleThemeChange}>
-            </input>
+        <div className='homepage'>
+           
+            <div className='homecontainer'>
+               
+            <div className='container-item' style={{marginTop:10}}>
+                <SidebarLeft />
+                    
+                <Mainpost/>
+                
+                <div className="rightmenu">
+                    <SidebarRight/>
+                    <Friend />
+                </div>    
+                <MessageShortcutColumn/>
             </div>
-
-
+            </div>
         </div>
     );
 }

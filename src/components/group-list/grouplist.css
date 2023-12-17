@@ -1,0 +1,83 @@
+.container{
+    flex: 2.5;
+    width: 360px;
+    height: auto;
+    background-color: var(--background-home-dark);
+    border-radius: 10px 0px 0px 10px;
+    overflow: hidden;
+    padding-right: 0;
+    outline: 
+}
+
+.item {
+    -webkit-box-shadow: 0px 0px 15px 1px rgba(0, 0, 0, 0.09);
+    -moz-box-shadow: 0px 0px 15px 1px rgba(0, 0, 0, 0.09);
+    box-shadow: 0px 0px 15px 1px rgba(0, 0, 0, 0.09);
+    padding: 20px 0 0 20px;
+    color: white;
+}
+
+.group {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px;
+  border-radius: 10px;
+}
+
+.groupInfo {
+  display: flex;
+  align-items: center;
+  position: relative;
+}
+
+.img-group {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-right: 10px;
+}
+
+.online {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background-color: var(--online-user);
+  position: absolute;
+  bottom: 0;
+  left: 30px;
+}
+
+.name-group {
+  font-weight: 500;
+  color: white;
+}
+
+.group:hover{    
+    background-color: #4e4f50;
+    cursor: pointer;
+}
+
+.my-group{
+  margin-top: 10px;
+  margin-bottom: 20px;
+  
+  overflow-y:hidden; 
+}
+
+.my-group::-webkit-scrollbar {
+  width: 10px;
+  background-color: #222426;
+  border-radius: 10px;
+}
+
+.my-group::-webkit-scrollbar-thumb {
+  border-radius: 10px;
+  -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,.3);
+  background-color: #646667;
+}
+
+.my-group:hover{
+  overflow-y: auto;
+}

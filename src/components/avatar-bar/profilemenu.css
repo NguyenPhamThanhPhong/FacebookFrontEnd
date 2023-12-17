@@ -1,0 +1,28 @@
+.TabContainer {
+    width: 892px;
+    padding: 0 16px;
+    transform: none;
+    overflow: visible;
+    flex: 1 1;
+    border-radius: 10px 10px 10px 10px;
+}
+.InfoContainer{
+    
+}
+
+  .nav-item {
+    width: calc(var(--nav-size) * 1);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #242526;
+    color: white;
+    border-radius: 10px 10px 10px 10px;
+}
+.container {
+    flex: 3.5 1;
+    background-color: var(--background-home-dark);
+    border-radius: 10px 10px 10px 10px;
+    overflow: hidden;
+    padding-right: 0;
+}

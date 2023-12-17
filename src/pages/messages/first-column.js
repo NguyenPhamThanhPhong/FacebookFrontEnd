@@ -4,6 +4,7 @@ import SearchBox from "@components/phong-messages-components/header-bar/search/S
 
 import React from 'react';
 
+
 import "./first-column.css"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faEllipsis, faArrowLeft } from '@fortawesome/free-solid-svg-icons'

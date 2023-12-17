@@ -1,0 +1,100 @@
+
+.ProfileCover{
+    height: 320px;
+    position: relative;
+    top : 0;
+}
+
+.profileCoverImg{
+        width: 940px;
+        height: 348px;
+        object-fit: cover;
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+        border-radius: 0px 0px 10px 10px;
+    }
+
+.profileUserImg{
+    width: 168px;
+    height: 168px;
+    margin-left: 36px;
+    border-radius: 50%;
+    object-fit: cover;
+    position: absolute;    
+    top: 300px;
+    border: 3px #18191A;
+}
+
+.profileInfo{
+    margin-top: 50px;
+    margin-left: 220px;
+    display: flex;
+    flex-direction: column;
+}
+
+.profileInfoName{
+    font-size: 24px;
+    font-weight: bolder;
+    color: white;
+}
+
+.profileInfoDesc{
+    font-size: 16px;
+    color: white;
+}
+
+.profileRightBottom{
+    display: flex;
+}
+
+.userInformation{
+    padding-left: 10px;
+    -webkit-box-shadow: 0px 0px 15px 1px rgba(0, 0, 0, 0.09);
+    -moz-box-shadow: 0px 0px 15px 1px rgba(0, 0, 0, 0.09);
+    box-shadow: 0px 0px 15px 1px rgba(0, 0, 0, 0.09);
+    background-color: var(--background-home-dark);
+    float: right;
+    height: auto;
+    width:  250px;
+    border-radius: 10px;
+}
+
+.rightbarTitle{
+    font-size: 18px;
+    font-weight: 500;
+    margin-bottom: 10px;
+  }
+  
+  .rightbarInfo{
+    margin-bottom: 30px;
+   
+  }
+  
+  .rightbarInfoItem{
+    margin-bottom: 10px;
+  }
+  
+  .rightbarInfoKey{
+    font-weight: 500;
+    margin-right: 15px;
+    color: #555;
+  }
+  
+  .rightbarInfoValue{
+    font-weight: 300;
+  }
+
+
+
+  #bg-nested-dropdown{
+    background-color: #242526;
+    color: white;
+    padding-right: 16px;
+  }
+  .Crossline{
+    width: 876px;
+    height: 0.8px;
+    margin: 175px 30px 0 0px;
+  }
+  

@@ -40,8 +40,9 @@ function TopBar() {
                 </div>
             </div>
             {/* Your top bar content goes here */}
-        </div>
-    );
+        
+    </div>
+  );
 }
 
 export default TopBar;

@@ -1,0 +1,11 @@
+.container-chat{
+    position: fixed;
+    bottom: 0;
+    right: 0;
+    width: 320px;
+    margin-right: 5%;
+}
+
+.input{
+    border: solid 2px black;
+}

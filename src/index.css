@@ -1,4 +1,5 @@
 :root{
+
   --background-color: #f0f2f5;
   --header-color: #ffffff;
 
@@ -9,9 +10,19 @@
   --shadow-color: black;
   --text-color: black;
   --note-tag-color: #39393a;
+  --background-chat: rgba(255, 255, 255, 0.3);
+  --online-user:limegreen;
+  --background-navbar:#242526;
+  --background-item-navbar:#4e4e4f;
+  --color-item-navbar:#B0B3B8;
+  --background-home-dark:#242526;
+  --header-color: #ffffff;
+
+  --container-color: #e4e6eb;
+
+  --sub-text-color:rgba(175,177,182,255); /*chữ chia sẻ, thanh scroll*/
 
   --facebook-color: rgba(8,102,255,255);
-  --message-color: rgba(48,48,48,255);
   --nav-size: 80px;
 
 }
@@ -52,6 +63,7 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background-color: var(--background-color);
   background-color: var(--background-color);
 }
 
