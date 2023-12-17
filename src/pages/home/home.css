@@ -32,7 +32,7 @@
     overflow-x: hidden;
 }
 .chat-mini-window {
-    background-color: antiquewhite;
+    background-color: var(--header-color);
     width: 338px;
     height: 455px;
     position: fixed;

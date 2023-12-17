@@ -17,6 +17,7 @@ import Sidebar from '../../components/SideBar/Left/SideBar'
 import React, { useState } from 'react';
 import Friend from '../../components/friends/friend';
 import Mainpost from '../../components/post/main-post';
+import { faBell,faX } from '@fortawesome/free-solid-svg-icons';
 
 import Header from '../../components/phong-messages-components/header-bar/Header';
 
@@ -37,6 +38,16 @@ function Home(props) {
         setLightMode();
     };
 
+    let chatWindowCustomStyle = {
+        avatarSize: 'small',
+        customXIcon: faX,
+        customIconSize: '80%',
+        customIconButtonSize: '30px'
+    }
+    let conversation = {
+        subText: 'Active 1h ago'
+    }
+
 
     return (
         <div className='homepage'>
@@ -52,8 +63,8 @@ function Home(props) {
                     <SidebarRight/>
                     <Friend />
                 </div>    
-                <div className='chat-mini-window'>
-                    <ChatWindow/>
+                <div  className='chat-mini-window'>
+                    <ChatWindow customStyle={chatWindowCustomStyle} conversation={conversation} />
                 </div>
                 {/* <MessageShortcutColumn/> */}
             </div>
