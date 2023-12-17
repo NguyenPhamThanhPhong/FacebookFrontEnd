@@ -1,7 +1,3 @@
-.rightbar {
-    flex: 3.5;
-}
-
 .rightbarWrapper {
     padding: auto;
 }
@@ -9,6 +5,7 @@
 .birthdayContainer {
     display: flex;
     align-items: center;
+    width: 100%;
 }
 .birthdayImg {
     width: 40px;

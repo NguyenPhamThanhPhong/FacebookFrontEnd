@@ -1,4 +1,5 @@
 import "./post.css";
+import React from "react";
 import Image from "react-bootstrap/Image";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
@@ -9,52 +10,93 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import Button from "react-bootstrap/Button";
 import "bootstrap/dist/css/bootstrap.min.css";
-const Newpost = () => {
+import Form from "react-bootstrap/Form";
+import Modal from "react-bootstrap/Modal";
+import { useState } from "react";
+
+function NewPostModal(props) {
   return (
-    <div className="container-newpost">
-      <div className="newpost-input">
-        <Image
-          src="https://th.bing.com/th/id/OIP.kVVWYJbqPc6WJpRrScsBswHaE7?rs=1&pid=ImgDetMain"
-          roundedCircle
-          className="image-user"
-        />
-        <div className="input-post">
-          <span>What's in your mind SafaK?</span>
+    
+    <Modal 
+      {...props}
+      size="lg"
+      aria-labelledby="contained-modal-title-vcenter"
+      centered
+    >
+      <div className="modal-post">
+
+      <Modal.Header closeButton closeVariant ='white'>
+        <Modal.Title id="contained-modal-title-vcenter">
+          <span>Tạo bài viết</span>
+        </Modal.Title>
+      </Modal.Header>
+      <Modal.Body>
+        <div style={{marginBottom:'10px'}}>
+          <Image
+            src={props.imageuser}
+            roundedCircle
+            className="image-user"
+          />
+          <span>hello{props.name}</span>
         </div>
+        <Form >
+          <Form.Group className="mb-3" controlId="exampleForm.ControlTextarea1">
+            <Form.Control as="textarea" rows={10} placeholder="Bạn đang nghĩ gì ?"/>
+          </Form.Group>
+        </Form>
+      </Modal.Body>
+      <Modal.Footer>
+        <Button onClick={props.onHide} style={{width:'90%'}}>đăng</Button>
+      </Modal.Footer>
       </div>
-      <hr />
-      <div className="newpost-service">
-        <div className="container-icon">
-          <div className="newpost-icon">
-            <FontAwesomeIcon
-              icon={faImages}
-              size="lg"
-              style={{ color: "red" }}
+    </Modal>
+  );
+}
+
+const Newpost = () => {
+  const ImageUrl = 'assets/heart.png'
+  const [modalShow, setModalShow] = React.useState(false);
+  return (
+    <div className="newpost-main">
+      <div className="newpost-background">
+        <div className="container-newpost">
+          <div className="newpost-input">
+            <Image
+              src={ImageUrl}
+              roundedCircle
+              className="image-user"
             />
-            <span> Photo or Video</span>
+            <div className="input-post" onClick={() => setModalShow(true)}>
+              <span>What's in your mind SafaK?</span>
+            </div>
+            <NewPostModal imageuser={ImageUrl} show={modalShow} onHide={() => setModalShow(false)} />
           </div>
-          <div className="newpost-icon" >
-            <FontAwesomeIcon icon={faTag} size="lg" style={{ color: "blue" }} />
-            <span> Tag</span>
-          </div>
-          <div className="newpost-icon">
-            <FontAwesomeIcon
-              icon={faLocationDot}
-              size="lg"
-              style={{ color: "green" }}
-            />
-            <span> Location</span>
-          </div>
-          <div className="newpost-icon">
-            <FontAwesomeIcon
-              icon={faFaceSmile}
-              size="lg"
-              style={{ color: "yellowgreen" }}
-            />
-           <span> Feelings</span>
+          <hr />
+          <div className="newpost-service">
+            <div className="container-icon">
+              <div className="newpost-icon">
+                <FontAwesomeIcon
+                  icon={faImages}
+                  size="lg"
+                  style={{ color: "red" }}
+                />
+                <span> Photo or Video</span>
+              </div>
+
+              <div className="newpost-icon">
+                <FontAwesomeIcon
+                  icon={faFaceSmile}
+                  size="lg"
+                  style={{ color: "yellowgreen" }}
+                />
+                <span> Feelings</span>
+              </div>
+            </div>
+            <Button variant="primary" onClick={() => setModalShow(true)}>
+              Share
+            </Button>{" "}
           </div>
         </div>
-        <Button variant="primary">Share</Button>{" "}
       </div>
     </div>
   );

@@ -9,7 +9,7 @@ import Dropdown from 'react-bootstrap/Dropdown';
 export default function AvatarBar() {
   return (
     <>
-    <div>
+    <div className="Profile-main">
       <div className="ProfileCover">
               <img
                 className="profileCoverImg"

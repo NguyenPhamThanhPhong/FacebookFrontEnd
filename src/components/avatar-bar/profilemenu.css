@@ -22,11 +22,15 @@
     text-align: center;
     background-color: var(--background-home-dark);
     border-radius: 10px 10px 10px 10px;
-    justify:center;
+    justify-content: center;
 }
 .tab-content{
     
 }
 .tab-pane{
     margin-top: 25px;
+}
+
+.ProfileMenusMain{
+    flex: 2.5;
 }

@@ -6,7 +6,7 @@ import NotificationsNoneIcon from '@mui/icons-material/NotificationsNone';
 
 function TopBar() {
     return (
-        <div>
+        <div style={{position:'fixed'}}>
             Hello world!
             <div className="topbarLeft">
                 <span classname="logo">

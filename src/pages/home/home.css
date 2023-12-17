@@ -11,11 +11,9 @@
 
 .homepage{
     background-color: #18191A;
-    width: 100vw;
-    height: 100vh;
-    overflow-y: auto;
-    overflow-x: hidden;
+    height: (100vh - 56px);
 }
+
 
 .container-item{
     display: flex;
@@ -24,23 +22,27 @@
 }
 
 .homecontainer{
-    width: 100vw;
+    width: 100%;
     height: auto;
 }
 .rightmenu{
-    width: 25%;
-    overflow-x: hidden;
+    flex: 2.5;
+    width: 100%;
+    position: sticky;
+    height: 95vh;
+    overflow: hidden;
+    top: 65px;
 }
 .chat-mini-window {
     background-color: var(--header-color);
     width: 338px;
     height: 455px;
     position: fixed;
-    bottom: 20px; /* Adjust the distance from the bottom as needed */
+    bottom: 20px; 
     right: 20px;
 }
 
-@media screen and (min-width: 1080px) {
+/* @media screen and (max-width: 1080px) {
     .homecontainer{
         display: flex;
         justify-content: center;
@@ -50,4 +52,4 @@
         width: 80vw;
         justify-content: center;
     }
-  }
+  } */

@@ -3,9 +3,20 @@
 }
 
 .container-mainpost{
-  flex: 4.5;
+  flex: 5.5;
   display: flex;
   justify-content: center;
+  margin-top: 65px;
+}
+
+.newpost-main{
+  width: 100%;
+}
+
+.newpost-background{
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .container-newpost {
@@ -132,3 +143,16 @@ hr {
 .dropdown-toggle:after {
   display: none !important;
 }
+
+.style-service:hover{
+  cursor: pointer;
+  text-decoration: underline;
+}
+
+/* newpost */
+.modal-footer{
+  justify-content: center;
+  align-items: center;
+  display: flex;
+}
+
