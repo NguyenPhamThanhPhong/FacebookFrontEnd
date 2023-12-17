@@ -1,0 +1,74 @@
+
+.my-element {
+    background-color: var(--main-color);
+    color: white;
+}
+/* div{
+    background: var(--hello-color);
+}
+   */
+
+.avatarbarcontainer{
+    margin-left: 370px;
+    width: 800px;
+    height: 552px;
+    background-color: #242526;
+    border-radius: 10px 10px 10px 10px;
+}
+
+.sidebar-container{
+    height: fit-content;
+    margin-left: 30px;
+    float :left;
+    background-color: #4e4f50;
+}
+
+.profilepage{
+    background-color: #18191A;
+    width: 100vw;
+    height: 100vh;
+    overflow-y: auto;
+    overflow-x: hidden;
+    float: left;
+}
+
+
+@media screen and (min-width: 1080px) {
+    .profilecontainer{
+        justify-content: center;
+        display: grid;
+        place-items: center;
+        height: 100vh;
+        margin-left: 550px;
+        margin-top: 1px;
+        width: 442px;
+        border: #242526;
+    }
+    .container-prof-item{
+        width: 80vw;
+        justify-content: center;
+    }
+  }
+  .container-mainpost {
+    flex: 4.5 1;
+    display: flex;
+    justify-content: center;
+    margin-left: 0;
+    margin-left: 0;
+    width: 892px;
+    height: auto;
+}
+.TabContainer {
+    width: 892px;
+    padding: 0 16px;
+    transform: none;
+    overflow: visible;
+    flex: 1 1;
+    margin: 1000 50 50 50;
+}
+.background {
+    background-color: #242526;
+    color: white;
+    padding-bottom: 10px;
+    border-radius: 10px 10px 10px 10px;
+}

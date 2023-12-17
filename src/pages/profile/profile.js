@@ -20,7 +20,7 @@ import AvatarBar from '../../components/avatar-bar/avatar-bar';
 import ProfileMenus from '../../components/avatar-bar/profilemenu';
 
 
-function Home(props) {
+function Profile(props) {
     const setDarkMode = ()=>{
         document.querySelector("body").setAttribute("data-theme", "dark");
     }
@@ -39,22 +39,23 @@ function Home(props) {
 
     return (
         
-        <div className='homepage'>
-
-           <h4>
-           <div className='sidebar-container'>
+        <div className='profilepage'>
+                <div className='sidebar-container'>
                 <Sidebar/>
                 </div>
+           <h4>
+                
                 <div className='avatarbarcontainer'>
                     <AvatarBar />
                 </div>
             </h4>
             
-            <div className='homecontainer'>
+            <div className='profilecontainer'>
                 <ProfileMenus/>        
-                <MessageShortcutColumn/>
+               
             </div>
+            
         </div>
     );
 }
-export default Home
+export default Profile
