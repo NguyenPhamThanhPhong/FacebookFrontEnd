@@ -20,66 +20,73 @@ const CommentModal = (props) => {
   const handleShow = () => setShow(true);
 
   return (
-    <div >
-      <Modal style={{borderRadius:'10px',zIndex:'9999'}}
+    <div>
+      <Modal
+        style={{ borderRadius: "10px", zIndex: "9999" }}
         {...props}
         size="lg"
         aria-labelledby="contained-modal-title-vcenter"
         centered
       >
         <div className="modal-post">
-        <Modal.Header
-          closeButton
-          style={{ border: "0px", paddingBottom: "10px" }}
-        >
-          <Modal.Title id="contained-modal-title-vcenter">
+          <Modal.Header
+            closeButton
+            closeVariant="white"
+            style={{ border: "0px", paddingBottom: "10px" }}
+          >
+            <Modal.Title id="contained-modal-title-vcenter">
+              <Image
+                src="https://img.freepik.com/free-photo/beautiful-nature-landscape-with-mountains-lake_23-2150705947.jpg?t=st=1702046850~exp=1702050450~hmac=86d2ada4d8881b53bfd83ca81f8a94fba7ee3ded65745ef889d5496f971a4da7&w=1800"
+                roundedCircle
+                width={50}
+                height={50}
+                style={{ marginRight: "10px" }}
+              />
+              <span>Card Title</span>
+            </Modal.Title>
+          </Modal.Header>
+          <Modal.Body style={{ padding: "0px" }}>
+            <span style={{ marginLeft: "10px" }}>
+              Some quick example text to build on the card title and make up the
+              bulk of the card's content.
+            </span>
             <Image
               src="https://img.freepik.com/free-photo/beautiful-nature-landscape-with-mountains-lake_23-2150705947.jpg?t=st=1702046850~exp=1702050450~hmac=86d2ada4d8881b53bfd83ca81f8a94fba7ee3ded65745ef889d5496f971a4da7&w=1800"
-              roundedCircle
-              width={50}
-              height={50}
-              style={{ marginRight: "10px" }}
+              style={{ margin: "10px 0px" }}
+              width={"100%"}
             />
-            <span>Card Title</span>
-          </Modal.Title>
-        </Modal.Header>
-        <Modal.Body style={{ padding: "0px" }}>
-          <span style={{marginLeft:'10px'}}>
-            Some quick example text to build on the card title and make up the
-            bulk of the card's content.
-          </span>
-          <Image
-            src="https://img.freepik.com/free-photo/beautiful-nature-landscape-with-mountains-lake_23-2150705947.jpg?t=st=1702046850~exp=1702050450~hmac=86d2ada4d8881b53bfd83ca81f8a94fba7ee3ded65745ef889d5496f971a4da7&w=1800"
-            style={{margin:"10px 0px" }}
-            width={"100%"}
-          />
-          <div style={{padding:'5px'}}>
-            <div className="interact">
-              <span>cảm xúc</span>
-              <div>
-                <span style={{ marginRight: "10px" }}>bình luận</span>
-                <span>lượt chia sẻ</span>
+            <div style={{ padding: "5px" }}>
+              <div className="interact">
+                <span className="style-service">cảm xúc</span>
+                <div>
+                  <span
+                    style={{ marginRight: "10px" }}
+                    className="style-service"
+                  >
+                    bình luận
+                  </span>
+                  <span className="style-service">lượt chia sẻ</span>
+                </div>
               </div>
             </div>
-            </div>
-        </Modal.Body>
-        <Modal.Body>
-          <div className="button-interact" style={{ width: "100%" }}>
-            <Button>Thích</Button>
-            <Button variant="primary">Bình luận</Button>
+          </Modal.Body>
+          <Modal.Body>
+            <div className="button-interact" style={{ width: "100%" }}>
+              <Button>Thích</Button>
+              <Button variant="primary">Bình luận</Button>
 
-            <DropdownButton
-              as={ButtonGroup}
-              title="Chia sẻ"
-              id="bg-nested-dropdown"
-            >
-              <Dropdown.Item eventKey="1">Dropdown link</Dropdown.Item>
-              <Dropdown.Item eventKey="2">Dropdown link</Dropdown.Item>
-            </DropdownButton>
-            </div>  
-        </Modal.Body>
-        <Modal.Footer>
-          {/* <div className="button-interact" style={{ width: "100%" }}>
+              <DropdownButton
+                as={ButtonGroup}
+                title="Chia sẻ"
+                id="bg-nested-dropdown"
+              >
+                <Dropdown.Item eventKey="1">Dropdown link</Dropdown.Item>
+                <Dropdown.Item eventKey="2">Dropdown link</Dropdown.Item>
+              </DropdownButton>
+            </div>
+          </Modal.Body>
+          <Modal.Footer>
+            {/* <div className="button-interact" style={{ width: "100%" }}>
             <Button>Thích</Button>
             <Button variant="primary">Bình luận</Button>
 
@@ -92,13 +99,10 @@ const CommentModal = (props) => {
               <Dropdown.Item eventKey="2">Dropdown link</Dropdown.Item>
             </DropdownButton>
           </div> */}
-            <Comment/> 
-
-
-        </Modal.Footer>
+            <Comment />
+          </Modal.Footer>
         </div>
       </Modal>
-      
     </div>
   );
 };
@@ -110,31 +114,46 @@ const Posts = () => {
     <div>
       <Card bsPrefix="background">
         <Card.Body>
-          <Card.Title >
-            <Image
-              src="https://img.freepik.com/free-photo/beautiful-nature-landscape-with-mountains-lake_23-2150705947.jpg?t=st=1702046850~exp=1702050450~hmac=86d2ada4d8881b53bfd83ca81f8a94fba7ee3ded65745ef889d5496f971a4da7&w=1800"
-              roundedCircle
-              width={50}
-              height={50}
-              style={{ margin:'10px' }}
-            />
-            <span >Card Title</span>
+          <Card.Title>
+            <div style={{ display: "flex" }}>
+              <Image
+                src="https://img.freepik.com/free-photo/beautiful-nature-landscape-with-mountains-lake_23-2150705947.jpg?t=st=1702046850~exp=1702050450~hmac=86d2ada4d8881b53bfd83ca81f8a94fba7ee3ded65745ef889d5496f971a4da7&w=1800"
+                roundedCircle
+                width={50}
+                height={50}
+                style={{ margin: "10px" }}
+              />
+              <div style={{ display: "flex", flexDirection: "column" }}>
+                <span style={{ marginTop: "15px" }}>Card title</span>
+                <span
+                  style={{
+                    fontSize: "12px",
+                    fontWeight: "100",
+                    marginBottom: "0px",
+                  }}
+                >
+                  5 giờ
+                </span>
+              </div>
+            </div>
           </Card.Title>
-          <Card.Text style={{padding:"0 10px 0 10px"}}>
-            Someeeeeeeeeeeeeeeeee quick example text to build on the card title and make up the
-            bulk of the card's content.
+          <Card.Text style={{ padding: "0 10px 0 10px" }}>
+            Someeeeeeeeeeeeeeeeee quick example text to build on the card title
+            and make up the bulk of the card's content.
           </Card.Text>
           <Card.Img
             variant="top"
             src="https://img.freepik.com/free-photo/beautiful-nature-landscape-with-mountains-lake_23-2150705947.jpg?t=st=1702046850~exp=1702050450~hmac=86d2ada4d8881b53bfd83ca81f8a94fba7ee3ded65745ef889d5496f971a4da7&w=1800"
           />
         </Card.Body>
-        <div style={{marginTop:'10px'}}>
+        <div style={{ marginTop: "10px" }}>
           <div className="interact">
-            <span>cảm xúc</span>
+            <span className="style-service">cảm xúc</span>
             <div>
-              <span style={{ marginRight: "10px" }}>bình luận</span>
-              <span>lượt chia sẻ</span>
+              <span style={{ marginRight: "10px" }} className="style-service">
+                bình luận
+              </span>
+              <span className="style-service">lượt chia sẻ</span>
             </div>
           </div>
           <hr style={{ margin: "1rem 16px" }} />

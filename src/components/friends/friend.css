@@ -1,9 +1,7 @@
 .container{
-    flex: 3.5;
-
+    height: 45%;
     background-color: var(--background-home-dark);
     border-radius: 10px 0px 0px 10px;
-    overflow: hidden;
     padding-right: 0;
 }
 
@@ -21,6 +19,7 @@
   justify-content: space-between;
   padding: 10px;
   border-radius: 10px;
+  
 }
 
 .userInfo {

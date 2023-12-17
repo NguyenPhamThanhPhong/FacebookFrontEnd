@@ -6,6 +6,7 @@
   flex: 5.5;
   display: flex;
   justify-content: center;
+  margin-top: 65px;
 }
 
 .newpost-main{
@@ -142,3 +143,16 @@ hr {
 .dropdown-toggle:after {
   display: none !important;
 }
+
+.style-service:hover{
+  cursor: pointer;
+  text-decoration: underline;
+}
+
+/* newpost */
+.modal-footer{
+  justify-content: center;
+  align-items: center;
+  display: flex;
+}
+
