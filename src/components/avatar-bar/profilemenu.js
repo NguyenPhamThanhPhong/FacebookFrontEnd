@@ -1,52 +1,64 @@
-import Topbar from '../../components/header/top-bar';
-import SidebarLeft from '../../components/SideBar/Left/SideBar';
-import SidebarRight from '../../components/SideBar/Right/SideBar-Right'
-import MessageShortcutColumn from '../../components/message-shortcut/MessageShortcutColumn';
-import Sidebar from '../../components/SideBar/Left/SideBar'
 import React, { useState } from 'react';
 import Friend from '../../components/friends/friend';
 import Mainpost from '../../components/post/main-post';
-import Header from '../../components/phong-messages-components/header-bar/Header';
-import AvatarBar from '../../components/avatar-bar/avatar-bar';
 import "./profilemenu.css";
-import Nav from 'react-bootstrap/Nav';
-import Tab from 'react-bootstrap/Tab';
 
+//React-API here
+import Nav from 'react-bootstrap/Nav';
+import NavLink from 'react-bootstrap/NavLink'
+import NavItem from 'react-bootstrap/NavItem'
+import { NavDropdown } from 'react-bootstrap';
+import Tab from 'react-bootstrap/Tab';
+import TabContainer from 'react-bootstrap/TabContainer'
+import TabContent from 'react-bootstrap/TabContent';
+import TabPane from 'react-bootstrap/TabPane';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 
 function ProfileMenus() {
   return (
-    <Tab.Container id="left-tabs-example" defaultActiveKey="first">
-          <Nav variant="underline" className="TabContainer">
+    <Tab.Container id="left-tabs-example" defaultActiveKey="1">
+          <Nav variant="pills" className="TabContainer">
             <Nav.Item>
-              <Nav.Link eventKey="first">Posts</Nav.Link>
+              <Nav.Link eventKey="1">Posts</Nav.Link>
+            </Nav.Item >
+            <Nav.Item>
+              <Nav.Link eventKey="2">About</Nav.Link>
             </Nav.Item>
             <Nav.Item>
-              <Nav.Link eventKey="second">About</Nav.Link>
+              <Nav.Link eventKey="3">Friends</Nav.Link>
             </Nav.Item>
             <Nav.Item>
-              <Nav.Link eventKey="third">Friends</Nav.Link>
+              <Nav.Link eventKey="4">Photos</Nav.Link>
             </Nav.Item>
             <Nav.Item>
-              <Nav.Link eventKey="third">Photos</Nav.Link>
+              <Nav.Link eventKey="6">Videos</Nav.Link>
             </Nav.Item>
             <Nav.Item>
-              <Nav.Link eventKey="third">Videos</Nav.Link>
+              <Nav.Link eventKey="7">More</Nav.Link>
             </Nav.Item>
             <Nav.Item>
-              <Nav.Link eventKey="third">More</Nav.Link>
+            <Nav.Link eventKey="8">
+            <NavDropdown as ='nav-item' title="..." id="nav-dropdown">
+            <NavDropdown.Item eventKey="8.1">Sports</NavDropdown.Item>
+            <NavDropdown.Item eventKey="8.2">Music</NavDropdown.Item>
+            <NavDropdown.Item eventKey="8.3">Films</NavDropdown.Item>
+            <NavDropdown.Item eventKey="8.4">Games</NavDropdown.Item>
+            </NavDropdown>
+            </Nav.Link>
             </Nav.Item>
-            <Nav.Item>
-              <Nav.Link eventKey="third">...</Nav.Link>
-            </Nav.Item>
+            
           </Nav>
-          <Tab.Content>
-            <Tab.Pane eventKey="first">
+          <Tab.Content as = 'tab-content'>
+
+            <Tab.Pane  eventKey="1">
                 <Mainpost/>
             </Tab.Pane>
-            <Tab.Pane eventKey="third">
+
+            <Tab.Pane eventKey="3">
                 <Friend/>
             </Tab.Pane>
+
           </Tab.Content>
     </Tab.Container>
   );
