@@ -7,7 +7,7 @@ import "./SideBar-Right.css"
 export default function Rightbar({ profile }) {
     const HomeRightbar = () => {
     return (
-        <>
+        <div className="rightbar">
         {/* birthday block */}
             <div className="birthdayContainer">
                 <img className="birthdayImg" src="assets/gift.png" alt="" />
@@ -29,7 +29,7 @@ export default function Rightbar({ profile }) {
                     <Online key={u.id} user={u} />
                 ))}
             </ul> */}
-        </>
+        </div>
     );
 };
 

@@ -21,7 +21,7 @@ const CommentModal = (props) => {
 
   return (
     <div >
-      <Modal style={{borderRadius:'10px'}}
+      <Modal style={{borderRadius:'10px',zIndex:'9999'}}
         {...props}
         size="lg"
         aria-labelledby="contained-modal-title-vcenter"

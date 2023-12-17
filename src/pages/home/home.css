@@ -11,20 +11,19 @@
 
 .homepage{
     background-color: #18191A;
-    width: 100vw;
-    height: 100vh;
-    overflow-y: auto;
-    overflow-x: hidden;
+    height: (100vh - 56px);
+    margin: 0 10px;
 }
 
 .container-item{
     display: flex;
     width: 100%;
     box-sizing: border-box;
+    margin: 0 10px;
 }
 
 .homecontainer{
-    width: 100vw;
+    width: 100%;
     height: auto;
 }
 .rightmenu{
@@ -40,7 +39,7 @@
     right: 20px;
 }
 
-@media screen and (min-width: 1080px) {
+/* @media screen and (max-width: 1080px) {
     .homecontainer{
         display: flex;
         justify-content: center;
@@ -50,4 +49,4 @@
         width: 80vw;
         justify-content: center;
     }
-  }
+  } */

@@ -54,8 +54,8 @@ function Home(props) {
            
             <div className='homecontainer'>
                
-            <div className='container-item' style={{marginTop:10}}>
-                <SidebarLeft />
+            <div className='container-item'>
+                <SidebarLeft/>
                     
                 <Mainpost/>
                 

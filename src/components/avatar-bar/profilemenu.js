@@ -17,11 +17,12 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 
 function ProfileMenus() {
   return (
-    <Tab.Container id="left-tabs-example" defaultActiveKey="1">
+    <div className='ProfileMenusMain'>
+      <Tab.Container id="left-tabs-example" defaultActiveKey="1">
           <Nav variant="pills" className="TabContainer">
             <Nav.Item>
               <Nav.Link eventKey="1">Posts</Nav.Link>
-            </Nav.Item >
+            </Nav.Item>
             <Nav.Item>
               <Nav.Link eventKey="2">About</Nav.Link>
             </Nav.Item>
@@ -61,6 +62,7 @@ function ProfileMenus() {
 
           </Tab.Content>
     </Tab.Container>
+    </div>
   );
 }
 

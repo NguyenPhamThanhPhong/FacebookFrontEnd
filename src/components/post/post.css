@@ -3,9 +3,19 @@
 }
 
 .container-mainpost{
-  flex: 4.5;
+  flex: 5.5;
   display: flex;
   justify-content: center;
+}
+
+.newpost-main{
+  width: 100%;
+}
+
+.newpost-background{
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .container-newpost {

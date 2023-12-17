@@ -1,14 +1,14 @@
 
-.my-element {
+/* .my-element {
     background-color: var(--main-color);
     color: white;
-}
+} */
 /* div{
     background: var(--hello-color);
 }
    */
 
-.avatarbarcontainer{
+/* .avatarbarcontainer{
     margin-left: 370px;
     width: 800px;
     height: 552px;
@@ -24,16 +24,17 @@
 }
 
 .profilepage{
+    display: flex;
     background-color: #18191A;
     width: 100vw;
     height: 100vh;
     overflow-y: auto;
     overflow-x: hidden;
     float: left;
-}
+} */
 
 
-@media screen and (min-width: 1080px) {
+/* @media screen and (min-width: 1080px) {
     .profilecontainer{
         justify-content: center;
         display: grid;
@@ -50,7 +51,7 @@
     }
   }
   .container-mainpost {
-    flex: 4.5 1;
+    flex: 4.5;
     display: flex;
     justify-content: center;
     margin-left: 0;
@@ -63,7 +64,7 @@
     padding: 0 16px;
     transform: none;
     overflow: visible;
-    flex: 1 1;
+    flex: 1;
     margin: 1000 50 50 50;
 }
 .background {
@@ -71,4 +72,21 @@
     color: white;
     padding-bottom: 10px;
     border-radius: 10px 10px 10px 10px;
+} */
+.Profile-item{
+    display: flex;
+}
+/* main-profile */
+.MainProfile-container{
+    flex: 6;
+    display: flex;
+    justify-content: center;
+}
+.avatarbarcontainer{
+    width: 90%;
+}
+.MainProfile-item{
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
