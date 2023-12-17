@@ -1,6 +1,6 @@
 .sidebar {
     flex: 2.5;
-    top: 50px;
+    top: 65px;
     height: 95vh;
     background-color: var(--background-home-dark);
     color: aliceblue;
@@ -33,13 +33,15 @@
     padding: 0;
     margin: 0;
     list-style: none;
+    margin-bottom: 10px;
 }
 
 .sidebarListItem {
     display: flex;
     align-items: center;
-    margin-bottom: 15px;
     height: 35px;
+    padding: 30px 10px;
+    border-radius: 10px;
 }
 
 .sidebarIcon {

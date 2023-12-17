@@ -12,14 +12,13 @@
 .homepage{
     background-color: #18191A;
     height: (100vh - 56px);
-    margin: 0 10px;
 }
+
 
 .container-item{
     display: flex;
     width: 100%;
     box-sizing: border-box;
-    margin: 0 10px;
 }
 
 .homecontainer{
@@ -27,15 +26,19 @@
     height: auto;
 }
 .rightmenu{
-    width: 25%;
-    overflow-x: hidden;
+    flex: 2.5;
+    width: 100%;
+    position: sticky;
+    height: 95vh;
+    overflow: hidden;
+    top: 65px;
 }
 .chat-mini-window {
     background-color: var(--header-color);
     width: 338px;
     height: 455px;
     position: fixed;
-    bottom: 20px; /* Adjust the distance from the bottom as needed */
+    bottom: 20px; 
     right: 20px;
 }
 
