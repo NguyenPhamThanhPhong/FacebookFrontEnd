@@ -2,6 +2,7 @@
 
 // import FirstColumn from './first-column';
 import FirstColumn from '@pages/messages/first-column';
+import ChatWindow from '@components/phong-messages-components/chat-window/Chat-window';
 import RoundButton from '@root/components/phong-messages-components/Round-button';
 import ChatTextbox from '@root/components/phong-messages-components/chat-window/Chat-textbox';
 // <============================Library here ============================>
@@ -31,9 +32,7 @@ function Messages(props) {
       console.error('Error fetching data:', error);
     }
   };
-  // useEffect(() => {
-  //   fetchData();
-  // }, []);
+
 
   let styleCallButton = {
     width: '40px',
@@ -51,6 +50,9 @@ function Messages(props) {
     else
       myMessages.push({ position: '' })
   }
+
+
+
   return (
     <div >
       <div className='message-page-container'>
@@ -59,8 +61,8 @@ function Messages(props) {
           <div className='first-column-wrapper' >
             <FirstColumn products={products} />
           </div>
-
-          <div className='chat-window'>
+          <ChatWindow/>
+          {/* <div className='chat-window'>
 
             <div className='chat-header'>
               <div className='chat-title-group'>
@@ -118,7 +120,7 @@ function Messages(props) {
               <ChatTextbox />
 
             </div>
-          </div>
+          </div> */}
         </div>
       </div>
 

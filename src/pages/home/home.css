@@ -31,6 +31,14 @@
     width: 25%;
     overflow-x: hidden;
 }
+.chat-mini-window {
+    background-color: antiquewhite;
+    width: 338px;
+    height: 455px;
+    position: fixed;
+    bottom: 20px; /* Adjust the distance from the bottom as needed */
+    right: 20px;
+}
 
 @media screen and (min-width: 1080px) {
     .homecontainer{

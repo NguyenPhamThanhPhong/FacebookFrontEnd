@@ -8,6 +8,7 @@ import '../../index.css'
 import Topbar from '../../components/header/top-bar';
 import SidebarLeft from '../../components/SideBar/Left/SideBar';
 import SidebarRight from '../../components/SideBar/Right/SideBar-Right'
+import ChatWindow from '@components/phong-messages-components/chat-window/Chat-window';
 import MessageShortcutColumn from '../../components/message-shortcut/MessageShortcutColumn';
 import Sidebar from '../../components/SideBar/Left/SideBar'
 
@@ -51,6 +52,9 @@ function Home(props) {
                     <SidebarRight/>
                     <Friend />
                 </div>    
+                <div className='chat-mini-window'>
+                    <ChatWindow/>
+                </div>
                 {/* <MessageShortcutColumn/> */}
             </div>
             </div>

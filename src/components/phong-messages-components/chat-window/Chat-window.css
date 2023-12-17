@@ -1,0 +1,69 @@
+.chat-window {
+    width: 75%;
+}
+
+.chat-header {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.chat-title-group {
+    display: flex;
+    padding-left: 10px;
+}
+
+.chat-conversation-title {
+    display: flex;
+    justify-content: center;
+    align-self: center;
+}
+
+.chat-conversation-title h5,
+.chat-notification-status {
+    margin: 0;
+    color: var(--text-color);
+}
+
+.chat-window {
+    height: 100%;
+    padding-top: 10px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.chat-window-chat-body {
+    width: 100%;
+
+    padding: 10px 10px;
+    flex-grow: 1;
+    margin-bottom: 10px;
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+
+.chat-message-row{
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+    margin-bottom: 10px;
+
+}
+
+.message-item {
+    /* background-color: beige; */
+    flex-grow: 1;
+    color: var(--text-color);
+}
+
+.rce-mbox {
+    background: var(--message-color) !important;
+    max-width: 45%;
+}
+
+.rce-mbox-right {
+    background: var(--facebook-color) !important;
+}
