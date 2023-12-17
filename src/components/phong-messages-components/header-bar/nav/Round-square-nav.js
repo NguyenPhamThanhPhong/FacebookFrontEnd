@@ -11,8 +11,15 @@ function RoundSquareNav(props) {
 
     let iconStyle = active ?  props.iconActiveStyle  : props.iconNormalStyle;
 
+    function onclickOverride(event){
+        event.preventDefault();
+        if(props.onClick!==null && props.onClick!==undefined 
+            && props.targetingPath!==null && props.targetingPath!==undefined)
+            props.onClick(props.targetingPath);
+    }
+
     return (
-        <a style={props.customNavStyle } 
+        <a style={props.customNavStyle } onClick={(event) => onclickOverride(event)}
         className={'round-square-nav-normal ' + navClassName}>
             <FontAwesomeIcon className='icon'
                 style={iconStyle} icon={props.icon} />

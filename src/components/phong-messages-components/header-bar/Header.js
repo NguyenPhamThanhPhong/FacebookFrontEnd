@@ -6,10 +6,10 @@ import RoundButton from "@components/phong-messages-components/Round-button";
 import './Header.css'
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faHouse,faUser, faUserGroup, faArrowLeft } from '@fortawesome/free-solid-svg-icons'
-import { faFacebookF,faFacebookMessenger } from "@fortawesome/free-brands-svg-icons";
+import { faHouse, faUser, faUserGroup, faArrowLeft } from '@fortawesome/free-solid-svg-icons'
+import { faFacebookF, faFacebookMessenger } from "@fortawesome/free-brands-svg-icons";
 import { pathNames } from "@root/Routes/routes.js";
-import { useLocation } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 
 
 function Header(props) {
@@ -24,47 +24,61 @@ function Header(props) {
         icon={faArrowLeft}
         iconWidth={'90%'} iconHeight={'90%px'} />
 
-    let NavCustomStyle = {width:'25%', maxWidth:'150px'}
+    let NavCustomStyle = { width: '25%', maxWidth: '150px' }
     let iconNormalStyle = { color: 'var(--sub-text-color)' }
-    let  iconActiveStyle={ color: 'var(--facebook-color)' }
+    let iconActiveStyle = { color: 'var(--facebook-color)' }
 
     let hidePaths = [pathNames.login_register, pathNames.login, pathNames.signup, pathNames.recoverpass, pathNames.resetpass]
 
     let currentPath = useLocation().pathname;
 
-    
-    if(hidePaths.includes(currentPath)) 
+    const navigate = useNavigate();
+    const handleNavigation = (path) => {
+        // Programmatic navigation to '/home'
+        navigate(path);
+        console.log("navigate to " + path);
+    };
+
+    if (hidePaths.includes(currentPath))
         return null;
     return (
         <nav className="header-navbar">
             <SearchBox />
             <div className="header-navbar-navs">
-                    <RoundSquareNav
-                        active={true}
-                        customNavStyle = {NavCustomStyle}
-                        iconNormalStyle = {iconNormalStyle}
-                        iconActiveStyle = {iconActiveStyle}
-                        icon={faHouse}>
-                    </RoundSquareNav>
-                    <RoundSquareNav
-                        customNavStyle = {NavCustomStyle}
-                        iconNormalStyle = {iconNormalStyle}
-                        iconActiveStyle = {iconActiveStyle}
-                        icon={faUserGroup}>
-                    </RoundSquareNav>
-                    <RoundSquareNav
-                        customNavStyle = {NavCustomStyle}
-                        iconNormalStyle = {iconNormalStyle}
-                        iconActiveStyle = {iconActiveStyle}
-                        icon={faFacebookMessenger}>
-                    </RoundSquareNav>
-                    <RoundSquareNav
-                        customNavStyle = {NavCustomStyle}
-                        iconNormalStyle = {iconNormalStyle}
-                        iconActiveStyle = {iconActiveStyle}
-                        icon={faUser}>
-                    </RoundSquareNav>
-                </div>
+                <RoundSquareNav
+                    targetingPath={pathNames.home}
+                    onClick={handleNavigation}
+                    active={currentPath === pathNames.home}
+                    customNavStyle={NavCustomStyle}
+                    iconNormalStyle={iconNormalStyle}
+                    iconActiveStyle={iconActiveStyle}
+                    icon={faHouse}>
+                </RoundSquareNav>
+                {/* <RoundSquareNav
+                    customNavStyle={NavCustomStyle}
+                    iconNormalStyle={iconNormalStyle}
+                    iconActiveStyle={iconActiveStyle}
+                    icon={faUserGroup}>
+                </RoundSquareNav> */}
+                <RoundSquareNav
+                    targetingPath={pathNames.messages}
+                    onClick={handleNavigation}
+                    active={currentPath === pathNames.messages}
+                    customNavStyle={NavCustomStyle}
+                    iconNormalStyle={iconNormalStyle}
+                    iconActiveStyle={iconActiveStyle}
+                    icon={faFacebookMessenger}>
+                </RoundSquareNav>
+                <RoundSquareNav
+                    targetingPath={pathNames.profile}
+                    onClick={handleNavigation}
+                    active={currentPath === pathNames.profile}
+                    customNavStyle={NavCustomStyle}
+                    iconNormalStyle={iconNormalStyle}
+                    iconActiveStyle={iconActiveStyle}
+                    icon={faUser}>
+                </RoundSquareNav>
+            </div>
             <NavBarCustom />
         </nav>
     )
