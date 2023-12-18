@@ -90,3 +90,43 @@
     justify-content: center;
     align-items: center;
 }
+
+.AboutContainer{
+    position: relative;
+    margin: 0;
+    top: -80vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 100%;
+    -webkit-box-shadow: 0px 0px 15px 1px rgba(0, 0, 0, 0.09);
+    -moz-box-shadow: 0px 0px 15px 1px rgba(0, 0, 0, 0.09);
+    box-shadow: 0px 0px 15px 1px rgba(0, 0, 0, 0.09);
+    background-color: var(--background-home-dark);
+    border-radius: 10px;
+    color: white;
+    padding: 2%;
+}
+
+.row {
+    flex: 1; /* Distribute the available space equally among the rows */
+    height: 48px;
+    text-align:left;
+    line-height: 48px; /* Adjust the line height for vertical centering */
+  }
+  .Info{
+    font-size: 15px;
+    display: block;
+  }
+  .SmallInfo{
+    display: block;
+    font-size: 13px;
+    margin-top: -20px;
+  }
+
+  .rowcontain{
+    padding: 6px;
+    display: grid;
+      grid-template-columns: repeat(2, 30px [col-start] 50% [col-end]); /* Tạo hai cột bằng nhau */
+      grid-column-gap: 12px; /* Đặt khoảng cách giữa các cột thành 20px */
+  }

@@ -36,7 +36,7 @@ const CommentModal = (props) => {
           >
             <Modal.Title id="contained-modal-title-vcenter">
               <Image
-                src="https://img.freepik.com/free-photo/beautiful-nature-landscape-with-mountains-lake_23-2150705947.jpg?t=st=1702046850~exp=1702050450~hmac=86d2ada4d8881b53bfd83ca81f8a94fba7ee3ded65745ef889d5496f971a4da7&w=1800"
+                src={props.image}
                 roundedCircle
                 width={50}
                 height={50}
@@ -107,7 +107,7 @@ const CommentModal = (props) => {
   );
 };
 
-const Posts = () => {
+const Posts = (props) => {
   const [modalShow, setModalShow] = React.useState(false);
 
   return (
@@ -117,7 +117,7 @@ const Posts = () => {
           <Card.Title>
             <div style={{ display: "flex" }}>
               <Image
-                src="https://img.freepik.com/free-photo/beautiful-nature-landscape-with-mountains-lake_23-2150705947.jpg?t=st=1702046850~exp=1702050450~hmac=86d2ada4d8881b53bfd83ca81f8a94fba7ee3ded65745ef889d5496f971a4da7&w=1800"
+                src={props.image}
                 roundedCircle
                 width={50}
                 height={50}
@@ -164,7 +164,7 @@ const Posts = () => {
             Bình luận
           </Button>
 
-          <CommentModal show={modalShow} onHide={() => setModalShow(false)} />
+          <CommentModal image={props.image} show={modalShow} onHide={() => setModalShow(false)} />
 
           <DropdownButton
             as={ButtonGroup}

@@ -1,16 +1,22 @@
 
 
 .nav-pills {
+    margin-top: 10px;
+    height: 70px;
     margin-top: -75px;
-    width: 800px;
+    width: 100%;
     text-align: center;
+    justify-content: center;
+    align-items: center;
     background-color: var(--background-home-dark);
     border-radius: 10px 10px 10px 10px;
+    padding: 10px;
 }
 
 .nav-link {
+    height: 60px;
     text-align: center;
-    padding: 0 16px;
+    padding-top: 15px;
     background-color: var(--background-home-dark);
     border-radius: 10px 10px 10px 10px;
 }
@@ -24,13 +30,28 @@
     border-radius: 10px 10px 10px 10px;
     justify-content: center;
 }
-.tab-content{
-    
+.NavDropdown{
+    margin-bottom: 60px;
+    text-align: center;
+    background-color: var(--background-home-dark);
+    border-radius: 10px 10px 10px 10px;
 }
+.tab-content{
+    margin-top: -50px;
+}
+.navdropdown-item{
+    height: 60px;
+    text-align: center;
+    padding-top: 15px;
+    background-color: var(--background-home-dark);
+    border-radius: 10px 10px 10px 10px;
+}
+
 .tab-pane{
     margin-top: 25px;
 }
 
 .ProfileMenusMain{
-    flex: 2.5;
+    width: 100%;
+    margin-top: 80px;
 }

@@ -53,7 +53,7 @@ function NewPostModal(props) {
   );
 }
 
-const Newpost = () => {
+const Newpost = (props) => {
   const ImageUrl = 'assets/heart.png'
   const [modalShow, setModalShow] = React.useState(false);
   return (
@@ -62,14 +62,14 @@ const Newpost = () => {
         <div className="container-newpost">
           <div className="newpost-input">
             <Image
-              src={ImageUrl}
+              src={props.image}
               roundedCircle
               className="image-user"
             />
             <div className="input-post" onClick={() => setModalShow(true)}>
               <span>What's in your mind SafaK?</span>
             </div>
-            <NewPostModal imageuser={ImageUrl} show={modalShow} onHide={() => setModalShow(false)} />
+            <NewPostModal imageuser={props.image} show={modalShow} onHide={() => setModalShow(false)} />
           </div>
           <hr />
           <div className="newpost-service">

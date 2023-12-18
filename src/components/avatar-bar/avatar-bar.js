@@ -6,7 +6,7 @@ import DropdownButton from 'react-bootstrap/DropdownButton';
 import Dropdown from 'react-bootstrap/Dropdown';
 
 
-export default function AvatarBar() {
+export default function AvatarBar(props) {
   return (
     <>
     <div className="Profile-main">
@@ -18,7 +18,7 @@ export default function AvatarBar() {
               />
               <img
                 className="profileUserImg"
-                src="assets/person/7.jpeg"
+                src={props.img}
                 alt=""
               />
               <div className="profileInfo">
