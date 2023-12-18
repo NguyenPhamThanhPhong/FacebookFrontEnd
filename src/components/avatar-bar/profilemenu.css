@@ -36,8 +36,8 @@
     background-color: var(--background-home-dark);
     border-radius: 10px 10px 10px 10px;
 }
-.tab-content{
-    margin-top: -50px;
+.pane2{
+    margin-top: -335px;
 }
 .navdropdown-item{
     height: 60px;
