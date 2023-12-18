@@ -49,7 +49,9 @@ function Home(props) {
         <div className="container-item">
           <SidebarLeft />
 
-          <Mainpost />
+          <div style={{flex:'5.5',marginTop:'65px'}}>
+            <Mainpost />
+          </div>
 
           <div className="rightmenu">
             <SidebarRight />

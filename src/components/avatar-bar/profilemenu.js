@@ -15,13 +15,13 @@ import TabPane from 'react-bootstrap/TabPane';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 
-function ProfileMenus() {
+function ProfileMenus(props) {
   return (
     <div className='ProfileMenusMain'>
       <Tab.Container id="left-tabs-example" defaultActiveKey="1">
           <Nav variant="pills" className="TabContainer">
             <Nav.Item>
-              <Nav.Link eventKey="1">Posts</Nav.Link>
+              <Nav.Link eventKey="1" >Posts</Nav.Link>
             </Nav.Item>
             <Nav.Item>
               <Nav.Link eventKey="2">About</Nav.Link>
@@ -46,7 +46,7 @@ function ProfileMenus() {
           <Tab.Content as = 'tab-content'>
 
             <Tab.Pane  eventKey="1">
-                <Mainpost/>
+                <Mainpost image={props.image}/>
             </Tab.Pane>
             <Tab.Pane  eventKey="2">
                 <About/>

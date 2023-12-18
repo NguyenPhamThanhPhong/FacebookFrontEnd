@@ -2,14 +2,15 @@
 
 .nav-pills {
     margin-top: 10px;
-    margin-left: 33px;
-    width: 610.17px;
-    height: 60px;
+    height: 70px;
+    margin-top: -75px;
+    width: 100%;
     text-align: center;
     justify-content: center;
     align-items: center;
     background-color: var(--background-home-dark);
     border-radius: 10px 10px 10px 10px;
+    padding: 10px;
 }
 
 .nav-link {
@@ -35,6 +36,9 @@
     background-color: var(--background-home-dark);
     border-radius: 10px 10px 10px 10px;
 }
+.tab-content{
+    margin-top: -50px;
+}
 .navdropdown-item{
     height: 60px;
     text-align: center;
@@ -48,5 +52,6 @@
 }
 
 .ProfileMenusMain{
-    flex: 2.5;
+    width: 100%;
+    margin-top: 80px;
 }
