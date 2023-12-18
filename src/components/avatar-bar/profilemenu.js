@@ -48,7 +48,7 @@ function ProfileMenus(props) {
             <Tab.Pane  eventKey="1">
                 <Mainpost image={props.image}/>
             </Tab.Pane>
-            <Tab.Pane  eventKey="2">
+            <Tab.Pane bsPrefix = 'pane2' eventKey="2">
                 <About/>
             </Tab.Pane>
             <Tab.Pane eventKey="3">
