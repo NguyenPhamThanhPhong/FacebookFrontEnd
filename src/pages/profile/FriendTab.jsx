@@ -1,6 +1,6 @@
 import React from 'react';
 import './profile.css';
-import SearchBar from './SearchBar';
+import SearchBar from '../profile/SearchBar';
 const FriendTab = () => {
   return (
     <div className="seperate">
