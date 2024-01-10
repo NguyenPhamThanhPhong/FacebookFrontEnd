@@ -1,9 +1,6 @@
 import React from "react";
 import "./profile.css";
 import AvatarBar from "../../components/avatar-bar/avatar-bar";
-import Posts from "../../components/post/posts";
-import Newpost from "../../components/post/new-post";
-import Mainpost from "../../components/post/main-post";
 import ProfileMenus from "../../components/avatar-bar/profilemenu";
 
 const MainProfile = () => {
