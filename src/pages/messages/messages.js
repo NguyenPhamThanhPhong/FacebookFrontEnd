@@ -15,7 +15,7 @@ import { faBellSlash, faVideo, faCircleInfo, faPhone, faArrowLeft } from '@forta
 import "./messages.css"
 import "react-chat-elements/dist/main.css"
 // import { CSSTransition } from "react-transition-group"
-// import CustomModal from './custom-modal';
+import LoginAPI from '@root/data/login-api';
 
 
 
@@ -52,9 +52,52 @@ function Messages(props) {
   }
 
 
+  function handleLogin(){
+    try{
+      console.log(LoginAPI.login('phong123','pass123'))
+    }
+    catch(error){
+      console.log(error)
+    }
+  }
+  function handleDoomRegister(){
+    const usernamesuffix = Math.floor(Math.random() * 50)
+    const user = {
+      username:'phong'+usernamesuffix,
+      password:'123456',
+      email:'21522458@gm.uit.edu.vn',
+      name:'phong',
+      dateOfBirth:new Date().toDateString(),
+      favorite:'hahaha',
+      Biography: "I'm a student at UIT",
+    }
+
+    try{
+      const response =LoginAPI.register(user)
+      if(response)
+      {
+        if(response.status===200)
+        {
+          console.log("Register success")
+        }
+        else{
+          console.log("Register failed")
+        }
+      }
+      console.log(response)
+      console.log(response.data)
+    }
+    catch(error){
+      console.log(error)
+    }
+  }
 
   return (
     <div >
+      <div>
+        <button onClick={handleDoomRegister}>click to call register </button>
+        <button onClick={handleLogin}>click to call login </button>
+      </div>
       <div className='message-page-container'>
 
         <div className='message-page-wrapper-div'>

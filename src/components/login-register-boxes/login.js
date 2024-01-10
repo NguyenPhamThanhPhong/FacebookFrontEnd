@@ -1,13 +1,23 @@
 import React, { useState, useEffect } from "react";
 import './style.css'
-import {Link} from 'react-router-dom'
+import {Link, json} from 'react-router-dom'
+import { UseCustomStore } from "@data-store/index"
+import { setUser } from "@data-store/Actions";
+import LoginAPICall from "@data/login-api";
+import { useNavigate } from "react-router-dom";
+
 
 function Login(){
+
+    const navigate = useNavigate();
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [statusMessage, setStatusMessage] = useState('');
     const [emailError, setEmailError] = useState(false);
     const [passwordError, setPasswordError] = useState(false);
+
+    const [state,dispatch] = UseCustomStore()
+    
   
     useEffect(() => {
         const formContainer = document.querySelector('.form_container');
@@ -19,27 +29,49 @@ function Login(){
         };
     }, []);
 
-    const handleLogin = (e) => {
+    function privateCheckInputError(message){
+        setStatusMessage();
+        setTimeout(() => {
+            setEmailError(false);
+        }, 200); 
+    }
+
+    const handleLogin = async (e) => {
+        
         e.preventDefault();
         setEmailError(false);
         setStatusMessage("");
         if (!email) {
             setEmailError(true);
-            setStatusMessage("The email address or phone number you entered is not connected to an account.");
-            setTimeout(() => {
-                setEmailError(false);
-            }, 200); 
+            privateCheckInputError("username is incorrect")
             return;
         }
         if (!password) {
             setPasswordError(true);
-            setStatusMessage("The password you entered is incorrect.");
-            setTimeout(() => {
-                setPasswordError(false);
-            }, 200);
+            privateCheckInputError("password is incorrect")
             return;
         }
+        if(email && password){
+            try{
+                const response = await LoginAPICall.login(email,password)
+                if(response.status===200){
+                    setUser(response.data)
+                    dispatch(setUser(response.data))
+                    navigate('/')
+                }
+                else
+                    privateCheckInputError("username or password is incorrect")
+            }
+            catch(error){
+                console.log(error.response)
+            }
+
+        }
     };
+
+    const handleSeeContext = () => {
+        console.log(state)
+    }
 
     const handleInputChange = () => {
         setStatusMessage('');
@@ -48,13 +80,16 @@ function Login(){
     return(
         <div className='login template d-flex justify-content-center align-items-center 100-w vh-100'>
             <div className='form_container p-5 rounded'>
+                <button onClick={handleSeeContext}>
+                    click me to see context
+                </button>
                <form>
                 <h3 className='text-center fw-bold'>Sign in</h3>
                 <br></br>
                 <div className='mb-3'>
                     <input 
                         type="email"
-                        placeholder='Email or Phone number'
+                        placeholder='Username'
                         className={`form_control ${emailError ? 'error' : ''}`}
                         value={email}
                         onChange={(e) => setEmail(e.target.value)}
