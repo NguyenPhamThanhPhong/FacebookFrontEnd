@@ -25,8 +25,6 @@ const loginUser = async (username,password) => {
         return response;
     }
     catch(error){
-        // console.error('Login failed:', error);
-        // console.log(error.response.status)
         return error;
     }
 }

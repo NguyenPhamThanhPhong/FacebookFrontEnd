@@ -1,20 +1,16 @@
-import { set_user } from "./Constants";
+import { SET_USER,SET_LOGOUT } from "./Constants";
+
 
 const setUser = payload =>({
-    type:set_user,
+    type:SET_USER,
     payload
 })
 
 const setPosts = payload =>({
-    type:set_user,
-    payload
-})
-const setConversations = payload =>({
-    type:set_user,
+    type:SET_USER,
     payload
 })
 
 
 
-
-export {setUser,setPosts,setConversations};
+export {setUser,setPosts};

@@ -1,9 +1,6 @@
 import React, { useState, useEffect } from "react";
 import './style.css'
 import {Link, json} from 'react-router-dom'
-import { UseCustomStore } from "@data-store/index"
-import { setUser } from "@data-store/Actions";
-import LoginAPICall from "@data/login-api";
 import { useNavigate } from "react-router-dom";
 
 
@@ -16,8 +13,6 @@ function Login(){
     const [emailError, setEmailError] = useState(false);
     const [passwordError, setPasswordError] = useState(false);
 
-    const [state,dispatch] = UseCustomStore()
-    
   
     useEffect(() => {
         const formContainer = document.querySelector('.form_container');
@@ -52,25 +47,11 @@ function Login(){
             return;
         }
         if(email && password){
-            try{
-                const response = await LoginAPICall.login(email,password)
-                if(response.status===200){
-                    setUser(response.data)
-                    dispatch(setUser(response.data))
-                    navigate('/')
-                }
-                else
-                    privateCheckInputError("username or password is incorrect")
-            }
-            catch(error){
-                console.log(error.response)
-            }
 
         }
     };
 
     const handleSeeContext = () => {
-        console.log(state)
     }
 
     const handleInputChange = () => {

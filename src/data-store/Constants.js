@@ -1,6 +1,6 @@
-export const set_user = "SET_USER";
-export const set_posts = "SET_POSTS"; 
-export const set_conversations = "SET_CONVERSATIONS";
-export const set_friends = "SET_FRIENDS";
-export const set_people = "SET_PEOPLE";
+export const SET_USER = "SET_USER";
+export const SET_POSTS = "SET_POSTS"; 
+export const SET_CONVERSATIONS = "SET_CONVERSATIONS";
+export const SET_PEOPLE = "SET_PEOPLE";
+export const SET_LOGOUT = "SET_LOGOUT";
 
