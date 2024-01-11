@@ -1,15 +1,17 @@
-import axios from 'axios';
-import APIUtil from './util-api';
+import APIUtil from "./util-api.js";
+import axios from "axios";
 
-const registerUser = async (userData) => {
+
+const baseURL = APIUtil.baseURL;
+const jsonHeader = APIUtil.jsonHeader;
+const formdataHeader = APIUtil.formdataHeader;
+
+
+
+const registerUser = async (userCreateRequest) => {
   try {
-    const form = APIUtil.GenerateFormData(userData);
 
-    const response = await axios.post(APIUtil.baseURL+'/register', form, {
-      headers: {
-        'Content-Type': 'multipart/form-data',
-      },
-    });
+    const response = await axios.post(APIUtil.baseURL+'/register', userCreateRequest, jsonHeader);
     return response;
   } catch (error) {
     console.error('Registration failed:', error);
@@ -21,7 +23,7 @@ const loginUser = async (username,password) => {
         const loginRequest={
             username,password
         }
-        const response = await axios.post(APIUtil.baseURL+'/login', loginRequest)
+        const response = await axios.post(APIUtil.baseURL+'/login', loginRequest, jsonHeader)
         return response;
     }
     catch(error){
@@ -29,9 +31,9 @@ const loginUser = async (username,password) => {
     }
 }
 
-const sendMailVerification = async (email) => {
+const sendMailVerification = async (loginRequest) => {
     try{
-        const response = await axios.post(APIUtil.baseURL+'/send-mail-verification', email)
+        const response = await axios.post(APIUtil.baseURL+'/send-mail-verification',loginRequest, jsonHeader)
         return response;
     }
     catch(error){
@@ -40,9 +42,9 @@ const sendMailVerification = async (email) => {
     }
 }
 
-const confirmMail = async (id,token) => {
+const confirmMail = async (id,code) => {
     try{
-        const response = await axios.post(APIUtil.baseURL+`/confirm-mail/${id,token}`, token)
+        const response = await axios.post(APIUtil.baseURL+`/confirm-mail/${id}`,code, jsonHeader)
         return response;
     }
     catch(error){
@@ -53,7 +55,7 @@ const confirmMail = async (id,token) => {
 
 
 
-const LoginAPICall = {
+const loginAPI = {
     register: registerUser,
     login: loginUser,
     sendMailVerification,
@@ -61,4 +63,6 @@ const LoginAPICall = {
   };
   
 
-export default LoginAPICall;
+export default loginAPI;
+export {loginAPI}
+
