@@ -2,12 +2,11 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
-import { useGlobalContext } from './data-store/index';
+import { ContextProvider } from './data-store/Context';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
-  <useGlobalContext>
+  <ContextProvider>
     <App />
-
-  </useGlobalContext>
+  </ContextProvider>
 );

@@ -1,16 +1,97 @@
-import { SET_USER,SET_LOGOUT } from "./Constants";
+import {
+    SET_USER,
+    SET_CONNECTION,
+    SET_POSTS,
+    APPEND_POSTS,
+    REMOVE_POST,
+    SET_CONVERSATIONS,
+    APPEND_CONVERSATIONS,
+    REMOVE_CONVERSATION,
+    SET_PEOPLE,
+    APPEND_PEOPLE,
+    REMOVE_PEOPLE,
+    SET_LOGIN,
+    SET_LOGOUT,
+  } from "./Constants";
+  
+  const setUser = (payload) => ({
+    type: SET_USER,
+    payload,
+  });
 
-
-const setUser = payload =>({
-    type:SET_USER,
-    payload
-})
-
-const setPosts = payload =>({
-    type:SET_USER,
-    payload
-})
-
-
-
-export {setUser,setPosts};
+  const setConnection = (payload) => ({
+    type: SET_CONNECTION,
+    payload,
+  });
+  
+  const setPosts = (payload) => ({
+    type: SET_POSTS,
+    payload,
+  });
+  
+  const appendPosts = (payload) => ({
+    type: APPEND_POSTS,
+    payload,
+  });
+  
+  const removePost = (payload) => ({
+    type: REMOVE_POST,
+    payload,
+  });
+  
+  const setConversations = (payload) => ({
+    type: SET_CONVERSATIONS,
+    payload,
+  });
+  
+  const appendConversations = (payload) => ({
+    type: APPEND_CONVERSATIONS,
+    payload,
+  });
+  
+  const removeConversation = (payload) => ({
+    type: REMOVE_CONVERSATION,
+    payload,
+  });
+  
+  const setPeople = (payload) => ({
+    type: SET_PEOPLE,
+    payload,
+  });
+  
+  const appendPeople = (payload) => ({
+    type: APPEND_PEOPLE,
+    payload,
+  });
+  
+  const removePeople = (payload) => ({
+    type: REMOVE_PEOPLE,
+    payload,
+  });
+  
+  const setLogin = (payload) => ({
+    type: SET_LOGIN,
+    payload,
+  });
+  
+  const setLogout = (payload) => ({
+    type: SET_LOGOUT,
+    payload,
+  });
+  
+  export {
+    setUser,
+    setConnection,
+    setPosts,
+    appendPosts,
+    removePost,
+    setConversations,
+    appendConversations,
+    removeConversation,
+    setPeople,
+    appendPeople,
+    removePeople,
+    setLogin,
+    setLogout,
+  };
+  

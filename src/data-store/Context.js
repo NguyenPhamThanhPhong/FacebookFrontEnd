@@ -1,60 +1,117 @@
 import { createContext } from "react";
 import { useReducer, useContext } from "react";
-import { SET_USER,SET_POSTS, SET_LOGOUT } from "./Constants";
+import { SET_USER,SET_CONNECTION, SET_LOGOUT, SET_LOGIN } from "./Constants";
+import { SET_POSTS, APPEND_POSTS, REMOVE_POST } from "./Constants";
+import { SET_CONVERSATIONS, APPEND_CONVERSATIONS, REMOVE_CONVERSATION } from "./Constants";
 
 const Context = createContext();
 
 
 const initialState = {
-    token:null,
-    user:null,
-    isLoggedIn:false,
-    posts:[],
-    conversations:[],
-    waitForLoadConversations:[],
-    currentMessages:[],
-    notifications:[],
-    friendsRequests:[],
-    friendsWaits:[],
-    friends:[],
-    people:[],
+    token: null,
+    user: {},
+    isLoggedIn: false,
+    posts: [],
+    conversations: [],
+    notifications: [],
+    friendsRequests: [],
+    friendsWaits: [],
+    friends: [],
+    people: [],
+    realtime:{
+        connection: null,
+        sendMessage : (receiverIds, conversationId, message) => {
+            this.connection
+                .invoke('SendMessage', receiverIds, conversationId, message)
+                .then(() => {return true;})
+                .catch((err) => {console.error('Error sending message:', err); return false;});
+        },
+        deleteMessage : (receiverIds, conversationId, messageId) => {
+            this.connection
+                .invoke('DeleteMessage', receiverIds, conversationId, messageId)
+                .then(() => {return true;})
+                .catch((err) => {console.error('Error sending message:', err); return false;});
+        }
+    }
 }
 
-function reducer(state,action){
-    switch(action.type){
-        case SET_USER:
-            console.log('login')
-            return{
+function reducer(state, action) {
+    switch (action.type) {
+        case SET_LOGIN:
+            return {
                 ...state,
-                user:action.payload,
-                isLoggedIn:true
+                user: action.payload,
+                isLoggedIn: true
+            }
+        case SET_USER:
+            return {
+                ...state,
+                user: action.payload
+            }
+        case SET_CONNECTION:
+            return {
+                ...state,
+                realtime: {
+                    ...state.realtime,
+                    connection: action.payload
+                }
             }
         case SET_LOGOUT:
             return initialState;
+        case SET_POSTS:
+            return {
+                ...state,
+                posts: action.payload
+            }
+        case APPEND_POSTS:
+            return {
+                ...state,
+                posts: [...action.payload, ...state.posts]
+            }
+        case REMOVE_POST:
+            return {
+                ...state,
+                posts: state.posts.filter(post => post.id !== action.payload)
+            }
+        case SET_CONVERSATIONS:
+            return {
+                ...state,
+                conversations: action.payload
+            }
+        case APPEND_CONVERSATIONS:
+            return {
+                ...state,
+                conversations: [...action.payload, ...state.conversations]
+            }
+        case REMOVE_CONVERSATION:
+            return {
+                ...state,
+                conversations: state.conversations.filter(conversation => conversation.id !== action.payload)
+            }
         default:
             return state
     }
 }
 
-function ContextProvider({children}){
+function ContextProvider({ children }) {
 
-    const [state,dispatch] = useReducer(reducer,initialState) 
+    const [state, dispatch] = useReducer(reducer, initialState)
 
-    return(
-        <Context.Provider value={[state,dispatch]}>
+    return (
+        <Context.Provider value={[state, dispatch]}>
             {children}
         </Context.Provider>
     )
 
 }
 
-function useGlobalContext(){
-    const [globalState,dispatchGlobalState] = useContext(Context)
-    return [globalState,dispatchGlobalState]
+function useGlobalContext() {
+    const [globalState, dispatchGlobalState] = useContext(Context)
+    return [globalState, dispatchGlobalState]
 }
 
 
-export {useGlobalContext,ContextProvider,initialState}
+export { useGlobalContext, ContextProvider, initialState }
 
 export default ContextProvider;
 

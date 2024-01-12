@@ -9,27 +9,36 @@ const formdataHeader = APIUtil.formdataHeader;
 const viewDTO = async (id) => {
     try {
         const response = await axios.get(baseURL + `/viewDTO/${id}`, jsonHeader);
-        return response;
+        return { isError: false, data: response.data };
     } catch (error) {
-        console.error("View DTO failed:", error);
+        return { isError: true, data: error };
+    }
+}
+
+const getFromIds = async (ids) => {
+    try {
+        const response = await axios.post(baseURL + `/get-from-ids`, ids, jsonHeader);
+        return { isError: false, data: response.data };
+    } catch (error) {
+        return { isError: true, data: error };
     }
 }
 
 const updateEmail = async (id, email) => {
     try {
         const response = await axios.post(baseURL + `/update-email/${id}`, email, jsonHeader);
-        return response;
+        return { isError: false, data: response.data };
     } catch (error) {
-        console.error("Update email failed:", error);
+        return { isError: true, data: error };
     }
 }
 
 const updatePassword = async (id, password) => {
     try {
         const response = await axios.post(baseURL + `/update-password/${id}`, password, jsonHeader);
-        return response;
+        return { isError: false, data: response.data };
     } catch (error) {
-        console.error("Update password failed:", error);
+        return { isError: true, data: error };
     }
 }
 
@@ -37,28 +46,60 @@ const updatePersonalInfo = async (id, personalInfo) => {
     try {
         let request = APIUtil.GenerateFormData(personalInfo);
         const response = await axios.post(baseURL + `/update-personal-info/${id}`, request, formdataHeader);
-        return response;
+        return { isError: false, data: response.data };
     } catch (error) {
-        console.error("Update personal info failed:", error);
+        return { isError: true, data: error };
     }
 }
 
 const userDelete = async (id) => {
     try {
         const response = await axios.delete(baseURL + `/user-delete/${id}`, jsonHeader);
-        return response;
+        return { isError: false, data: response.data };
     } catch (error) {
-        console.error("Delete user failed:", error);
+        return { isError: true, data: error };
     }
 }
 
-const userAPI = {
+const userUpdateFriendRequest = async (targetId, option) => {
+    try {
+        const response = await axios.post(baseURL + `/user-update-friend-request/${targetId}/${option}`, null, jsonHeader);
+        return { isError: false, data: response.data };
+    } catch (error) {
+        return { isError: true, data: error };
+    }
+}
+
+const userUpdateUnfriendAcceptRequest = async (targetId, option) => {
+    try {
+        const response = await axios.post(baseURL + `/user-unfriend-accept-request/${targetId}/${option}`, null, jsonHeader);
+        return { isError: false, data: response.data };
+    } catch (error) {
+        return { isError: true, data: error };
+    }
+}
+
+const userUpdateBlockList = async (targetId, option) => {
+    try {
+        const response = await axios.post(baseURL + `/user-update-block-list/${targetId}/${option}`, null, jsonHeader);
+        return { isError: false, data: response.data };
+    } catch (error) {
+        return { isError: true, data: error };
+    }
+
+}
+
+const userApi = {
     viewDTO: viewDTO,
+    getFromIds: getFromIds,
     updateEmail: updateEmail,
     updatePassword: updatePassword,
     updatePersonalInfo: updatePersonalInfo,
+    userUpdateFriendRequest: userUpdateFriendRequest,
+    userUpdateUnfriendAcceptRequest: userUpdateUnfriendAcceptRequest,
+    userUpdateBlockList: userUpdateBlockList,
     userDelete: userDelete
 }
 
-export default userAPI;
-export { userAPI };
+export default userApi;
+export { userApi };

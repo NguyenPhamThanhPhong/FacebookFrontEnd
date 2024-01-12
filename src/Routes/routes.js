@@ -3,9 +3,10 @@ import login_register from '../pages/login-register/login-register.js'
 import messages  from '../pages/messages/messages.js'
 import profile from '../pages/profile/profile.js'
 import Login from '.././components/login-register-boxes/login.js'
-import Signup from '@components/login-register-boxes/register.js'
-import Forgotpass from '@components/login-register-boxes/forgotpass.js'
-import Resetpass from '@components/login-register-boxes/resetpass.js'
+import Signup from '../components/login-register-boxes/register.js'
+import Forgotpass from "../components/login-register-boxes/forgotpass.js"
+import Resetpass from '../components/login-register-boxes/resetpass.js'
+import ChatComponent from '../Global-real-time.js'
 
 
 export const pathNames = {
@@ -16,7 +17,8 @@ export const pathNames = {
     login: "/login",
     signup: "/signup",
     recoverpass: "/recoverpass",
-    resetpass: "/resetpass"
+    resetpass: "/resetpass",
+    test: "/test"
 }
 
 export const publicRoutes = [
@@ -27,5 +29,6 @@ export const publicRoutes = [
     {path: pathNames.home, component: home},
     {path: pathNames.login_register, component: login_register},
     {path: pathNames.messages, component: messages},
-    {path: pathNames.profile, component: profile}
+    {path: pathNames.profile, component: profile},
+    {path: pathNames.test, component: ChatComponent}
 ]

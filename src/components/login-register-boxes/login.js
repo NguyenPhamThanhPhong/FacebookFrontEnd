@@ -3,6 +3,9 @@ import './style.css'
 import {Link, json} from 'react-router-dom'
 import { useNavigate } from "react-router-dom";
 
+import { useGlobalContext } from "../../data-store/Context";
+import { setUser } from "../../data-store/Actions";
+import {loginApi} from '../../data/index'
 
 function Login(){
 
@@ -12,6 +15,8 @@ function Login(){
     const [statusMessage, setStatusMessage] = useState('');
     const [emailError, setEmailError] = useState(false);
     const [passwordError, setPasswordError] = useState(false);
+
+    const [globalState, dispatchGlobalState] = useGlobalContext();
 
   
     useEffect(() => {
@@ -24,15 +29,15 @@ function Login(){
         };
     }, []);
 
+    
     function privateCheckInputError(message){
-        setStatusMessage();
+        setStatusMessage(message);
         setTimeout(() => {
             setEmailError(false);
         }, 200); 
     }
 
     const handleLogin = async (e) => {
-        
         e.preventDefault();
         setEmailError(false);
         setStatusMessage("");
@@ -47,7 +52,21 @@ function Login(){
             return;
         }
         if(email && password){
-
+            try{
+                const response = await loginApi.loginUser(email, password);
+                if (!response?.isError) {
+                    localStorage.setItem('token', response.data?.data);
+                    window.location.href = '/';
+                }
+                else
+                {
+                    setStatusMessage("username or password is incorrect");
+                }
+            }
+            catch (error) {
+                setStatusMessage("username or password is incorrect");
+                console.log(error)
+            }
         }
     };
 

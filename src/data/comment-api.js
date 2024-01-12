@@ -8,38 +8,46 @@ const formdataHeader = APIUtil.formdataHeader;
 
 const getMany = async (ids, skip) => {
     try {
-        const response = await axios.get(baseURL + `/comment-get-many/${ids}/${skip*50}`, jsonHeader);
-        return response;
+        const response = await axios.get(baseURL + `/comment-get-many/${ids}/${skip * 50}`, jsonHeader);
+        return { isError: false, data: response.data };
+
     } catch (error) {
-        console.error("Comment get many failed:", error);
-    }
+        return { isError: true, data: error };    }
 }
 
 const create = async (createCommentRequest) => {
     try {
-      let request = APIUtil.GenerateFormData(createCommentRequest);
+        let request = APIUtil.GenerateFormData(createCommentRequest);
         const response = await axios.post(baseURL + `/comment-create`, request, jsonHeader);
-        return response;
+        return { isError: false, data: response.data };
+
     } catch (error) {
-        console.error("Comment create failed:", error);
-    }
+        return { isError: true, data: error };    }
 }
 
 const update = async (updateCommentRequest) => {
     try {
-      let request = APIUtil.GenerateFormData(updateCommentRequest);
+        let request = APIUtil.GenerateFormData(updateCommentRequest);
         const response = await axios.put(baseURL + `/comment-update`, request, jsonHeader);
-        return response;
+        return { isError: false, data: response.data };
+
     } catch (error) {
-        console.error("Comment update failed:", error);
-    }
+        return { isError: true, data: error };    }
 }
 
 const deleteComment = async (id) => {
     try {
         const response = await axios.delete(baseURL + `/comment-delete/${id}`, jsonHeader);
-        return response;
+        return { isError: false, data: response.data };
+
     } catch (error) {
-        console.error("Comment delete failed:", error);
-    }
+        return { isError: true, data: error };    }
 }
+
+const commentApi = {
+    getMany,
+    create,
+    update,
+    deleteComment
+}
+export { commentApi }
