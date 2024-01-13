@@ -11,8 +11,8 @@ import { useGlobalContext } from "../../data-store"
 
 
 function ProfileMenus(props) {
-  const [globalState, dispatchGlobalState] = useGlobalContext();
-  let user = globalState?.user;
+
+  let user = props?.user || null;
 
 
   return (
@@ -34,12 +34,7 @@ function ProfileMenus(props) {
             <Nav.Item>
               <Nav.Link eventKey="6">Videos</Nav.Link>
             </Nav.Item>
-            <Nav.Item>
-              <Nav.Link eventKey="7">More</Nav.Link>
-            </Nav.Item>
-            <Nav.Item>
-            <Nav.Link eventKey="8">...</Nav.Link>
-            </Nav.Item>
+
             
           </Nav>
           <Tab.Content as = 'tab-content'>
@@ -48,7 +43,7 @@ function ProfileMenus(props) {
                 <Mainpost image={props.image}/>
             </Tab.Pane>
             <Tab.Pane bsPrefix = 'pane2' eventKey="2">
-                <About/>
+                <About user={user}/>
             </Tab.Pane>
             <Tab.Pane bsPrefix = 'pane3' eventKey="3">
                 <FriendTab/>

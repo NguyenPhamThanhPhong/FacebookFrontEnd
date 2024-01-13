@@ -11,7 +11,33 @@ import {
     faCakeCandles
     } 
 from "@fortawesome/free-solid-svg-icons";
-const About = () => {
+
+const formatDate = (isoDate) => {
+    if (!isoDate) {
+      return null; // or an appropriate fallback value
+    }
+  
+    const date = new Date(isoDate);
+    if (isNaN(date.getTime())) {
+      return null; // Invalid date format, return null or a fallback value
+    }
+  
+    const day = date.getDate();
+    const month = date.getMonth() + 1; // Months are zero-based
+    const year = date.getFullYear();
+  
+    // Pad single-digit day and month with leading zero
+    const formattedDay = day < 10 ? `0${day}` : day;
+    const formattedMonth = month < 10 ? `0${month}` : month;
+  
+    // Return formatted date string
+    return `${formattedDay}/${formattedMonth}/${year}`;
+  };
+const About = (props) => {
+
+    let user = props.user;  
+    let personalInfo = user?.personalInfo || {};
+
     return (
         <div class="AboutContainer">
 
@@ -24,7 +50,7 @@ const About = () => {
                             style={{color: "#fff"}} />
                         </div>
                         <div className="infocontain">
-                        <span class="Info">July 3, 2003</span>
+                        <span class="Info">{formatDate(personalInfo?.dateofBirth)}</span>
                         <span class="SmallInfo">Date of birth</span>
                         </div>
                     </div>
@@ -54,7 +80,7 @@ const About = () => {
                     style={{color: "#fff"}} />
                     </div>
                     <div className="infocontain">
-                        <span class="Info">Lives in Ho Chi Minh</span>
+                        <span class="Info">{personalInfo?.biography}</span>
                     </div>
                 </div>
             </div>

@@ -44,7 +44,6 @@ function useDataHook() {
 
     const sendMessage = async (receiverIds,conversationId, senderId, content, replyTo, files) => {
         try {
-            console.log('hallo')
             let message = {
                 conversationId,
                 senderId,
@@ -110,7 +109,97 @@ function useDataHook() {
         }
     }
 
-    return { fetchMessages, sendMessage,updatePersonalInfo }
+    const sendFriendRequest = async (targetId,option=1) => {
+        try {
+            const response = await userApi.userUpdateFriendRequest(targetId,option);
+            if (!response?.isError) {
+                if(globalState?.user?.friendWaitIds){
+                    let friendWaitIds = globalState?.user?.friendWaitIds;
+                    friendWaitIds.push(targetId);
+                    let user = {
+                        ...globalState?.user,
+                        friendWaitIds
+                    }
+                    dispatchGlobalState(setUser(user));
+                }
+            }
+        }
+        catch (error) {
+            console.log(error)
+        }
+    }
+
+    const undoFriendRequest = async (targetId,option=0) => {
+        try {
+            const response = await userApi.userUpdateFriendRequest(targetId,option);
+            if (!response?.isError) {
+                if (!response?.isError) {
+                    if(globalState?.user?.friendWaitIds){
+                        let friendWaitIds = globalState?.user?.friendWaitIds;
+                        friendWaitIds = friendWaitIds.filter(x=>x!==targetId);
+                        let user = {
+                            ...globalState?.user,
+                            friendWaitIds
+                        }
+                        dispatchGlobalState(setUser(user));
+                    }
+                }
+            }
+        }
+        catch (error) {
+            console.log(error)
+        }
+    }
+
+    const acceptFriendRequest = async (targetId,option=1,name,avatarUrl) => {
+        try {
+            const conversationCreation = {
+                name,
+                avatarUrl
+            }
+            const response = await userApi.userUpdateUnfriendAcceptRequest(targetId,option,conversationCreation);
+            if (!response?.isError) {
+                if(globalState?.user?.friendWaitIds){
+                    let friendWaitIds = globalState?.user?.friendWaitIds;
+                    let friendIds = globalState?.user?.friendIds;
+                    friendWaitIds = friendWaitIds.filter(x=>x!==targetId);
+                    friendIds.push(targetId);
+                    let user = {
+                        ...globalState?.user,
+                        friendWaitIds,
+                        friendIds
+                    }
+                    dispatchGlobalState(setUser(user));
+                }
+            }
+        }
+        catch (error) {
+            console.log(error)
+        }
+    }
+
+    const unfriend = async (targetId,option=0) => {
+        try {
+            const response = await userApi.userUpdateUnfriendAcceptRequest(targetId,option,{});
+            if (!response?.isError) {
+                if(globalState?.user?.friendWaitIds){
+                    let friendIds = globalState?.user?.friendIds;
+                    friendIds = friendIds.filter(x=>x!==targetId);
+                    let user = {
+                        ...globalState?.user,
+                        friendIds
+                    }
+                    dispatchGlobalState(setUser(user));
+                }
+                return response.data;
+            }
+        }
+        catch (error) {
+            console.log(error)
+        }
+    }
+
+    return { fetchMessages, sendMessage,updatePersonalInfo,sendFriendRequest,undoFriendRequest,acceptFriendRequest,unfriend }
 }
 
 export { useDataHook }

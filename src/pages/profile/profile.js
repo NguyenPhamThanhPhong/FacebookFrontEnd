@@ -14,12 +14,8 @@ import { useGlobalContext } from "../../data-store";
 import { userApi } from "../../data/index";
 
 function Profile(props) {
-  const setDarkMode = () => {
-    document.querySelector("body").setAttribute("data-theme", "dark");
-  };
-  const setLightMode = () => {
-    document.querySelector("body").setAttribute("data-theme", "light");
-  };
+  document.querySelector("body").setAttribute("data-theme", "dark");
+
   const [globalState, dispatchGlobalState] = useGlobalContext();
   const [pageUser, setPageUser] = useState(null);
 
@@ -28,7 +24,7 @@ function Profile(props) {
   let { id: myId } = useParams();
   let user = globalState?.user;
 
-  
+
   function queryUser(id) {
     userApi.viewDTO(id).then(res => {
       if (!res.isError) {
@@ -46,32 +42,42 @@ function Profile(props) {
       if (user?.id !== myId) {
         let myUser = globalState?.people?.find(x => x.id === myId);
         if (myUser) {
-          setRelationship('friend');
           setPageUser(myUser);
         }
         else {
           queryUser(myId);
+        }
+      }
+      else {
+        setPageUser(user);
+      }
+    }
+  }, [globalState?.user, myId]);
+
+  useEffect(() => {
+    if (pageUser && user) {
+      if (user?.id !== pageUser?.id) {
+        if (user?.friendIds?.includes(pageUser?.id)) {
+          setRelationship('friend');
+        }
+        else {
           setRelationship('other');
         }
       }
       else {
         setRelationship('self');
-        setPageUser(user);
       }
     }
-  }, [globalState?.user,myId]);
+  }, [pageUser]);
 
 
 
-  const handleThemeChange = (e) => {
-    if (e.target.checked) setDarkMode();
-    else setLightMode();
-  };
+
 
   return (
     <div className="profilepage">
       <div className="Profile-item">
-        <Sidebar  />
+        <Sidebar />
         <MainProfile relationship={relationship} user={pageUser} />
         <div style={{ flex: "2.5" }}>
         </div>

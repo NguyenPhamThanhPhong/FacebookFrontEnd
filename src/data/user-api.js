@@ -63,16 +63,26 @@ const userDelete = async (id) => {
 
 const userUpdateFriendRequest = async (targetId, option) => {
     try {
-        const response = await axios.post(baseURL + `/user-update-friend-request/${targetId}/${option}`, null, jsonHeader);
+        const response = await axios.post(baseURL + `/user-update-friend-request/${targetId}/${option}`, null, {
+            headers: {
+                'Authorization': 'Bearer ' + localStorage.getItem('token'),
+                'Content-Type': 'application/json'
+            },
+        });
         return { isError: false, data: response };
     } catch (error) {
         return { isError: true, data: error };
     }
 }
 
-const userUpdateUnfriendAcceptRequest = async (targetId, option) => {
+const userUpdateUnfriendAcceptRequest = async (targetId, option,conversationCreation) => {
     try {
-        const response = await axios.post(baseURL + `/user-unfriend-accept-request/${targetId}/${option}`, null, jsonHeader);
+        const response = await axios.post(baseURL + `/user-unfriend-accept-request/${targetId}/${option}`, conversationCreation, {
+            headers: {
+                'Authorization': 'Bearer ' + localStorage.getItem('token'),
+                'Content-Type': 'application/json'
+            },
+        });
         return { isError: false, data: response };
     } catch (error) {
         return { isError: true, data: error };
@@ -81,7 +91,12 @@ const userUpdateUnfriendAcceptRequest = async (targetId, option) => {
 
 const userUpdateBlockList = async (targetId, option) => {
     try {
-        const response = await axios.post(baseURL + `/user-update-block-list/${targetId}/${option}`, null, jsonHeader);
+        const response = await axios.post(baseURL + `/user-update-block-list/${targetId}/${option}`, null, {
+            headers: {
+                'Authorization': 'Bearer ' + localStorage.getItem('token'),
+                'Content-Type': 'application/json'
+            },
+        });
         return { isError: false, data: response };
     } catch (error) {
         return { isError: true, data: error };

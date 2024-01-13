@@ -6,8 +6,9 @@ import ProfileMenus from "../../components/avatar-bar/profilemenu";
 const MainProfile = (props) => {
 
   let user = props.user;
-  let relationship = props.relationship;
-  console.log(user)
+
+  let relationship = props.relationship || null;
+
 
   const image = 'assets/person/7.jpeg'
   return (
@@ -19,7 +20,7 @@ const MainProfile = (props) => {
             (
               <>
                 <AvatarBar relationship={relationship} user={user} img={image} />
-                <ProfileMenus image={image} />
+                <ProfileMenus relationship={relationship} user={user} image={image} />
               </>
             )
           }

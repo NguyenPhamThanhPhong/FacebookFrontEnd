@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import "./avatar-bar.css";
 import ProfileEdit from "./profile-edit";
+import { useDataHook } from "../../data-hook"
 
 export default function AvatarBar(props) {
 
@@ -11,6 +12,7 @@ export default function AvatarBar(props) {
 
   let relationship = props?.relationship;
   console.log(relationship);
+  const {sendFriendRequest,undoFriendRequest,acceptFriendRequest,unfriend} = useDataHook();
 
 
   return (
@@ -40,6 +42,11 @@ export default function AvatarBar(props) {
                 {
                   relationship === 'other' && (
                     <span className="profileEdit"> <button>add friend</button> </span>
+                  )
+                }
+                {
+                  relationship === 'friend' && (
+                    <span className="profileEdit"> <button>unfriend</button> </span>
                   )
                 }
               </div>
