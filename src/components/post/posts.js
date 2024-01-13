@@ -63,9 +63,9 @@ const CommentModal = (props) => {
                     style={{ marginRight: "10px" }}
                     className="style-service"
                   >
-                    bình luận
+                    Comment
                   </span>
-                  <span className="style-service">lượt chia sẻ</span>
+                  <span className="style-service">Shares</span>
                 </div>
               </div>
             </div>
@@ -73,11 +73,11 @@ const CommentModal = (props) => {
           <Modal.Body>
             <div className="button-interact" style={{ width: "100%" }}>
               <Button>Thích</Button>
-              <Button variant="primary">Bình luận</Button>
+              <Button variant="primary">Comment</Button>
 
               <DropdownButton
                 as={ButtonGroup}
-                title="Chia sẻ"
+                title="Share"
                 id="bg-nested-dropdown"
               >
                 <Dropdown.Item eventKey="1">Dropdown link</Dropdown.Item>
@@ -85,20 +85,8 @@ const CommentModal = (props) => {
               </DropdownButton>
             </div>
           </Modal.Body>
-          <Modal.Footer>
-            {/* <div className="button-interact" style={{ width: "100%" }}>
-            <Button>Thích</Button>
-            <Button variant="primary">Bình luận</Button>
-
-            <DropdownButton
-              as={ButtonGroup}
-              title="Chia sẻ"
-              id="bg-nested-dropdown"
-            >
-              <Dropdown.Item eventKey="1">Dropdown link</Dropdown.Item>
-              <Dropdown.Item eventKey="2">Dropdown link</Dropdown.Item>
-            </DropdownButton>
-          </div> */}
+          <Modal.Footer className="modal-footer">
+            
             <Comment />
           </Modal.Footer>
         </div>
@@ -222,17 +210,17 @@ const Posts = (props) => {
             <span className="style-service">cảm xúc</span>
             <div>
               <span style={{ marginRight: "10px" }} className="style-service">
-                bình luận
+              Comment
               </span>
-              <span className="style-service">lượt chia sẻ</span>
+              <span className="style-service">Shares</span>
             </div>
           </div>
           <hr style={{ margin: "1rem 16px" }} />
         </div>
         <div className="button-interact">
-          <Button>Thích</Button>
+          <Button>Like</Button>
           <Button variant="primary" onClick={() => setModalShow(true)}>
-            Bình luận
+          Comment
           </Button>
 
           <CommentModal
@@ -246,7 +234,7 @@ const Posts = (props) => {
 
           <DropdownButton
             as={ButtonGroup}
-            title="Chia sẻ"
+            title="Share"
             id="bg-nested-dropdown"
           >
             <Dropdown.Item eventKey="1">Dropdown link</Dropdown.Item>

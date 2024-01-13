@@ -10,6 +10,7 @@
    */
 
 .homepage{
+   
     background-color: #18191A;
     height: (100vh - 56px);
 }
@@ -26,10 +27,12 @@
     height: auto;
 }
 .rightmenu{
+   
     flex: 2.5;
     width: 100%;
     position: sticky;
     height: 95vh;
+    margin-right: 8px;
     overflow: hidden;
     top: 65px;
 }

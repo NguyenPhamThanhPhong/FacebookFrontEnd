@@ -19,6 +19,7 @@
 }
 
 .first-column-chat {
+  margin-left:12px ;
   color: var(--text-color);
   font-weight: bold;
 }

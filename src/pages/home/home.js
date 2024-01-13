@@ -47,7 +47,9 @@ function Home(props) {
     <div className="homepage">
       <div className="homecontainer">
         <div className="container-item">
+          <div style={{width:'18%',minWidth:'200px',flex:'2.5',marginTop:'65px'}}>
           <SidebarLeft />
+          </div>
 
           <div style={{flex:'5.5',marginTop:'65px'}}>
             <Mainpost />

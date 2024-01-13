@@ -21,7 +21,7 @@ const registerUser = async (post) => {
 
 const postGetFromIds = async (ids) => {
     try {
-        const response = await axios.post(baseURL + `/post-get-many`, ids, jsonHeader);
+        const response = await axios.post(APIUtil.baseURL + `/post-get-many`, ids, APIUtil.jsonHeader);
         return { isError: false, data: response.data };
     } catch (error) {
         return { isError: true, data: error };
@@ -30,7 +30,7 @@ const postGetFromIds = async (ids) => {
 
 const postLikeUnlike = async (id, updateAction, likeRepresentation) => {
     try {
-        const response = await axios.post(baseURL + `/post-like-unlike/${id}/${updateAction}`, likeRepresentation, jsonHeader);
+        const response = await axios.post(APIUtil.baseURL + `/post-like-unlike/${id}/${updateAction}`, likeRepresentation, APIUtil.jsonHeader);
         return { isError: false, data: response.data };
     } catch (error) {
         return { isError: true, data: error };
@@ -40,7 +40,7 @@ const postLikeUnlike = async (id, updateAction, likeRepresentation) => {
 
 const postDelete = async (id) => {
     try {
-        const response = await axios.delete(baseURL + `/post-delete/${id}`, jsonHeader);
+        const response = await axios.delete(APIUtil.baseURL + `/post-delete/${id}`, APIUtil.jsonHeader);
         return { isError: false, data: response.data };
     } catch (error) {
         return { isError: true, data: error };
@@ -50,7 +50,7 @@ const postDelete = async (id) => {
 
 const postUpdate = async (id, updatePostRequest) => {
     try {
-        const response = await axios.put(baseURL + `/post-update/${id}`, updatePostRequest, jsonHeader);
+        const response = await axios.put(APIUtil.baseURL + `/post-update/${id}`, updatePostRequest, APIUtil.jsonHeader);
         return { isError: false, data: response.data };
     } catch (error) {
         return { isError: true, data: error };
@@ -58,7 +58,7 @@ const postUpdate = async (id, updatePostRequest) => {
 }
 
 const postApi = {
-    postCreate,
+    // postCreate,
     postGetFromIds,
     postLikeUnlike,
     postDelete,

@@ -26,7 +26,9 @@ function Profile(props) {
   return (
     <div className="profilepage">
       <div className="Profile-item">
+        <div style={{flex:"2.5"}}>
         <Sidebar />
+        </div>
         <MainProfile />
         <div style={{ flex: "2.5"}}>
         </div>

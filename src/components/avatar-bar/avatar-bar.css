@@ -22,6 +22,8 @@
     position: absolute;    
     top: 300px;
     border: 3px #18191A;
+    flex: 1;
+    max-width: 100%; 
 }
 .profileInfo{
     margin-top: 50px;

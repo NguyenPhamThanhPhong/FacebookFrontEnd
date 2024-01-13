@@ -1,0 +1,9 @@
+.w-100{
+    background-color: #242526;
+}
+.comment_inner_container{
+    display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #242526;
+}
