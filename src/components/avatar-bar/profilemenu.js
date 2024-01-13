@@ -7,9 +7,14 @@ import FriendTab from '../../pages/profile/FriendTab';
 import Nav from 'react-bootstrap/Nav';
 import Tab from 'react-bootstrap/Tab';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import { useGlobalContext } from "../../data-store"
 
 
 function ProfileMenus(props) {
+  const [globalState, dispatchGlobalState] = useGlobalContext();
+  let user = globalState?.user;
+
+
   return (
     <div className='ProfileMenusMain'>
       <Tab.Container id="left-tabs-example" defaultActiveKey="1">

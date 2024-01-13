@@ -3,8 +3,6 @@
 // import FirstColumn from './first-column';
 import FirstColumn from './first-column';
 import ChatWindow from '../../components/phong-messages-components/chat-window/Chat-window';
-import RoundButton from '@root/components/phong-messages-components/Round-button';
-import ChatTextbox from '@root/components/phong-messages-components/chat-window/Chat-textbox';
 // <============================Library here ============================>
 
 import React, { useState, useEffect, useRef } from 'react'

@@ -29,6 +29,6 @@ export const publicRoutes = [
     {path: pathNames.home, component: home},
     {path: pathNames.login_register, component: login_register},
     {path: pathNames.messages, component: messages},
-    {path: pathNames.profile, component: profile},
+    {path: pathNames.profile+'/:id', component: profile},
     {path: pathNames.test, component: ChatComponent}
 ]

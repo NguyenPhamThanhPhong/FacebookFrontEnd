@@ -63,11 +63,17 @@ function useDataHook() {
             const response = await messageApi.messageSend(formData);
             if (!response?.isError) {
                 if (globalState.realtime?.connection) {
-                    console.log(response?.data?.data)
+                    let conversations = globalState?.conversations;
+                    let conversation = conversations.find(x => x.id === conversationId);
+                    if (conversation) {
+                        conversation?.messages.push(message);
+                        dispatchGlobalState(setConversations(conversations));
+                    }
                     let connection = globalState.realtime.connection;
                     let createdMessage = response.data?.data;
                     globalState.realtime.sendMessage(connection, receiverIds, createdMessage?.conversationId, createdMessage)
-                    // connection.invoke('SendMessage', ['no'], createdMessage?.conversationId, createdMessage);
+
+
                 }
                 return response.data;
             }
@@ -77,7 +83,34 @@ function useDataHook() {
         }
     }
 
-    return { fetchMessages, sendMessage }
+    const updatePersonalInfo = async (userId, firstName, lastName, birthday, bio,prevAvatar, blobProfilePicture, blobCoverPhoto) => {
+        try {
+            let name = lastName + " " + firstName;
+            let formData = new FormData();
+            formData.append("Name", name);
+            formData.append("DateofBirth", birthday);
+            formData.append("Biography", bio);
+            formData.append("prevAvatar", prevAvatar)
+            if (blobProfilePicture) {
+                formData.append("AvatarFile", blobProfilePicture);
+            }
+            // if (blobCoverPhoto) {
+            //     formData.append("CoverFile", blobCoverPhoto);
+            // }
+            const response = await userApi.updatePersonalInfo(userId, formData);
+            if (!response?.isError) {
+                let currentUser = globalState?.user;
+                currentUser.personalInfo = response.data?.data;
+                dispatchGlobalState(setUser(currentUser));
+                return response.data;
+            }
+        }
+        catch (error) {
+            console.log(error)
+        }
+    }
+
+    return { fetchMessages, sendMessage,updatePersonalInfo }
 }
 
 export { useDataHook }

@@ -44,8 +44,8 @@ const updatePassword = async (id, password) => {
 
 const updatePersonalInfo = async (id, personalInfo) => {
     try {
-        let request = APIUtil.GenerateFormData(personalInfo);
-        const response = await axios.post(baseURL + `/update-personal-info/${id}`, request, formdataHeader);
+        const response = await axios.post(baseURL + `/update-personal-info/${id}`, personalInfo, formdataHeader);
+        console.log(response)
         return { isError: false, data: response };
     } catch (error) {
         return { isError: true, data: error };

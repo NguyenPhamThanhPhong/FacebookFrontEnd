@@ -30,13 +30,14 @@ const GlobalRealTime = () => {
                 .catch((err) => console.error('Error connecting to the hub:', err));
 
             connection.on('ReceiveMessage', (receiverIds, conversationId, message) => {
-                console.log('ReceiveMessage', receiverIds, conversationId, message);
                 let conversations = globalState?.conversations;
                 let conversation = conversations.find(x => x.id === conversationId);
                 if(receiverIds.includes(globalState?.user?.id))
                 {
                     if (conversation) {
+                        console.log(receiverIds)
                         conversation?.messages.push(message);
+                        console.log(JSON.stringify(conversation?.messages))
                         dispatchGlobalState(setConversations(conversations));
                     }
                     else {
