@@ -13,6 +13,14 @@ import { useParams } from "react-router-dom";
 import { useGlobalContext } from "../../data-store";
 import { userApi } from "../../data/index";
 
+const friendState ={
+  friend: 'friend',
+  friendRequest: 'friendRequest',
+  friendWaitAccept: 'friendWaitAccept',
+  stranger: 'stranger',
+  self: 'self',
+}
+
 function Profile(props) {
   document.querySelector("body").setAttribute("data-theme", "dark");
 
