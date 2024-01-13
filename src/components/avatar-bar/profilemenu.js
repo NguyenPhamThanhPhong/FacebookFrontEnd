@@ -1,17 +1,11 @@
 import React, { useState } from 'react';
-import Friend from '../../components/friends/friend';
 import Mainpost from '../../components/post/main-post';
 import "./profilemenu.css";
-import About from '../../pages/profile/about';
+import About from '../../pages/profile/AboutTab';
+import FriendTab from '../../pages/profile/FriendTab';
 //React-API here
 import Nav from 'react-bootstrap/Nav';
-import NavLink from 'react-bootstrap/NavLink'
-import NavItem from 'react-bootstrap/NavItem'
-import { NavDropdown } from 'react-bootstrap';
 import Tab from 'react-bootstrap/Tab';
-import TabContainer from 'react-bootstrap/TabContainer'
-import TabContent from 'react-bootstrap/TabContent';
-import TabPane from 'react-bootstrap/TabPane';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 
@@ -51,8 +45,8 @@ function ProfileMenus(props) {
             <Tab.Pane bsPrefix = 'pane2' eventKey="2">
                 <About/>
             </Tab.Pane>
-            <Tab.Pane eventKey="3">
-                <Friend/>
+            <Tab.Pane bsPrefix = 'pane3' eventKey="3">
+                <FriendTab/>
             </Tab.Pane>
 
           </Tab.Content>
