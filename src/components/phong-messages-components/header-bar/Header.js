@@ -16,9 +16,9 @@ function Header(props) {
 
     // const homeIcon = <FontAwesomeIcon icon={faHome} />;
 
-    let facebook = <RoundButton width={'45px'} height={'45px'} iconWidth={'90%'} iconHeight={'90%'}
-        icon={faFacebookF} backgroundColor={'var(--facebook-color)'}
-        iconColor={'white'} />
+    let customLogo = <RoundButton width={'45px'} height={'45px'} iconWidth={'90%'} iconHeight={'90%'}
+    icon={faFacebookF} backgroundColor={'var(--facebook-color)'}
+    iconColor={'white'}/>
 
     let arrow = <RoundButton width={'35px'} height={'35px'}
         icon={faArrowLeft}
@@ -43,7 +43,7 @@ function Header(props) {
         return null;
     return (
         <nav className="header-navbar">
-            <SearchBox />
+            <SearchBox customLogo={customLogo} backIcon={arrow} />
             <div className="header-navbar-navs">
                 <RoundSquareNav
                     targetingPath={pathNames.home}

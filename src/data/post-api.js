@@ -9,7 +9,7 @@ const formdataHeader = APIUtil.formdataHeader;
 const postCreate = async (createPostRequest) => {
     try {
         const response = await axios.post(baseURL + `/post-create`, createPostRequest, jsonHeader);
-        return { isError: false, data: response.data };
+        return { isError: false, data: response };
     } catch (error) {
         return { isError: true, data: error };
     }
@@ -17,8 +17,8 @@ const postCreate = async (createPostRequest) => {
 
 const postGetFromIds = async (ids) => {
     try {
-        const response = await axios.post(baseURL + `/post-get-many`, ids, jsonHeader);
-        return { isError: false, data: response.data };
+        const response = await axios.post(baseURL + `/post-get-from-ids`, ids,  { headers: { 'Content-Type': 'application/json' } } );
+        return { isError: false, data: response };
     } catch (error) {
         return { isError: true, data: error };
     }
@@ -27,7 +27,7 @@ const postGetFromIds = async (ids) => {
 const postLikeUnlike = async (id, updateAction, likeRepresentation) => {
     try {
         const response = await axios.post(baseURL + `/post-like-unlike/${id}/${updateAction}`, likeRepresentation, jsonHeader);
-        return { isError: false, data: response.data };
+        return { isError: false, data: response };
     } catch (error) {
         return { isError: true, data: error };
     }
@@ -37,7 +37,7 @@ const postLikeUnlike = async (id, updateAction, likeRepresentation) => {
 const postDelete = async (id) => {
     try {
         const response = await axios.delete(baseURL + `/post-delete/${id}`, jsonHeader);
-        return { isError: false, data: response.data };
+        return { isError: false, data: response };
     } catch (error) {
         return { isError: true, data: error };
     }
@@ -47,7 +47,7 @@ const postDelete = async (id) => {
 const postUpdate = async (id, updatePostRequest) => {
     try {
         const response = await axios.put(baseURL + `/post-update/${id}`, updatePostRequest, jsonHeader);
-        return { isError: false, data: response.data };
+        return { isError: false, data: response };
     } catch (error) {
         return { isError: true, data: error };
     }

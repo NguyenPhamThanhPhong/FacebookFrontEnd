@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react';
-import { useGlobalContext, setConversations } from './data-store';
+import { useGlobalContext, setConversations,setMyConnection } from './data-store';
 
 import * as signalR from '@microsoft/signalr';
 
-const ChatComponent = () => {
+const GlobalRealTime = () => {
     const [connection, setConnection] = useState(null);
 
     const [globalState, dispatchGlobalState] = useGlobalContext();
@@ -12,7 +12,7 @@ const ChatComponent = () => {
 
     useEffect(() => {
         const newConnection = new signalR.HubConnectionBuilder()
-            .withUrl('https://localhost:7095/chathub') // Replace with your actual hub URL
+            .withUrl('https://192.168.1.7:7095/chathub') // Replace with your actual hub URL
             .build();
 
         setConnection(newConnection);
@@ -24,13 +24,17 @@ const ChatComponent = () => {
         if (connection) {
             connection
                 .start()
-                .then(() => console.log('Connected to the hub'))
+                .then(() => {
+                    dispatchGlobalState(setMyConnection(connection));
+                })
                 .catch((err) => console.error('Error connecting to the hub:', err));
 
             connection.on('ReceiveMessage', (receiverIds, conversationId, message) => {
+                console.log('ReceiveMessage', receiverIds, conversationId, message);
                 let conversations = globalState?.conversations;
                 let conversation = conversations.find(x => x.id === conversationId);
-                if (receiverIds.includes(globalState?.user?.id)) {
+                if(receiverIds.includes(globalState?.user?.id))
+                {
                     if (conversation) {
                         conversation?.messages.push(message);
                         dispatchGlobalState(setConversations(conversations));
@@ -46,15 +50,14 @@ const ChatComponent = () => {
             connection.on('DeleteMessage', ( receiverIds, conversationId, messageId) => {
                 let conversations = globalState?.conversations;
                 let conversation = conversations.find(x => x.id === conversationId);
-                if (receiverIds.includes(globalState?.user?.id)) {
+                if(receiverIds.includes(globalState?.user?.id))
+                {
                     if (conversation) {
-                        if (conversation && conversation.messages) {
-                            conversation.messages = conversation.messages.filter(x => x.id !== messageId);
-                          }
-                          
-                        dispatchGlobalState(setConversations(conversations));
-                    }
-                    else {
+                        let index = conversation?.messages.findIndex(x => x.id === messageId);
+                        if (index !== -1) {
+                            conversation?.messages.splice(index, 1);
+                            dispatchGlobalState(setConversations(conversations));
+                        }
                     }
                 }
             });
@@ -77,4 +80,4 @@ const ChatComponent = () => {
     );
 };
 
-export default ChatComponent;
+export default GlobalRealTime;

@@ -4,6 +4,11 @@
     border-radius: 10px;
 }
 
+.conversation-item-container:hover{
+    background-color: var(--hover-color);
+    cursor: pointer;
+}
+
 
 .inner-container{
     width: 90%;
@@ -13,7 +18,7 @@
     align-items: center;
 }
 
-.left{
+.conversation-item-left{
   width: 50px; /* Adjust the width and height as needed */
   height: 60px;
   display: grid;

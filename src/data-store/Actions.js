@@ -19,7 +19,7 @@ import {
     payload,
   });
 
-  const setConnection = (payload) => ({
+  const setMyConnection = (payload) => ({
     type: SET_CONNECTION,
     payload,
   });
@@ -81,7 +81,7 @@ import {
   
   export {
     setUser,
-    setConnection,
+    setMyConnection,
     setPosts,
     appendPosts,
     removePost,

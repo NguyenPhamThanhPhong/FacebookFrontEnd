@@ -9,7 +9,7 @@ const formdataHeader = APIUtil.formdataHeader;
 const viewDTO = async (id) => {
     try {
         const response = await axios.get(baseURL + `/viewDTO/${id}`, jsonHeader);
-        return { isError: false, data: response.data };
+        return { isError: false, data: response };
     } catch (error) {
         return { isError: true, data: error };
     }
@@ -18,7 +18,7 @@ const viewDTO = async (id) => {
 const getFromIds = async (ids) => {
     try {
         const response = await axios.post(baseURL + `/get-from-ids`, ids, jsonHeader);
-        return { isError: false, data: response.data };
+        return { isError: false, data: response };
     } catch (error) {
         return { isError: true, data: error };
     }
@@ -27,7 +27,7 @@ const getFromIds = async (ids) => {
 const updateEmail = async (id, email) => {
     try {
         const response = await axios.post(baseURL + `/update-email/${id}`, email, jsonHeader);
-        return { isError: false, data: response.data };
+        return { isError: false, data: response };
     } catch (error) {
         return { isError: true, data: error };
     }
@@ -36,7 +36,7 @@ const updateEmail = async (id, email) => {
 const updatePassword = async (id, password) => {
     try {
         const response = await axios.post(baseURL + `/update-password/${id}`, password, jsonHeader);
-        return { isError: false, data: response.data };
+        return { isError: false, data: response };
     } catch (error) {
         return { isError: true, data: error };
     }
@@ -46,7 +46,7 @@ const updatePersonalInfo = async (id, personalInfo) => {
     try {
         let request = APIUtil.GenerateFormData(personalInfo);
         const response = await axios.post(baseURL + `/update-personal-info/${id}`, request, formdataHeader);
-        return { isError: false, data: response.data };
+        return { isError: false, data: response };
     } catch (error) {
         return { isError: true, data: error };
     }
@@ -55,7 +55,7 @@ const updatePersonalInfo = async (id, personalInfo) => {
 const userDelete = async (id) => {
     try {
         const response = await axios.delete(baseURL + `/user-delete/${id}`, jsonHeader);
-        return { isError: false, data: response.data };
+        return { isError: false, data: response };
     } catch (error) {
         return { isError: true, data: error };
     }
@@ -64,7 +64,7 @@ const userDelete = async (id) => {
 const userUpdateFriendRequest = async (targetId, option) => {
     try {
         const response = await axios.post(baseURL + `/user-update-friend-request/${targetId}/${option}`, null, jsonHeader);
-        return { isError: false, data: response.data };
+        return { isError: false, data: response };
     } catch (error) {
         return { isError: true, data: error };
     }
@@ -73,7 +73,7 @@ const userUpdateFriendRequest = async (targetId, option) => {
 const userUpdateUnfriendAcceptRequest = async (targetId, option) => {
     try {
         const response = await axios.post(baseURL + `/user-unfriend-accept-request/${targetId}/${option}`, null, jsonHeader);
-        return { isError: false, data: response.data };
+        return { isError: false, data: response };
     } catch (error) {
         return { isError: true, data: error };
     }
@@ -82,7 +82,7 @@ const userUpdateUnfriendAcceptRequest = async (targetId, option) => {
 const userUpdateBlockList = async (targetId, option) => {
     try {
         const response = await axios.post(baseURL + `/user-update-block-list/${targetId}/${option}`, null, jsonHeader);
-        return { isError: false, data: response.data };
+        return { isError: false, data: response };
     } catch (error) {
         return { isError: true, data: error };
     }

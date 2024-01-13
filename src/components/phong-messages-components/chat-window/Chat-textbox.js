@@ -3,35 +3,54 @@ import './Chat-textbox.css'
 
 // =========================== components here ===========================
 import RoundButton from "@components/phong-messages-components/Round-button";
-import { faSmile,faImage,faNoteSticky,faPaperPlane } from '@fortawesome/free-solid-svg-icons';
+import { faSmile, faImage, faNoteSticky, faPaperPlane } from '@fortawesome/free-solid-svg-icons';
+import { useGlobalContext } from '../../../data-store';
 // =========================== library here ===========================
 import React, { useState } from 'react';
+
+import { useDataHook } from '../../../data-hook'
 
 function ChatTextbox(props) {
     const [inputValue, setInputValue] = useState('');
     const [rows, setRows] = useState(1);
+    const [globalState, dispatchGlobalState] = useGlobalContext();
+
+    const { fetchMessages, sendMessage } = useDataHook();
+
+    let conversation = props.conversation;
+
+    const handleSend = async (content) => {
+        if (globalState.realtime?.connection && conversation) {
+            sendMessage(conversation?.participantIds,conversation.id, globalState.user?.id, content, null, null)
+        }
+    }
+
+
 
     const handleKeyPress = (event) => {
-        if (event.key === 'Enter')
-            event.preventDefault();
-        // else if ((event.key === 'Backspace' || event.key === 'Delete') && inputValue.endsWith('\n')) {
-        //     if (rows > 0)
-        //         setRows(rows - 1);
-        // }
         if (event.key === 'Enter' && event.shiftKey) {
             event.preventDefault();
             if (rows <= 4)
                 setRows(rows + 1);
-            setInputValue((prevValue) => prevValue + '\n');
+            setInputValue((prevValue) => {
+                console.log(prevValue);
+                return prevValue + '\n';
+            });
+            return;
         }
-
+        if (event.key === 'Enter') {
+            event.preventDefault();
+            if (inputValue.trim() !== '' && conversation) {
+                handleSend(inputValue);
+                setInputValue('');
+                setRows(1);
+            }
+        }
     };
 
     const handleChange = (event) => {
         const newValue = event.target.value;
         setInputValue(newValue);
-        console.log(newValue.toString());
-        // Count the number of newline characters
         let count = (newValue.match(/\n/g) || []).length;
         var rownums = count + 1;
         if (rownums < 1)

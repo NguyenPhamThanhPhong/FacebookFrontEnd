@@ -17,8 +17,9 @@ const conversationCreate = async (createConversationRequest) => {
 
 const conversationGetFromIds = async (ids,skip) => {
     try {
-        const response = await axios.post(baseURL + `/conversation-get-from-ids/${skip}`, ids, jsonHeader);
-        return { isError: false, data: response.data };
+        const response = await axios.post(baseURL + `/conversation-get-from-ids/${skip}`, ids, 
+        { headers: { 'Content-Type': 'application/json' } });
+        return { isError: false, data: response };
     } catch (error) {
         return { isError: true, data: error };
     }

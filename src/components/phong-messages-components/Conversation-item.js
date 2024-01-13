@@ -4,20 +4,26 @@ import "./Conversation-item.css";
 
 function ConversationItem(props) {
 
-    let urlstring = 'https://ahrefs.com/blog/wp-content/uploads/2020/05/fb-what-is-https.png'
-    let conversationName = 'hello jadskljfa'
-    let message = 'Nguyễn Văn A'
+    let urlstring = props.avatarUrl || 'https://www.w3schools.com/howto/img_avatar.png'
+    let conversationName = props.conversationName || 'Phong'
+    let message = props.message || 'hello'
+
+    
+    let myOnClick = ()=>{}
+    if(props.onclick){
+        myOnClick = ()=>{props.onclick(props.myKey)}
+    }
+    let myKey = props.myKey
 
     return (
 
-        <div style={props.style} className="conversation-item-container">
+        <div onClick={myOnClick} style={props.style} className="conversation-item-container">
                 <div className="inner-container">
-                    <div className="left">
+                    <div className="conversation-item-left">
                         <div className="flex-avatar-container">
                             <div className="avatar-container">
                                 <img src={urlstring}
-                                    alt="Avatar" className="round-avatar">
-                                </img>
+                                    alt="Avatar" className="round-avatar" />
                             </div>
                         </div>
 
@@ -34,7 +40,7 @@ function ConversationItem(props) {
 
                 </div>
         </div>
-    )
+    );
 }
 
 export default ConversationItem
