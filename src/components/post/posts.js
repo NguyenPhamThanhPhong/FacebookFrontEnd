@@ -9,9 +9,12 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import Modal from "react-bootstrap/Modal";
 import Image from "react-bootstrap/Image";
 import "./post.css";
-
-import Comment from "./comment";
+import { Commentdata } from "../../data/comment-api.js";
+import Form from "react-bootstrap/Form";
+import Comment from "./comment.js";
 import { ModalBody } from "react-bootstrap";
+import NewComment from "../../components/post/newcomment.js";
+import MoreHorizIcon from '@mui/icons-material/MoreHoriz';
 
 const CommentModal = (props) => {
   const [show, setShow] = useState(false);
@@ -42,16 +45,13 @@ const CommentModal = (props) => {
                 height={50}
                 style={{ marginRight: "10px" }}
               />
-              <span>Card Title</span>
+              <span>{props.title}</span>
             </Modal.Title>
           </Modal.Header>
           <Modal.Body style={{ padding: "0px" }}>
-            <span style={{ marginLeft: "10px" }}>
-              Some quick example text to build on the card title and make up the
-              bulk of the card's content.
-            </span>
+            <span style={{ marginLeft: "10px" }}>{props.description}</span>
             <Image
-              src="https://img.freepik.com/free-photo/beautiful-nature-landscape-with-mountains-lake_23-2150705947.jpg?t=st=1702046850~exp=1702050450~hmac=86d2ada4d8881b53bfd83ca81f8a94fba7ee3ded65745ef889d5496f971a4da7&w=1800"
+              src={props.imagepost}
               style={{ margin: "10px 0px" }}
               width={"100%"}
             />
@@ -107,44 +107,115 @@ const CommentModal = (props) => {
   );
 };
 
+const PostsEdit = (props) => {
+  const [editshow, seteditShow] = useState(false);
+
+  const handleEditClose = () => seteditShow(false);
+  const handleEditShow = () => seteditShow(true);
+
+  return (
+    <div>
+      <Modal
+        style={{ borderRadius: "10px", zIndex: "9999" }}
+        {...props}
+        size="lg"
+        aria-labelledby="contained-modal-title-vcenter"
+        centered
+      >
+        <div className="modal-post">
+          <Modal.Header
+            closeButton
+            closeVariant="white"
+            style={{ border: "0px", paddingBottom: "10px" }}
+          >
+            <Modal.Title id="contained-modal-title-vcenter">
+              <Image
+                src={props.image}
+                roundedCircle
+                width={50}
+                height={50}
+                style={{ marginRight: "10px" }}
+              />
+              <span>{props.title}</span>
+            </Modal.Title>
+          </Modal.Header>
+          <Modal.Body style={{ padding: "0px", margin:"10px" }}>
+              <Form>
+                <Form.Group
+                  className="mb-3"
+                  controlId="exampleForm.ControlTextarea1"
+                >
+                  <Form.Control
+                    as="textarea"
+                    defaultValue={props.description}
+                    rows={3}
+                  ></Form.Control>
+                </Form.Group>
+              </Form>
+            <Image
+              src={props.imagepost}
+              style={{ margin: "10px 0px" }}
+              width={"100%"}
+            />
+          </Modal.Body>
+          <Modal.Body></Modal.Body>
+          <Modal.Footer>
+            <Button>Lưu</Button>
+          </Modal.Footer>
+        </div>
+      </Modal>
+    </div>
+  );
+};
+
 const Posts = (props) => {
   const [modalShow, setModalShow] = React.useState(false);
+  const [modalEditShow, setModalEditShow] = React.useState(false);
 
   return (
     <div>
       <Card bsPrefix="background">
         <Card.Body>
           <Card.Title>
-            <div style={{ display: "flex" }}>
-              <Image
-                src={props.image}
-                roundedCircle
-                width={50}
-                height={50}
-                style={{ margin: "10px" }}
-              />
-              <div style={{ display: "flex", flexDirection: "column" }}>
-                <span style={{ marginTop: "15px" }}>Card title</span>
-                <span
-                  style={{
-                    fontSize: "12px",
-                    fontWeight: "100",
-                    marginBottom: "0px",
-                  }}
-                >
-                  5 giờ
-                </span>
+            <div style={{ display: "flex", justifyContent: "space-between",alignItems:'center' }}>
+              <div style={{ display: "flex" }}>
+                <Image
+                  src={props.image}
+                  roundedCircle
+                  width={50}
+                  height={50}
+                  style={{ margin: "10px" }}
+                />
+                <div style={{ display: "flex", flexDirection: "column" }}>
+                  <span style={{ marginTop: "15px" }}>{props.title}</span>
+                  <span
+                    style={{
+                      fontSize: "12px",
+                      fontWeight: "100",
+                      marginBottom: "0px",
+                    }}
+                  >
+                    5 giờ
+                  </span>
+                </div>
               </div>
+              <MoreHorizIcon style={{cursor:'pointer',margin:'10px'}} onClick={() => setModalEditShow(true)}></MoreHorizIcon>
+              
             </div>
+            <PostsEdit
+                image={props.image}
+                title={props.title}
+                show={modalEditShow}
+                description={props.description}
+                imagepost={props.imagepost}
+                onHide={() => setModalEditShow(false)}
+              />
           </Card.Title>
           <Card.Text style={{ padding: "0 10px 0 10px" }}>
-            Someeeeeeeeeeeeeeeeee quick example text to build on the card title
-            and make up the bulk of the card's content.
+            {props.description}
           </Card.Text>
-          <Card.Img
-            variant="top"
-            src="https://img.freepik.com/free-photo/beautiful-nature-landscape-with-mountains-lake_23-2150705947.jpg?t=st=1702046850~exp=1702050450~hmac=86d2ada4d8881b53bfd83ca81f8a94fba7ee3ded65745ef889d5496f971a4da7&w=1800"
-          />
+          
+          <Card.Img variant="top" src={props.imagepost} />
         </Card.Body>
         <div style={{ marginTop: "10px" }}>
           <div className="interact">
@@ -164,7 +235,14 @@ const Posts = (props) => {
             Bình luận
           </Button>
 
-          <CommentModal image={props.image} show={modalShow} onHide={() => setModalShow(false)} />
+          <CommentModal
+            image={props.image}
+            title={props.title}
+            show={modalShow}
+            description={props.description}
+            imagepost={props.imagepost}
+            onHide={() => setModalShow(false)}
+          />
 
           <DropdownButton
             as={ButtonGroup}
@@ -175,6 +253,15 @@ const Posts = (props) => {
             <Dropdown.Item eventKey="2">Dropdown link</Dropdown.Item>
           </DropdownButton>
         </div>
+        <NewComment />
+        {/* {Commentdata.map((item, index) => (
+          <Comment
+            key={item.Id}
+            name={item.UserId}
+            time={item.CommentTime}
+            content={item.Content}
+          ></Comment>
+        ))} */}
       </Card>
     </div>
   );
