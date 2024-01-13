@@ -3,7 +3,7 @@ import axios from "axios";
 
 
 const baseURL = APIUtil.baseURL;
-const jsonHeader = APIUtil.jsonHeader;
+const jsonHeader = { headers: { 'Content-Type': 'application/json' } }
 const formdataHeader = APIUtil.formdataHeader;
 
 const viewDTO = async (id) => {
@@ -33,9 +33,9 @@ const updateEmail = async (id, email) => {
     }
 }
 
-const updatePassword = async (id, password) => {
+const updatePassword = async (username, password) => {
     try {
-        const response = await axios.post(baseURL + `/update-password/${id}`, password, jsonHeader);
+        const response = await axios.post(baseURL + `/update-password/${username}`, password, jsonHeader);
         return { isError: false, data: response };
     } catch (error) {
         return { isError: true, data: error };

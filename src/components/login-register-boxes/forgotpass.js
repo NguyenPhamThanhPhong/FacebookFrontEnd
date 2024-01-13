@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from "react";
 import './style.css'
 import { Link, useNavigate } from 'react-router-dom';
+import { UserRegisterRequest, loginApi } from '../../data/index'
+
 
 function Forgotpass() {
     const [email, setEmail] = useState('');
@@ -13,11 +15,36 @@ function Forgotpass() {
     const [showButton, setShowButton] = useState(true);
     const [messageColorClass, setmessageColorClass] = useState('');
 
+    const [realCode, setRealCode] = useState('');
+
+
+    const sendMailVerification = (username) => {
+        loginApi.sendMailVerification(username).then(res => {
+            if (!res.isError) {
+                setRealCode(res.data?.data);
+                setShowPasscodeInput(true);
+                setDisableEmailInput(true);
+                setShowButton(false);
+                setmessageColorClass('text-success');
+                setStatusMessage("A request for password reset email has been sent. If you don't see the email, check your spam folder.");
+                return true;
+            }
+            else {
+                let message = res.data?.message;
+                setStatusMessage("Failed to send verification email: " + message);
+                setmessageColorClass('text-danger');
+            }
+        }).catch(err => {
+            console.log(err);
+        });
+        return false;
+    }
+
+
     const navigate = useNavigate();
     useEffect(() => {
         const formContainer = document.querySelector('.form_container');
         formContainer.classList.add('centered');
-
         return () => {
             formContainer.classList.remove('centered');
         };
@@ -40,25 +67,22 @@ function Forgotpass() {
 
     const handleRequestPasswordReset = (e) => {
         e.preventDefault();
-        if (!email.endsWith('@gmail.com')) {
-            setEmailError(true);
-            setStatusMessage("The email you entered is not connected to an account.");
-            setmessageColorClass('text-danger');
-            setTimeout(() => {
-                setEmailError(false);
-            }, 200);
-            return;
-        }
-        setShowPasscodeInput(true);
-        setDisableEmailInput(true);
-        setShowButton(false);
-        setmessageColorClass('text-success');
-        setStatusMessage("A request for password reset email has been sent. If you don't see the email, check your spam folder.");
+        // if (!email.includes('@') || !email.includes('.')) {
+        //     setEmailError(true);
+        //     setStatusMessage("The email you entered is not connected to an account.");
+        //     setmessageColorClass('text-danger');
+        //     setTimeout(() => {
+        //         setEmailError(false);
+        //     }, 200);
+        //     return;
+        // }
+        sendMailVerification(email);
+
     };
 
     const handlePasscodeSubmit = (e) => {
         e.preventDefault();
-        if (passcode !== '123456') {
+        if (passcode !== realCode.toString()) {
             setPasscodeError(true);
             setStatusMessage("Incorrect passcode.");
             setmessageColorClass('text-danger');
@@ -68,7 +92,7 @@ function Forgotpass() {
             return;
         }
 
-        navigate('/resetpass');
+        navigate(`/resetpass/${email}`);
     };
 
     return (

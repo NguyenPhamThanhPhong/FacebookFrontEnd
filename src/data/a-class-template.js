@@ -115,7 +115,7 @@ class UpdateUserPersonalInformationRequest{
 }
 
 class UserRegisterRequest{
-    constructor(username,password,email,name,dateOfBirth){
+    constructor(name,username,password,email,dateOfBirth){
         this.username = username;
         this.password = password;
         this.email = email;

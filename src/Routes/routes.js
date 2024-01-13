@@ -25,7 +25,7 @@ export const publicRoutes = [
     {path: pathNames.login, component: Login},
     {path: pathNames.signup, component: Signup},
     {path: pathNames.recoverpass, component: Forgotpass},
-    {path: pathNames.resetpass, component: Resetpass},
+    {path: pathNames.resetpass+'/:id', component: Resetpass},
     {path: pathNames.home, component: home},
     {path: pathNames.login_register, component: login_register},
     {path: pathNames.messages, component: messages},
