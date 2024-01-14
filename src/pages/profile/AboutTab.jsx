@@ -39,8 +39,8 @@ const About = (props) => {
     let personalInfo = user?.personalInfo || {};
 
     return (
+        <div className={`AboutContainer ${props.activeKey === "2" ? 'active' : ''}`}>
         <div class="AboutContainer">
-
                 <div class="row">
                     <div className="rowcontain">
                         <div className="iconcontain">
@@ -142,7 +142,7 @@ const About = (props) => {
                     </div>
                 </div>
             </div>
-
+         </div>
       </div>
 
     );
