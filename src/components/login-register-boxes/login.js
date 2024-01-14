@@ -70,9 +70,6 @@ function Login(){
         }
     };
 
-    const handleSeeContext = () => {
-    }
-
     const handleInputChange = () => {
         setStatusMessage('');
     };
@@ -80,9 +77,6 @@ function Login(){
     return(
         <div className='login template d-flex justify-content-center align-items-center 100-w vh-100'>
             <div className='form_container p-5 rounded'>
-                <button onClick={handleSeeContext}>
-                    click me to see context
-                </button>
                <form>
                 <h3 className='text-center fw-bold'>Sign in</h3>
                 <br></br>

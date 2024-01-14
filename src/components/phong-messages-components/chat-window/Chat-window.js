@@ -1,13 +1,17 @@
 import './Chat-window.css';
 
-import ChatTextbox from '@root/components/phong-messages-components/chat-window/Chat-textbox';
+import ChatTextbox from '../chat-window/Chat-textbox';
 import RoundButton from '@root/components/phong-messages-components/Round-button';
 
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faBellSlash, faCircleInfo, faPhone, faVideo } from '@fortawesome/free-solid-svg-icons'
 import { MessageBox, Avatar } from "react-chat-elements";
-import React, { useState, useEffect, useRef } from 'react'
+import React, { useState, useEffect, useRef,useLayoutEffect } from 'react'
+
+import { useDataHook } from '../../../data-hook'
+import { useGlobalContext } from '../../../data-store';
+
 
 
 
@@ -16,39 +20,37 @@ import React, { useState, useEffect, useRef } from 'react'
 
 function ChatWindow(props) {
 
-    // if(customStyle === undefined)
-    //     customStyle = {}
-    // if(conversation === undefined)
-    //     conversation = {}
-    // if(messages === undefined)
-    //     messages = {}
+    let selectedConversation = props.conversation;
 
+    const [globalState, dispatchGlobalState] = useGlobalContext();
+    let people = globalState?.people;
+    let hostId = globalState?.user?.id;
+    const chatBodyRef = useRef();
 
+    const scrollToBottom = () => {
+        if (chatBodyRef.current) {
+            chatBodyRef.current.scrollTop = chatBodyRef.current.scrollHeight;
+        }
+    };
 
-    let myMessages = [{ position: '', text: "\n" }, { position: 'right' }, { position: '' }, { position: '' }, { position: '' }, { position: '' }]
-
-    for (let i = 0; i < 50; i++) {
-        if (i % 2 === 0)
-            myMessages.push({ position: 'right' })
-        else
-            myMessages.push({ position: '' })
-    }
-
-
+    useEffect(() => {
+        console.log('execute scroll')
+        scrollToBottom();
+    }, []);
     return (
         <div className='chat-window'>
 
             <div className='chat-header'>
                 <div className='chat-title-group'>
                     <div style={{ Display: 'inline' }}>
-                    {(props.avatar || (
-                                <Avatar
-                                    src="https://avatars.githubusercontent.com/u/80540635?v=4"
-                                    alt="avatar"
-                                    size="xlarge"
-                                    type="circle"
-                                />
-                            ))}
+                        {(props.avatar || (
+                            <Avatar
+                                src="https://avatars.githubusercontent.com/u/80540635?v=4"
+                                alt="avatar"
+                                size="xlarge"
+                                type="circle"
+                            />
+                        ))}
                     </div>
                     <div className='chat-conversation-title'>
                         <div>
@@ -67,38 +69,38 @@ function ChatWindow(props) {
                         iconWidth={'80%'} iconHeight={'80%'} iconColor={'red'} icon={faCircleInfo} />
                 </div>
             </div>
-            <div className='chat-window-chat-body'>
-                {myMessages.map((message, index) => {
-                    return (
-                        <div className='chat-message-row'>
-                            {message.position === '' && (props.avatar || (
-                                <Avatar
-                                    src="https://avatars.githubusercontent.com/u/80540635?v=4"
-                                    alt="avatar"
-                                    size="xlarge"
-                                    type="circle"
-                                />
-                            ))}
-                            <MessageBox
-                                key={index}
-                                className='message-item '
-                                notchStyle={{ fill: message.position === 'right' ? 'var(--facebook-color)' : 'var(--message-color)' }}
-                                position={message.position}
-                                type={"text"}
-                                text="Lorem ipsum dolor sit amet,
-                   consectetur adipiscing elit, sed do
-                    eiusmod tempor incididunt ut labore
-                     et dolore magna aliqua. Ut enim ad 
-                     minim veniam, quis nostrud exercitation t, sunt in culpa qui 
-                     officia deserunt mollit anim id est laborum."
-                            />
-                        </div>
+            <div ref={chatBodyRef} className='chat-window-chat-body'>
+                {selectedConversation?.messages && hostId &&
+                    selectedConversation?.messages.map((message, index) => {
+                        let isOwner = message.senderID === hostId || message.senderId === hostId;
+                        let position = isOwner ? 'right' : 'left';
 
-                    )
-                })}
+                        let person = people.find(x => x.id === message.senderID);
+                        let avatarUrl = person?.avatarUrl || 'https://www.w3schools.com/howto/img_avatar.png';
+                        return (
+                            <div  className='chat-message-row' key={index}>
+                                {!isOwner && (
+                                    <Avatar
+                                        src={avatarUrl}
+                                        alt="avatar"
+                                        size="xlarge"
+                                        type="circle"
+                                    />
+                                )}
+                                <MessageBox
+                                    className='message-item'
+                                    notchStyle={{ fill: position === 'right' ? 'var(--facebook-color)' : 'var(--message-color)' }}
+                                    position={position}
+                                    type="text"
+                                    text={message.content}
+                                />
+                            </div>
+                        );
+                    })
+                }
             </div>
             <div className='chat-footer'>
-                <ChatTextbox />
+                <ChatTextbox scrollToBottom={scrollToBottom} conversation={props.conversation} />
 
             </div>
         </div>

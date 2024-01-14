@@ -46,34 +46,55 @@
   z-index: 0;
 }
 
-.flex-online-status{
+.friend-request-status{
   height: 100%;
   grid-column: 2/span 2;
-  
   display: flex;
   justify-content: flex-start;
   align-items: flex-end;
 }
 
-.online-status-div{
+.fonline-status-div{
   grid-column: 3;
   column-span: 1;
   width: 20px;
   height: 20px;
   border: var(--background-color) 2px solid;
-  background-color: rgba(49,162,76,255); /* or any color you prefer */
+  background-color: blue; /* or any color you prefer */
   border-radius: 50%; /* creates a round shape */
   z-index: 2;
   margin-bottom: 3px;
 }
 
-.content-div{
-  padding-left: 10px;
+.request-content-div{
+  padding-left: 15px;
 }
 
-.content-div h4,
-.content-div p{
+.request-content-div h7,
+.request-content-div p{
   color: var(--text-color);
   margin: 0;
+}
+.request-btn1{
+  border-radius: 12px;
+  background-color: blue;
+  color: white;
+  padding: 8px 16px;
+  border: none;
+  cursor: pointer;
+  font-weight: bold;
+}
+.request-btn2{
+  margin-left: 16px;
+  border-radius: 12px;
+  background-color: grey;
+  color: white;
+  padding: 8px 16px;
+  border: none;
+  cursor: pointer;
+  font-weight: bold;
+}
+.request-content-div h8{
+  color: white;
 }
   

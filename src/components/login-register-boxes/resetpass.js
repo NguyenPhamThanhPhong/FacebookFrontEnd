@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate,useParams } from "react-router-dom";
+import { userApi } from '../../data/index'
 import './style.css'
 
 function Resetpass() {
@@ -14,6 +15,32 @@ function Resetpass() {
     const [disableButton, setDisableButton] = useState(false);
     const navigate = useNavigate();
 
+    let {id:username} = useParams();
+
+    const handleChangePassword = (password) =>{
+        password = password.toString();
+        userApi.updatePassword(username,password).then(res => {
+            if (!res.isError) {
+                setStatusMessage("Password has been changed successfully, you will be automatically redirected back to the login page shortly.");
+                setmessageColorClass('text-success');
+                setDisableInput(true);
+                setDisableButton(true);
+                setTimeout(() => {
+                    navigate('/login');
+                }, 5000);
+                return true;
+            }
+            else {
+                let message = res.data?.message;
+                setStatusMessage("Failed to change password: " + message);
+                setmessageColorClass('text-danger');
+            }
+        }).catch(err => {
+            console.log(err);
+        });
+        return false;
+    }
+
     useEffect(() => {
         const formContainer = document.querySelector('.form_container');
         formContainer.classList.add('centered');
@@ -22,6 +49,8 @@ function Resetpass() {
             formContainer.classList.remove('centered');
         };
     }, []);
+
+
 
     const handleNewPasswordChange = (e) => {
         setNewPassword(e.target.value);
@@ -73,15 +102,7 @@ function Resetpass() {
             return;
         }
 
-        setmessageColorClass('text-success');
-        setStatusMessage("Password has been reset successfully, you will be automatically redirected back to the login page shortly.");
-        setNewPassword('');
-        setConfirmPassword('');
-        setDisableInput(true);
-        setDisableButton(true);
-        setTimeout(() => {
-            navigate('/');
-        }, 5000);
+        handleChangePassword(newPassword);
     };
 
     return (

@@ -1,21 +1,20 @@
 import React, { useState } from 'react';
-import Friend from '../../components/friends/friend';
 import Mainpost from '../../components/post/main-post';
 import "./profilemenu.css";
-import About from '../../pages/profile/about';
+import About from '../../pages/profile/AboutTab';
+import FriendTab from '../../pages/profile/FriendTab';
 //React-API here
 import Nav from 'react-bootstrap/Nav';
-import NavLink from 'react-bootstrap/NavLink'
-import NavItem from 'react-bootstrap/NavItem'
-import { NavDropdown } from 'react-bootstrap';
 import Tab from 'react-bootstrap/Tab';
-import TabContainer from 'react-bootstrap/TabContainer'
-import TabContent from 'react-bootstrap/TabContent';
-import TabPane from 'react-bootstrap/TabPane';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import { useGlobalContext } from "../../data-store"
 
 
 function ProfileMenus(props) {
+
+  let user = props?.user || null;
+
+
   return (
     <div className='ProfileMenusMain'>
       <Tab.Container id="left-tabs-example" defaultActiveKey="1">
@@ -35,12 +34,7 @@ function ProfileMenus(props) {
             <Nav.Item>
               <Nav.Link eventKey="6">Videos</Nav.Link>
             </Nav.Item>
-            <Nav.Item>
-              <Nav.Link eventKey="7">More</Nav.Link>
-            </Nav.Item>
-            <Nav.Item>
-            <Nav.Link eventKey="8">...</Nav.Link>
-            </Nav.Item>
+
             
           </Nav>
           <Tab.Content as = 'tab-content'>
@@ -49,10 +43,10 @@ function ProfileMenus(props) {
                 <Mainpost image={props.image}/>
             </Tab.Pane>
             <Tab.Pane bsPrefix = 'pane2' eventKey="2">
-                <About/>
+                <About user={user}/>
             </Tab.Pane>
-            <Tab.Pane eventKey="3">
-                <Friend/>
+            <Tab.Pane bsPrefix = 'pane3' eventKey="3">
+                <FriendTab/>
             </Tab.Pane>
 
           </Tab.Content>

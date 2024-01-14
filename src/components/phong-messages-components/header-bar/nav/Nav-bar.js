@@ -14,69 +14,90 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faGithub, faFacebookMessenger } from '@fortawesome/free-brands-svg-icons'
 import { faUser,faArrowLeft,faPenToSquare, faEllipsis, faBell, faCog } from "@fortawesome/free-solid-svg-icons";
 import Dropdown from 'react-bootstrap/Dropdown';
-import React, { useState, useRef } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import { FormControl } from "react-bootstrap";
 import { CSSTransition } from "react-transition-group";
+import FriendRequest from "../../Request-noti"
+import { pathNames } from '../../../../Routes/routes'
+import { useNavigate } from "react-router-dom";
+import { useGlobalContext } from "../../../../data-store"
+import { useState } from "react";
 
+const CustomToggle = React.forwardRef(({ children, onClick }, ref) => (
+  <a
+    href="a"
+    ref={ref}
+    onClick={(e) => {
+      e.preventDefault();
+      onClick(e);
+    }}
+  >
+    {children}
+  </a>
+));
+const CustomMenu = React.forwardRef(
+  ({ children, style, className, "aria-labelledby": labeledBy }, ref) => {
+    const [value, setValue] = useState("");
+
+    return (
+      <div
+        ref={ref}
+        style={style}
+        className={className}
+        aria-labelledby={labeledBy}
+      >
+        <ul className="list-unstyled">
+          {React.Children.toArray(children).filter(
+            (child) =>
+              !value || child.props.children.toLowerCase().startsWith(value)
+          )}
+        </ul>
+      </div>
+    );
+  }
+);
+const iconTitleStyle = { color: 'var(--color-text)', width: '80%', height: '80%' };
+const iconMessengerStyle = { color: 'var(--color-text)', width: '70%', height: '70%' };
+const iconBellStyle = { color: 'var(--color-text)', width: '70%', height: '70%' };
+const iconTitle = <NavItem icon={(<FontAwesomeIcon className="icon" icon={faGithub} style={iconTitleStyle} />)} />
+const navMessenger = <NavItem icon={(<FontAwesomeIcon className="icon" icon={faFacebookMessenger} style={iconMessengerStyle} />)} />
+const navNotification = <NavItem icon={(<FontAwesomeIcon className="icon" icon={faBell} style={iconBellStyle} />)} />
+let searchboxContainerStyle = {
+  width: '95%',
+  height: '40px',
+  borderRadius: '20px',
+  margin: 'auto'
+}
+let arrow = <RoundButton width={'35px'} height={'35px'}
+icon={faArrowLeft}
+iconWidth={'90%'} iconHeight={'90%px'} />
 
 function NavBarCustom(props) {
+  const navigate = useNavigate();
 
   const [activeMenu, setActiveMenu] = useState('main')
 
+  const [globalState, dispatchGlobalState] = useGlobalContext();
 
-  const iconTitleStyle = { color: 'var(--color-text)', width: '80%', height: '80%' };
-  const iconMessengerStyle = { color: 'var(--color-text)', width: '70%', height: '70%' };
-  const iconBellStyle = { color: 'var(--color-text)', width: '70%', height: '70%' };
-  const iconTitle = <NavItem icon={(<FontAwesomeIcon className="icon" icon={faGithub} style={iconTitleStyle} />)} />
-  const navMessenger = <NavItem icon={(<FontAwesomeIcon className="icon" icon={faFacebookMessenger} style={iconMessengerStyle} />)} />
-  const navNotification = <NavItem icon={(<FontAwesomeIcon className="icon" icon={faBell} style={iconBellStyle} />)} />
+  const [userRequestPeople, setUserRequestPeople] = useState([]);
 
-  let searchboxContainerStyle = {
-    width: '95%',
-    height: '40px',
-    borderRadius: '20px',
-    margin: 'auto'
-  }
-  let arrow = <RoundButton width={'35px'} height={'35px'}
-  icon={faArrowLeft}
-  iconWidth={'90%'} iconHeight={'90%px'} />
+  let people = globalState?.people;
+  let user = globalState?.user;
+  
+  useEffect(() => {
+    if(people && user){
+      if(people?.length > 0 && user?.id){
+        let friendRequestPeople = people.filter(x=> user.friendRequestIds.includes(x.id));
+        setUserRequestPeople(friendRequestPeople);
+      }
+    }
+  }, [globalState?.people,globalState?.user])
+
 
   let avatarUrl = 'https://scontent.fsgn19-1.fna.fbcdn.net/v/t39.30808-6/383210613_1729916487446622_4326261461704479707_n.jpg?_nc_cat=107&ccb=1-7&_nc_sid=5f2048&_nc_ohc=OCidl3XFR48AX_259dl&_nc_ht=scontent.fsgn19-1.fna&oh=00_AfCXwL5OodnE9D-sWm_O6B_epq7oFoUFYdMnAFOzBCE0Ww&oe=6569A1EE'
 
+  
 
-  const CustomToggle = React.forwardRef(({ children, onClick }, ref) => (
-    <a
-      href="a"
-      ref={ref}
-      onClick={(e) => {
-        e.preventDefault();
-        onClick(e);
-      }}
-    >
-      {children}
-    </a>
-  ));
-  const CustomMenu = React.forwardRef(
-    ({ children, style, className, "aria-labelledby": labeledBy }, ref) => {
-      const [value, setValue] = useState("");
-
-      return (
-        <div
-          ref={ref}
-          style={style}
-          className={className}
-          aria-labelledby={labeledBy}
-        >
-          <ul className="list-unstyled">
-            {React.Children.toArray(children).filter(
-              (child) =>
-                !value || child.props.children.toLowerCase().startsWith(value)
-            )}
-          </ul>
-        </div>
-      );
-    }
-  );
 
   const nodeRef = useRef(null);
 
@@ -134,11 +155,14 @@ function NavBarCustom(props) {
                 iconWidth={'90%'} iconHeight={'90%px'} />
               </div>
             </div>
-            <ConversationItem/>
-            <ConversationItem/>
-            <ConversationItem/>
-            <ConversationItem/>
-            <ConversationItem/>
+            {
+              userRequestPeople?.length > 0 && userRequestPeople.map((x, index) => {
+                return (
+                  <FriendRequest myKey={x.id} onclick={(key)=>{navigate(pathNames.profile+`/${key}`)}} />
+                )
+              })
+            }
+            {/* <FriendRequest myKey={'659fcda9c3695f610c039ab9'} onclick={(key)=>{navigate(pathNames.profile+`/${key}`)}} /> */}
           </div>
 
         </Dropdown.Menu>

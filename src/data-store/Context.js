@@ -1,6 +1,6 @@
 import { createContext } from "react";
 import { useReducer, useContext } from "react";
-import { SET_USER,SET_CONNECTION, SET_LOGOUT, SET_LOGIN } from "./Constants";
+import { SET_USER,SET_CONNECTION, SET_LOGOUT, SET_LOGIN, SET_PEOPLE } from "./Constants";
 import { SET_POSTS, APPEND_POSTS, REMOVE_POST } from "./Constants";
 import { SET_CONVERSATIONS, APPEND_CONVERSATIONS, REMOVE_CONVERSATION } from "./Constants";
 
@@ -20,22 +20,23 @@ const initialState = {
     people: [],
     realtime:{
         connection: null,
-        sendMessage : (receiverIds, conversationId, message) => {
-            this.connection
+        sendMessage : (myConnection,receiverIds, conversationId, message) => {
+            myConnection
                 .invoke('SendMessage', receiverIds, conversationId, message)
                 .then(() => {return true;})
-                .catch((err) => {console.error('Error sending message:', err); return false;});
+                .catch((err) => {console.log('Error sending message:', err); return false;});
         },
-        deleteMessage : (receiverIds, conversationId, messageId) => {
-            this.connection
+        deleteMessage : (myConnection,receiverIds, conversationId, messageId) => {
+            myConnection
                 .invoke('DeleteMessage', receiverIds, conversationId, messageId)
                 .then(() => {return true;})
-                .catch((err) => {console.error('Error sending message:', err); return false;});
+                .catch((err) => {console.log('Error sending message:', err); return false;});
         }
     }
 }
 
 function reducer(state, action) {
+
     switch (action.type) {
         case SET_LOGIN:
             return {
@@ -44,6 +45,7 @@ function reducer(state, action) {
                 isLoggedIn: true
             }
         case SET_USER:
+
             return {
                 ...state,
                 user: action.payload
@@ -87,6 +89,11 @@ function reducer(state, action) {
             return {
                 ...state,
                 conversations: state.conversations.filter(conversation => conversation.id !== action.payload)
+            }
+        case SET_PEOPLE:
+            return {
+                ...state,
+                people: action.payload
             }
         default:
             return state

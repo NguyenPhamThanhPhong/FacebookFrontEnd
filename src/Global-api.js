@@ -55,9 +55,9 @@ function DataOnlyComponent() {
 
     const fetchPosts = async (ids) => {
         try {
-            const response = await postApi.postGetFromIds.ids(ids);
+            const response = await postApi.postGetFromIds(ids);
             if (!response?.isError) {
-                dispatchGlobalState(setPosts(response.data));
+                dispatchGlobalState(setPosts(response.data.data));
             }
         }
         catch (error) {
@@ -67,7 +67,7 @@ function DataOnlyComponent() {
 
     const fetchConversations = async (ids) => {
         try {
-            const response = await conversationApi.conversationGetFromIds(ids);
+            const response = await conversationApi.conversationGetFromIds(ids,0);
             if (!response?.isError) {
                 dispatchGlobalState(setConversations(response.data?.data));
             }
@@ -81,7 +81,7 @@ function DataOnlyComponent() {
         try {
             const response = await userApi.getFromIds(ids);
             if (!response?.isError) {
-                dispatchGlobalState(setPeople(response.data));
+                dispatchGlobalState(setPeople(response.data?.data));
             }
         }
         catch (error) {
@@ -91,11 +91,12 @@ function DataOnlyComponent() {
 
 
 
-    const fetchDatas = async () => {
+    const fetchDatas = (user) => {
+        const peopleIds = [...user?.friendIds, ...user?.friendRequestIds, ...user?.friendWaitIds];
         Promise.all([
-            fetchPosts(globalState.user?.posts),
-            fetchConversations(globalState.user?.conversations),
-            fetchPeople(globalState.user?.friendIds)
+            fetchPosts(user?.postIds),
+            fetchConversations(user?.conversationIds),
+            fetchPeople(peopleIds)
         ])
     }
 
@@ -109,8 +110,6 @@ function DataOnlyComponent() {
                     if (!response?.isError) {
                         dispatchGlobalState(setUser(response?.data?.data));
                         if (currentPath === pathNames.login || currentPath === pathNames.register || currentPath === pathNames.recoverpass || currentPath === pathNames.resetpass) {
-                            console.log("currentPath")
-                            console.log(currentPath)
                             navigate('/');
                             return true;
                         }
@@ -133,10 +132,14 @@ function DataOnlyComponent() {
 
     useEffect(() => {
         handleAutoLogin()
-        if (globalState?.isLoggedIn) {
-            fetchDatas();
-        }
     }, [])
+
+    useEffect(() => {
+        if (globalState.user?.id!==undefined && globalState.user?.id!==null) {
+            fetchDatas(globalState.user);
+        }
+    }, [globalState.user])
+
 
     return null;
 }

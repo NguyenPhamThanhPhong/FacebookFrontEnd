@@ -23,7 +23,7 @@ import Button from "react-bootstrap/Button";
 import React, {useState} from "react";
 
 
-  const Sidebar = () => {
+  const Sidebar = (props) => {
     const [isClicked, setIsClicked] = useState(false);
   
     const handleClick = () => {
@@ -33,6 +33,16 @@ import React, {useState} from "react";
     <div className="sidebar">
       <div className="sidebarWrapper">
         <ul className="sidebarList">
+        <li className="sidebarListItem">
+            <span className="sidebarIcon">
+                <img
+                className="sidebarAvatarItem"
+                src={"assets/persons/7.jpeg"}
+                alt=""
+                />
+            </span>
+            <span className="sidebarListItemText">Anh Viet</span>
+          </li>
           <li className="sidebarListItem">
             <RssFeed className="sidebarIcon" />
             <span className="sidebarListItemText">Feed</span>

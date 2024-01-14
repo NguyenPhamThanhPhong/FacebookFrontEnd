@@ -13,6 +13,7 @@ function RoundSquareNav(props) {
 
     function onclickOverride(event){
         event.preventDefault();
+
         if(props.onClick!==null && props.onClick!==undefined 
             && props.targetingPath!==null && props.targetingPath!==undefined)
             props.onClick(props.targetingPath);

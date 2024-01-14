@@ -3,7 +3,7 @@ import axios from "axios";
 
 
 const baseURL = APIUtil.baseURL;
-const jsonHeader = APIUtil.jsonHeader;
+const jsonHeader = { headers: { 'Content-Type': 'application/json' } }
 const formdataHeader = APIUtil.formdataHeader;
 
 
@@ -47,9 +47,10 @@ const loginAuto = async () => {
     }
 };
 
-const sendMailVerification = async (loginRequest) => {
+const sendMailVerification = async (username) => {
     try {
-        const response = await axios.post(APIUtil.baseURL + '/send-mail-verification', loginRequest, jsonHeader)
+        const response = await axios.post(APIUtil.baseURL + '/send-mail-verification', username, 
+        { headers: { 'Content-Type': 'application/json' } })
         return { isError: false, data: response };
 
     }
@@ -58,9 +59,9 @@ const sendMailVerification = async (loginRequest) => {
     }
 }
 
-const confirmMail = async (id, code) => {
+const confirmMail = async (username, code) => {
     try {
-        const response = await axios.post(APIUtil.baseURL + `/confirm-mail/${id}`, code, jsonHeader)
+        const response = await axios.post(APIUtil.baseURL + `/confirm-mail/${username}`, code, jsonHeader)
         return { isError: false, data: response };
 
     }
