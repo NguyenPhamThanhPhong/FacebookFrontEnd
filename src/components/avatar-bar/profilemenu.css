@@ -1,0 +1,67 @@
+.nav-pills {
+    display: flex;
+    flex-wrap: wrap;
+    height: 70px;
+    margin-top: -75px;
+    width: 100%;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--background-home-dark);
+    border-radius: 10px 10px 10px 10px;
+    padding: 10px 10px 10px 10px;
+}
+
+.nav-link {
+    height: 60px;
+    text-align: center;
+    padding-top: 15px;
+    background-color: var(--background-home-dark);
+    border-radius: 10px 10px 10px 10px;
+    
+}
+
+.nav-item {
+    padding: 0 16px;
+    margin-left: 3%;
+    width: calc(var(--nav-size) * 1);
+    display: flex;
+    text-align: center;
+    background-color: var(--background-home-dark);
+    border-radius: 10px 10px 10px 10px;
+    justify-content: center;
+}
+.NavDropdown{
+    margin-bottom: 60px;
+    text-align: center;
+    background-color: var(--background-home-dark);
+    border-radius: 10px 10px 10px 10px;
+}
+.pane2{
+    margin-top: -45%;
+}
+.pane3{
+    margin-top: -153%;
+}
+.navdropdown-item{
+    height: 60px;
+    text-align: center;
+    padding-top: 15px;
+    background-color: var(--background-home-dark);
+    border-radius: 10px 10px 10px 10px;
+}
+
+.tab-pane{
+    margin-top: 25px;
+}
+
+.ProfileMenusMain{
+    width: 100%;
+    margin-top: 80px;
+}
+
+/* .AboutContainer {
+  position: relative;
+  top: 0;
+  padding: 20px;
+} */

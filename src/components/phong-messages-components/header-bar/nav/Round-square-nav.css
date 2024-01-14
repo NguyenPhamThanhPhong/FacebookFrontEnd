@@ -1,0 +1,41 @@
+@import '@root/index.css';
+
+
+/* .nav-item{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+} */
+
+.round-square-nav-normal{
+    width: 100px;
+    height: 40px;
+    padding: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.icon-nav {
+    border-radius: 10px;
+    transition: filter 300ms;
+    cursor: pointer;
+  }
+.icon-nav:hover {
+    background-color: var(--hover-color);
+    filter: brightness(2.0);
+}
+
+.icon-clicked{
+    border-radius: 0;
+    border-bottom: 3px solid #0866ff;
+    cursor: pointer;
+}
+
+.icon{
+    width: 80%;
+    height: 80%;
+    fill: var(--text-color);
+}
+
+

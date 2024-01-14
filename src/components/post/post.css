@@ -1,0 +1,158 @@
+.containerpost {
+  width: 90%;
+}
+
+.container-mainpost{
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.newpost-main{
+  width: 100%;
+}
+
+.newpost-background{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.container-newpost {
+  width: 100%;
+  height: 200px;
+  -webkit-box-shadow: 0px 0px 15px 1px rgba(0, 0, 0, 0.09);
+    -moz-box-shadow: 0px 0px 15px 1px rgba(0, 0, 0, 0.09);
+    box-shadow: 0px 0px 15px 1px rgba(0, 0, 0, 0.09);
+    margin-bottom: 20px;
+    background-color: var(--background-home-dark);
+    border-radius: 10px;
+    color: white;
+    padding: 2%;
+}
+
+.newpost-input {
+  display: flex;
+  margin: 20px;
+  cursor: pointer;
+  height: 50px;
+}
+
+.input-post {
+  background-color: #3A3B3C;
+  width: 100%;
+  padding: 10px;
+  border-radius: 35px;
+  align-items: center;
+  display: flex;
+}
+
+.image-user {
+  height: 50px;
+  width: 50px;
+  margin-right: 10px;
+}
+
+hr {
+  border: 1px solid white; /* Màu và độ dày đường ngang */
+  margin: 30px; /* Khoảng cách trên và dưới đường ngang */
+}
+
+.newpost-service{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.newpost-icon{
+  padding: 10px;
+}
+
+.container-icon{
+  display: flex;
+  margin-right: 20px;
+}
+
+.newpost-icon:hover{
+  background-color: #3a3b3c;
+  cursor: pointer;
+  border-radius: 10px;
+}
+
+.input-post:hover{
+  background-color: #4e4f50;
+}
+
+/* css posts */
+
+.interact{
+  margin: 0px 16px;
+  display: flex;
+  justify-content: space-between;
+}
+
+
+.button-interact{
+  display: flex;
+  flex-direction: row;
+  margin: 0 5px 0 5px;
+}
+
+.button-interact>.btn, .button-interact>.dropdown{
+  padding: 0;
+  transform:none;
+  overflow: visible;
+  flex: 1;
+  margin: 2px;
+  background-color: #242526;
+  border: #242526;
+}
+
+.background{
+  background-color: #242526;
+  color: white;
+  padding-bottom: 10px;
+  margin-bottom: 10px;
+}
+
+.button-interact>.dropdown{
+  box-shadow: none;
+}
+
+#bg-nested-dropdown{
+  background-color: #242526;
+  color: white;
+  border: none;
+}
+
+/* #3a3b3c */
+
+.button-interact>.btn:hover  {
+  background-color: #3a3b3c;
+}
+
+#bg-nested-dropdown:hover{
+  background-color: #3A3B3C;
+}
+
+.modal-post{
+  background-color: #242526;
+  color: white;
+}
+
+.dropdown-toggle:after {
+  display: none !important;
+}
+
+.style-service:hover{
+  cursor: pointer;
+  text-decoration: underline;
+}
+
+/* newpost */
+.modal-footer{
+  justify-content: center;
+  align-items: center;
+  display: flex;
+}
+

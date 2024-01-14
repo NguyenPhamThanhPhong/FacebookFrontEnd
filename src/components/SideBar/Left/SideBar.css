@@ -1,0 +1,86 @@
+.sidebar {
+    flex: 2.5;
+    top: 65px;
+    height: 95vh;
+    background-color: var(--background-home-dark);
+    color: aliceblue;
+    overflow-y: hidden;
+    position: sticky;
+    width: 100%;
+}
+
+.sidebar::-webkit-scrollbar {
+    width: 10px;
+    background-color: #222426;
+    border-radius: 10px;
+  }
+  
+  .sidebar::-webkit-scrollbar-thumb {
+    border-radius: 10px;
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,.3);
+    background-color: #646667;
+  }
+  
+  .sidebar:hover{
+    overflow-y: auto;
+  }
+
+.sidebarWrapper {
+    padding: 20px;
+}
+
+.sidebarList {
+    padding: 0;
+    margin: 0;
+    list-style: none;
+    margin-bottom: 10px;
+}
+
+.sidebarListItem {
+    display: flex;
+    align-items: center;
+    height: 35px;
+    padding: 30px 10px;
+    border-radius: 10px;
+}
+.sidebarAvatarItem {
+    display: flex;
+    align-items: center;
+    height: 35px;
+   width: 35px;
+    border-radius: 10px;
+    margin-right: 15px;
+}
+
+.sidebarIcon {
+    margin-right: 15px;
+}
+
+.sidebarButton {
+    width: 150px;
+    border: none;
+    padding: 10px;
+    border-radius: 5px;
+    font-weight: 500;
+    margin:auto;
+}
+
+.sidebarHr {
+    margin: 20px 0;
+}
+
+.sidebarFriendList {
+    padding: 0;
+    margin: 0;
+    list-style: none;
+}
+.sidebarTitle{
+    margin-bottom: 0px;
+    color: white;
+}
+
+.sidebarListItem:hover{
+    background-color: #4e4f50;
+    transition: background-color 0.3s ease; 
+    cursor: pointer;
+}

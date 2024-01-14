@@ -1,0 +1,18 @@
+export const SET_USER = "SET_USER";
+export const SET_CONNECTION = "SET_CONNECTION";
+
+export const SET_POSTS = "SET_POSTS"; 
+export const APPEND_POSTS = "APPEND_POSTS";
+export const REMOVE_POST = "REMOVE_POST";
+
+export const SET_CONVERSATIONS = "SET_CONVERSATIONS";
+export const APPEND_CONVERSATIONS = "APPEND_CONVERSATIONS";
+export const REMOVE_CONVERSATION = "REMOVE_CONVERSATION";
+
+export const SET_PEOPLE = "SET_PEOPLE";
+export const APPEND_PEOPLE = "APPEND_PEOPLE";
+export const REMOVE_PEOPLE = "REMOVE_PEOPLE";
+
+export const SET_LOGIN = "SET_LOGIN";
+export const SET_LOGOUT = "SET_LOGOUT";
+

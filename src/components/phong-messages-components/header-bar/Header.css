@@ -1,0 +1,42 @@
+@import '@root/index.css';
+
+.header-navbar{
+    height: 56px;
+    background-color: var(--header-color);
+    padding: 0 1rem;
+    border-bottom: rgba(47,48,49,255) 3px solid;
+    background-color: var(--header-color);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: absolute;
+    width: 100%;
+}
+.header-navbar-navs{
+    /* background-color: bisque; */
+    width: 40%;
+
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+}
+
+.my-div{
+    width: 40%;
+    background-color: bisque;
+    height: 100%;
+}
+
+
+
+.navbar-nav{
+    height: 100%;
+    display: flex;
+    background-color: var(--container-color);
+    list-style: none;
+    padding: 0;
+    justify-content: center;
+    align-items: flex-end;
+}
+
+

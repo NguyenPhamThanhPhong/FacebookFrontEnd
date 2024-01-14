@@ -1,0 +1,37 @@
+@import '@root/index.css';
+
+.search-box-div{
+    height: 100%;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.textbox-container{
+    background-color: var(--container-color);
+    border-radius: 30px;
+    width: 300px;
+    height: 80%;
+    padding: 0 10px 0px 0;
+    display: inline-flex;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+.search-box-input{
+    border: none;
+    outline: none;
+    background: transparent;
+    padding-left: 10px;
+    font-size: 18px;
+    width: 90%;
+    margin: 0;
+    color: var(--text-color);
+}
+.search-box-icon{
+    margin: 0;
+    padding: 0 0 0 5px;
+    width: 10%;
+    height: 40%;
+    color: var(--sub-text-color);
+}

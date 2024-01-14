@@ -1,0 +1,55 @@
+
+
+.my-element {
+    background-color: var(--main-color);
+    color: white;
+}
+/* div{
+    background: var(--hello-color);
+}
+   */
+
+.homepage{
+    background-color: #18191A;
+    height: (100vh - 56px);
+}
+
+
+.container-item{
+    display: flex;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.homecontainer{
+    width: 100%;
+    height: auto;
+}
+.rightmenu{
+    flex: 2.5;
+    width: 100%;
+    position: sticky;
+    height: 95vh;
+    overflow: hidden;
+    top: 65px;
+}
+.chat-mini-window {
+    background-color: var(--header-color);
+    width: 338px;
+    height: 455px;
+    position: fixed;
+    bottom: 20px; 
+    right: 20px;
+}
+
+/* @media screen and (max-width: 1080px) {
+    .homecontainer{
+        display: flex;
+        justify-content: center;
+        height: auto;
+    }
+    .container-item{
+        width: 80vw;
+        justify-content: center;
+    }
+  } */

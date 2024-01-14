@@ -1,0 +1,26 @@
+.chat-textbox{
+    width: calc(100% - 55px);
+    color: var(--text-color);
+    background-color:transparent;
+    margin:0;
+    outline: none;
+    border: none;
+    resize: none;
+    box-sizing: border-box;
+}
+.chat-textarea-container{
+    flex-grow: 1;
+    padding: 5px 0 5px 10px;
+    border-radius: 30px;
+    color: var(--text-color);
+    background-color: var(--container-color);
+    border: 1px solid var(--sub-text-color);
+    display: flex;
+    align-items: center;
+}
+
+
+.chat-chatinput-container{
+    width: 100%;
+    display: flex;
+}

@@ -1,0 +1,61 @@
+.ProfileCover{
+    height: 320px;
+    position: relative;
+    top : 0;
+}
+.profileCoverImg{
+        width: 100%;
+        height: 348px;
+        object-fit: cover;
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+        border-radius: 0px 0px 10px 10px;
+    }
+
+.profileUserImg{
+    width: 168px;
+    height: 168px;
+    margin-left: 36px;
+    border-radius: 50%;
+    object-fit: cover;
+    position: absolute;    
+    top: 300px;
+    border: 3px #18191A;
+}
+.profileInfo{
+    margin-top: 50px;
+    margin-left: 220px;
+}
+.profileInfoName{
+    font-size: 24px;
+    font-weight: bolder;
+    color: white;
+}
+.profileInfoDesc{
+    font-size: 16px;
+    color: white;
+}
+.userInformation{
+    padding-left: 10px;
+    -webkit-box-shadow: 0px 0px 15px 1px rgba(0, 0, 0, 0.09);
+    -moz-box-shadow: 0px 0px 15px 1px rgba(0, 0, 0, 0.09);
+    box-shadow: 0px 0px 15px 1px rgba(0, 0, 0, 0.09);
+    background-color: var(--background-home-dark);
+    float: right;
+    height: auto;
+    width:  250px;
+    border-radius: 10px;
+}
+  .Crossline{
+    width: 100%;
+    height: 0.8px;
+    margin: 175px 30px 0px 0px;
+  }
+  .Profile-main{
+    background-color: var(--background-home-dark);
+  }
+  .profileEdit{
+    float: right;
+    margin-right: 10%;
+  }

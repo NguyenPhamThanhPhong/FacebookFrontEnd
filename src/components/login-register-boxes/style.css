@@ -1,0 +1,88 @@
+.login {
+    margin: 0;
+    padding: 0;
+    background-image: url('./Images/LoginWall.png');
+    background-size: cover;
+    background-repeat: no-repeat;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+}
+
+.form_container {
+    background: transparent;
+    border: 2px solid rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(15px);
+    box-shadow: 0 0 30px rgba(0, 0, 0, 1);
+    color: #ffffff;
+    border-radius: 10px;
+    width: 30%;
+    transform: translateX(100%) rotateY(-180deg);
+    animation: flipIn 0.3s ease-in-out forwards;
+}
+
+.form_control {
+    color: white;
+    width: 100%;
+    background: transparent;
+    border: 2px solid #dcdcdc;
+    border-radius: 10px;
+    padding: 10px;
+    transition: border-color 0.3s ease-in-out;
+}
+
+.form_container.centered {
+    transform: translateX(0%) rotateY(0deg);
+}
+
+@keyframes flipIn {
+    0% {
+        transform: translateX(0%) rotateY(-180deg);
+        opacity: 0;
+    }
+    80% {
+        transform: translateX(0%) rotateY(0deg);
+        opacity: 0.9;
+    }
+    100% {
+        transform: translateX(0%) rotateY(0deg);
+        opacity: 1;
+    }
+}
+
+.form_control::placeholder {
+    color: white;
+}
+
+.form_control.error {
+    border-color: rgb(255, 69, 69);
+    transition: border-color 0.2s ease-in-out;
+}
+
+.form_control[readonly] {
+    color: #a4a4a4;
+    border-color: #939292;
+}
+
+.textref-link {
+    color: #f0e4ff;
+    text-decoration: none;
+    transition: color 0.3s ease-in-out, text-decoration 0.3s ease-in-out;
+}
+  
+.textref-link:hover {
+    color: #CBA3FF; 
+    text-decoration: underline;
+}
+
+@media screen and (max-width: 1000px) {
+    .form_container {
+        width: 45%;
+    }
+}
+@media screen and (max-width: 700px) {
+    .form_container {
+        width: 65%;
+    }
+}
