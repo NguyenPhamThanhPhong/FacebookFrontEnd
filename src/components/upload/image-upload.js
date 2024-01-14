@@ -3,7 +3,7 @@ import Avatar from "react-avatar-clip";
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 import Row from 'react-bootstrap/Row';
-import "./profile-edit.css";
+import "../avatar-bar/profile-edit.css";
 
 const ImageUploadd = (props) => {
   const [show, setShow] = useState(false);

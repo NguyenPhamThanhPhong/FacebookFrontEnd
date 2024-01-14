@@ -8,9 +8,9 @@ import dayjs from 'dayjs';
 import { DatePicker } from '@mui/x-date-pickers/DatePicker';
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
-import "./profile-edit.css";
-import ImageUploadd from './image-upload';
-import CoverImageUploadd from './coverimage-upload';
+import "../avatar-bar/profile-edit.css";
+import ImageUploadd from '../upload/image-upload';
+import CoverImageUploadd from '../upload/coverimage-upload';
 import { useDataHook } from '../../data-hook';
 
 function ProfileEdit(props) {
