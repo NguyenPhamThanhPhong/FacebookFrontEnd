@@ -1,7 +1,7 @@
 import { createContext } from "react";
 import { useReducer, useContext } from "react";
-import { SET_USER,SET_CONNECTION, SET_LOGOUT, SET_LOGIN, SET_PEOPLE } from "./Constants";
-import { SET_POSTS, APPEND_POSTS, REMOVE_POST } from "./Constants";
+import { SET_USER, SET_CONNECTION, SET_LOGOUT, SET_LOGIN, SET_PEOPLE } from "./Constants";
+import { SET_POSTS, SET_HOME_POST, APPEND_POSTS, REMOVE_POST } from "./Constants";
 import { SET_CONVERSATIONS, APPEND_CONVERSATIONS, REMOVE_CONVERSATION } from "./Constants";
 
 const Context = createContext();
@@ -12,25 +12,26 @@ const initialState = {
     user: {},
     isLoggedIn: false,
     posts: [],
+    homePosts: [],
     conversations: [],
     notifications: [],
     friendsRequests: [],
     friendsWaits: [],
     friends: [],
     people: [],
-    realtime:{
+    realtime: {
         connection: null,
-        sendMessage : (myConnection,receiverIds, conversationId, message) => {
+        sendMessage: (myConnection, receiverIds, conversationId, message) => {
             myConnection
                 .invoke('SendMessage', receiverIds, conversationId, message)
-                .then(() => {return true;})
-                .catch((err) => {console.log('Error sending message:', err); return false;});
+                .then(() => { return true; })
+                .catch((err) => { console.log('Error sending message:', err); return false; });
         },
-        deleteMessage : (myConnection,receiverIds, conversationId, messageId) => {
+        deleteMessage: (myConnection, receiverIds, conversationId, messageId) => {
             myConnection
                 .invoke('DeleteMessage', receiverIds, conversationId, messageId)
-                .then(() => {return true;})
-                .catch((err) => {console.log('Error sending message:', err); return false;});
+                .then(() => { return true; })
+                .catch((err) => { console.log('Error sending message:', err); return false; });
         }
     }
 }
@@ -64,6 +65,11 @@ function reducer(state, action) {
             return {
                 ...state,
                 posts: action.payload
+            }
+        case SET_HOME_POST:
+            return {
+                ...state,
+                homePosts: action.payload
             }
         case APPEND_POSTS:
             return {

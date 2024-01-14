@@ -42,7 +42,7 @@ function useDataHook() {
         }
     }
 
-    const sendMessage = async (receiverIds,conversationId, senderId, content, replyTo, files) => {
+    const sendMessage = async (receiverIds, conversationId, senderId, content, replyTo, files) => {
         try {
             let message = {
                 conversationId,
@@ -82,7 +82,7 @@ function useDataHook() {
         }
     }
 
-    const updatePersonalInfo = async (userId, firstName, lastName, birthday, bio,prevAvatar, blobProfilePicture, blobCoverPhoto) => {
+    const updatePersonalInfo = async (userId, firstName, lastName, birthday, bio, prevAvatar, blobProfilePicture, blobCoverPhoto) => {
         try {
             let name = lastName + " " + firstName;
             let formData = new FormData();
@@ -109,11 +109,11 @@ function useDataHook() {
         }
     }
 
-    const sendFriendRequest = async (targetId,option=1) => {
+    const sendFriendRequest = async (targetId, option = 1) => {
         try {
-            const response = await userApi.userUpdateFriendRequest(targetId,option);
+            const response = await userApi.userUpdateFriendRequest(targetId, option);
             if (!response?.isError) {
-                if(globalState?.user?.friendWaitIds){
+                if (globalState?.user?.friendWaitIds) {
                     let friendWaitIds = globalState?.user?.friendWaitIds;
                     friendWaitIds.push(targetId);
                     let user = {
@@ -129,14 +129,14 @@ function useDataHook() {
         }
     }
 
-    const undoFriendRequest = async (targetId,option=0) => {
+    const undoFriendRequest = async (targetId, option = 0) => {
         try {
-            const response = await userApi.userUpdateFriendRequest(targetId,option);
+            const response = await userApi.userUpdateFriendRequest(targetId, option);
             if (!response?.isError) {
                 if (!response?.isError) {
-                    if(globalState?.user?.friendWaitIds){
+                    if (globalState?.user?.friendWaitIds) {
                         let friendWaitIds = globalState?.user?.friendWaitIds;
-                        friendWaitIds = friendWaitIds.filter(x=>x!==targetId);
+                        friendWaitIds = friendWaitIds.filter(x => x !== targetId);
                         let user = {
                             ...globalState?.user,
                             friendWaitIds
@@ -151,18 +151,18 @@ function useDataHook() {
         }
     }
 
-    const acceptFriendRequest = async (targetId,option=1,name,avatarUrl) => {
+    const acceptFriendRequest = async (targetId, option = 1, name, avatarUrl) => {
         try {
             const conversationCreation = {
                 name,
                 avatarUrl
             }
-            const response = await userApi.userUpdateUnfriendAcceptRequest(targetId,option,conversationCreation);
+            const response = await userApi.userUpdateUnfriendAcceptRequest(targetId, option, conversationCreation);
             if (!response?.isError) {
-                if(globalState?.user?.friendWaitIds){
+                if (globalState?.user?.friendWaitIds) {
                     let friendWaitIds = globalState?.user?.friendWaitIds;
                     let friendIds = globalState?.user?.friendIds;
-                    friendWaitIds = friendWaitIds.filter(x=>x!==targetId);
+                    friendWaitIds = friendWaitIds.filter(x => x !== targetId);
                     friendIds.push(targetId);
                     let user = {
                         ...globalState?.user,
@@ -179,12 +179,12 @@ function useDataHook() {
     }
 
     const rejectFriendRequest = async (targetId) => {
-        try{
+        try {
             const response = await userApi.rejectFriendRequest(targetId);
             if (!response?.isError) {
-                if(globalState?.user?.friendRequestIds){
+                if (globalState?.user?.friendRequestIds) {
                     let friendRequestIds = globalState?.user?.friendRequestIds;
-                    friendRequestIds = friendRequestIds.filter(x=>x!==targetId);
+                    friendRequestIds = friendRequestIds.filter(x => x !== targetId);
                     let user = {
                         ...globalState?.user,
                         friendRequestIds
@@ -198,13 +198,13 @@ function useDataHook() {
         }
     }
 
-    const unfriend = async (targetId,option=0) => {
+    const unfriend = async (targetId, option = 0) => {
         try {
-            const response = await userApi.userUpdateUnfriendAcceptRequest(targetId,option,{});
+            const response = await userApi.userUpdateUnfriendAcceptRequest(targetId, option, {});
             if (!response?.isError) {
-                if(globalState?.user?.friendWaitIds){
+                if (globalState?.user?.friendWaitIds) {
                     let friendIds = globalState?.user?.friendIds;
-                    friendIds = friendIds.filter(x=>x!==targetId);
+                    friendIds = friendIds.filter(x => x !== targetId);
                     let user = {
                         ...globalState?.user,
                         friendIds
@@ -219,7 +219,7 @@ function useDataHook() {
         }
     }
 
-    return { fetchMessages, sendMessage,updatePersonalInfo,sendFriendRequest,undoFriendRequest,acceptFriendRequest,rejectFriendRequest,unfriend }
+    return { fetchMessages, sendMessage, updatePersonalInfo, sendFriendRequest, undoFriendRequest, acceptFriendRequest, rejectFriendRequest, unfriend }
 }
 
 export { useDataHook }

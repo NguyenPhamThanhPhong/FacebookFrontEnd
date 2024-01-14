@@ -29,8 +29,7 @@ const CustomToggle = React.forwardRef(({ children, onClick }, ref) => (
     onClick={(e) => {
       e.preventDefault();
       onClick(e);
-    }}
-  >
+    }}>
     {children}
   </a>
 ));
