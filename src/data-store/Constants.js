@@ -2,6 +2,7 @@ export const SET_USER = "SET_USER";
 export const SET_CONNECTION = "SET_CONNECTION";
 
 export const SET_POSTS = "SET_POSTS"; 
+export const SET_HOME_POST = "SET_HOME_POST";
 export const APPEND_POSTS = "APPEND_POSTS";
 export const REMOVE_POST = "REMOVE_POST";
 

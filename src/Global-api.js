@@ -10,7 +10,8 @@ import {
     setConversations,
     removePeople,
     setPeople,
-    appendPeople
+    appendPeople,
+    setHomePosts
 } from './data-store/Actions'
 
 import { userApi, loginApi, postApi, commentApi, messageApi, conversationApi } from './data/index'
@@ -89,6 +90,16 @@ function DataOnlyComponent() {
         }
     }
 
+    const fetchHomePosts = (ids) =>{
+        postApi.postGetFromIds(ids).then(response => {
+            if (!response?.isError) {
+                dispatchGlobalState(setHomePosts(response.data?.data));
+            }
+        }).catch(error => {
+            console.log(error)
+        });
+    }
+
 
 
     const fetchDatas = (user) => {
@@ -139,6 +150,19 @@ function DataOnlyComponent() {
             fetchDatas(globalState.user);
         }
     }, [globalState.user])
+
+    useEffect(() => {
+        if (globalState.people && globalState.people.length > 0) {
+            let myQueryIds = []
+            for(let person of globalState.people){
+                let personPostIds = person?.postIds;
+                if(personPostIds && personPostIds.length>0){
+                    myQueryIds = [...myQueryIds, ...personPostIds];
+                }
+            }
+            fetchHomePosts(myQueryIds);
+        }
+    }, [globalState.people])
 
 
     return null;

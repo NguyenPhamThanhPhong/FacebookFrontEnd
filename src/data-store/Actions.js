@@ -2,6 +2,7 @@ import {
     SET_USER,
     SET_CONNECTION,
     SET_POSTS,
+    SET_HOME_POST,
     APPEND_POSTS,
     REMOVE_POST,
     SET_CONVERSATIONS,
@@ -26,6 +27,10 @@ import {
   
   const setPosts = (payload) => ({
     type: SET_POSTS,
+    payload,
+  });
+  const setHomePosts = (payload) => ({
+    type: SET_HOME_POST,
     payload,
   });
   
@@ -83,6 +88,7 @@ import {
     setUser,
     setMyConnection,
     setPosts,
+    setHomePosts,
     appendPosts,
     removePost,
     setConversations,
