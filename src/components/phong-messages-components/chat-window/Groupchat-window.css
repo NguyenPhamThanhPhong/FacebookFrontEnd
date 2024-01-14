@@ -80,7 +80,7 @@
   
   input {
     color: var(--text-color);
-    width: 1084px;
+    width: 500px;
     padding: 8px;
     background-color: rgba(58,59,60,255);
     border: none;
