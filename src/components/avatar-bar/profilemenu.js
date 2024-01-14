@@ -5,6 +5,7 @@ import "./profilemenu.css";
 import About from '../../pages/profile/AboutTab';
 import FriendTab from '../../pages/profile/FriendTab';
 import PhotoTab from '../../pages/profile/PhotoTab';
+import VideoTab from '../../pages/profile/VideoTab';
 import Nav from 'react-bootstrap/Nav';
 import Tab from 'react-bootstrap/Tab';
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -30,7 +31,7 @@ function ProfileMenus(props) {
             <Nav.Link eventKey="4">Photos</Nav.Link>
           </Nav.Item>
           <Nav.Item>
-            <Nav.Link eventKey="6">Videos</Nav.Link>
+            <Nav.Link eventKey="5">Videos</Nav.Link>
           </Nav.Item>
         </Nav>
         <Tab.Content as="div" className="tab-content">
@@ -45,6 +46,9 @@ function ProfileMenus(props) {
           </Tab.Pane>
           <Tab.Pane eventKey="4">
             <PhotoTab />
+          </Tab.Pane>
+          <Tab.Pane eventKey="5">
+            <VideoTab />
           </Tab.Pane>
         </Tab.Content>
       </Tab.Container>
