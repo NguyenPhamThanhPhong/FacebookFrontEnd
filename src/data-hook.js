@@ -178,9 +178,9 @@ function useDataHook() {
         }
     }
 
-    const rejectFriendRequest = async (targetId,option=0) => {
+    const rejectFriendRequest = async (targetId) => {
         try{
-            const response = await userApi.userUpdateFriendRequest(targetId,option);
+            const response = await userApi.rejectFriendRequest(targetId);
             if (!response?.isError) {
                 if(globalState?.user?.friendRequestIds){
                     let friendRequestIds = globalState?.user?.friendRequestIds;

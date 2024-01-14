@@ -2,7 +2,7 @@
 
 // import FirstColumn from './first-column';
 import FirstColumn from './first-column';
-import GroupchatWindow from '../../components/phong-messages-components/groupchat-window/Groupchat-window';
+import GroupchatWindow from '../../components/phong-messages-components/chat-window/Groupchat-window';
 // <============================Library here ============================>
 
 import React, { useState, useEffect, useRef } from 'react'
@@ -14,7 +14,7 @@ import { useGlobalContext } from '../../data-store';
 import { useDataHook } from '../../data-hook'
 
 
-function GroupMessages(props) {
+function Messages(props) {
   document.querySelector("body").setAttribute("data-theme", "dark");
 
   const [products, setProducts] = useState([]);
@@ -62,7 +62,7 @@ function GroupMessages(props) {
     </div>
   )
 }
-export default GroupMessages
+export default Messages
 
 // let styleCallButton = {
 //   width: '40px',

@@ -14,12 +14,13 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faGithub, faFacebookMessenger } from '@fortawesome/free-brands-svg-icons'
 import { faUser,faArrowLeft,faPenToSquare, faEllipsis, faBell, faCog } from "@fortawesome/free-solid-svg-icons";
 import Dropdown from 'react-bootstrap/Dropdown';
-import React, { useState, useRef } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import { FormControl } from "react-bootstrap";
 import { CSSTransition } from "react-transition-group";
 import FriendRequest from "../../Request-noti"
 import { pathNames } from '../../../../Routes/routes'
 import { useNavigate } from "react-router-dom";
+import { useGlobalContext } from "../../../../data-store"
 
 const CustomToggle = React.forwardRef(({ children, onClick }, ref) => (
   <a
@@ -74,6 +75,22 @@ function NavBarCustom(props) {
   const navigate = useNavigate();
 
   const [activeMenu, setActiveMenu] = useState('main')
+
+  const [globalState, dispatchGlobalState] = useGlobalContext();
+
+  const [userRequestPeople, setUserRequestPeople] = useState([]);
+
+  let people = globalState?.people;
+  let user = globalState?.user;
+  
+  useEffect(() => {
+    if(people && user){
+      if(people?.length > 0 && user?.id){
+        let friendRequestPeople = people.filter(x=> user.friendRequestIds.includes(x.id));
+        setUserRequestPeople(friendRequestPeople);
+      }
+    }
+  }, [globalState?.people,globalState?.user])
 
 
   let avatarUrl = 'https://scontent.fsgn19-1.fna.fbcdn.net/v/t39.30808-6/383210613_1729916487446622_4326261461704479707_n.jpg?_nc_cat=107&ccb=1-7&_nc_sid=5f2048&_nc_ohc=OCidl3XFR48AX_259dl&_nc_ht=scontent.fsgn19-1.fna&oh=00_AfCXwL5OodnE9D-sWm_O6B_epq7oFoUFYdMnAFOzBCE0Ww&oe=6569A1EE'
@@ -137,8 +154,14 @@ function NavBarCustom(props) {
                 iconWidth={'90%'} iconHeight={'90%px'} />
               </div>
             </div>
-            <ConversationItem/>
-            <FriendRequest myKey={'659fcda9c3695f610c039ab9'} onclick={(key)=>{navigate(pathNames.profile+`/${key}`)}} />
+            {
+              userRequestPeople?.length > 0 && userRequestPeople.map((x, index) => {
+                return (
+                  <FriendRequest myKey={x.id} onclick={(key)=>{navigate(pathNames.profile+`/${key}`)}} />
+                )
+              })
+            }
+            {/* <FriendRequest myKey={'659fcda9c3695f610c039ab9'} onclick={(key)=>{navigate(pathNames.profile+`/${key}`)}} /> */}
           </div>
 
         </Dropdown.Menu>

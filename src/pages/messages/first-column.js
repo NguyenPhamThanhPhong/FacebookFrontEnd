@@ -3,7 +3,7 @@ import RoundButton from "../../components/phong-messages-components//Round-butto
 import SearchBox from "../../components/phong-messages-components//header-bar/search/Search-box";
 
 import React from 'react';
-
+import { useNavigate } from "react-router-dom";
 
 import "./first-column.css"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
@@ -13,6 +13,7 @@ import { faPenToSquare } from '@fortawesome/free-solid-svg-icons'
 
 function FirstColumn(props) {
 
+  const navigate = useNavigate();
 
   let arrow = <RoundButton width={'35px'} height={'35px'}
     icon={faArrowLeft}
@@ -37,9 +38,16 @@ function FirstColumn(props) {
         <h4 className='first-column-chat'>
           Chats
         </h4>
-        <RoundButton width={'35px'} height={'35px'} backgroundColor={'var(--container-color)'}
-          icon={faPenToSquare}
-          iconWidth={'90%'} iconHeight={'90%px'} />
+          <RoundButton width={'35px'} height={'35px'} backgroundColor={'var(--container-color)'}
+            icon={faPenToSquare}
+            iconWidth={'90%'} iconHeight={'90%px'} 
+            onClick={() => {
+              // Handle RoundButton click to navigate to the GroupMessage page
+              navigate("pathNames.group-messages"); // Replace '/GroupMessage' with your actual route
+            }}
+          />
+          
+          
       </div>
       <SearchBox backIcon={arrow} textboxContainerStyle={searchboxContainerStyle} />
 

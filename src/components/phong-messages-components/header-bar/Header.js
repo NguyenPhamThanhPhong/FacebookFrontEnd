@@ -1,4 +1,4 @@
-import NavBarCustom from "@components/phong-messages-components/header-bar/nav/Nav-bar";
+import NavBarCustom from "../header-bar/nav/Nav-bar";
 import RoundSquareNav from "../../phong-messages-components/header-bar/nav/Round-square-nav";
 import SearchBox from "@components/phong-messages-components/header-bar/search/Search-box";
 import RoundButton from "@components/phong-messages-components/Round-button";
