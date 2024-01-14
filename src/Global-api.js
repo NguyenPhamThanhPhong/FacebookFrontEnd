@@ -92,10 +92,11 @@ function DataOnlyComponent() {
 
 
     const fetchDatas = (user) => {
+        const peopleIds = [...user?.friendIds, ...user?.friendRequestIds, ...user?.friendWaitIds];
         Promise.all([
             fetchPosts(user?.postIds),
             fetchConversations(user?.conversationIds),
-            fetchPeople(user?.friendIds)
+            fetchPeople(peopleIds)
         ])
     }
 

@@ -77,7 +77,7 @@ const userUpdateFriendRequest = async (targetId, option) => {
 
 const rejectFriendRequest = async (targetId) => {
     try{
-        const response = await axios.post(baseURL + `/user-update-friend-request/${targetId}`, null, {
+        const response = await axios.post(baseURL + `/user-reject-friend-request/${targetId}`, null, {
             headers: {
                 'Authorization': 'Bearer ' + localStorage.getItem('token'),
                 'Content-Type': 'application/json'

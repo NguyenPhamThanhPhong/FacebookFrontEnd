@@ -13,7 +13,8 @@ function FriendRequest(props) {
     // let conversationName = props.conversationName || 'Request accepted'
     let requestMessage = props.requestMessage || 'Phong sent you a friend request.'
 
-    
+    const myaccept = props.myaccept || ((parameter) => {});
+    const myreject = props.myreject || ((parameter) => {});
     let myOnClick = ()=>{}
     if(props.onclick){
         myOnClick = ()=>{props.onclick(props.myKey)}
@@ -22,12 +23,13 @@ function FriendRequest(props) {
 
     const handleAcceptClick = () => {
         // Perform any additional actions if needed
+        myreject(myKey)
         setShowButtons(false);
         setshowAcceptMessage(true);
     }
 
     const handleDeleteClick = () => {
-        // Perform any additional actions if needed
+        myaccept(myKey)
         setShowButtons(false);
         setshowDeleteMessage(true);
     }
