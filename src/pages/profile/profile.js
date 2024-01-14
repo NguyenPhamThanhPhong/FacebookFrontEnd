@@ -13,7 +13,7 @@ import { useParams } from "react-router-dom";
 import { useGlobalContext } from "../../data-store";
 import { userApi } from "../../data/index";
 
-const friendState ={
+const friendState = {
   friend: 'friend',
   friendRequest: 'friendRequest',
   friendWaitAccept: 'friendWaitAccept',
@@ -66,11 +66,16 @@ function Profile(props) {
     if (pageUser && user) {
       if (user?.id !== pageUser?.id) {
         if (user?.friendIds?.includes(pageUser?.id)) {
-          setRelationship('friend');
+          setRelationship(friendState.friend);
         }
-        else {
-          setRelationship('other');
+        else if (user?.friendWaitIds?.includes(pageUser?.id)) {
+          setRelationship(friendState.friendWaitAccept);
         }
+        else if (user?.friendRequestIds?.includes(pageUser?.id)) {
+          setRelationship(friendState.friendRequest);
+        }
+        else
+          setRelationship(friendState.stranger);
       }
       else {
         setRelationship('self');

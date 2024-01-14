@@ -75,6 +75,20 @@ const userUpdateFriendRequest = async (targetId, option) => {
     }
 }
 
+const rejectFriendRequest = async (targetId) => {
+    try{
+        const response = await axios.post(baseURL + `/user-update-friend-request/${targetId}`, null, {
+            headers: {
+                'Authorization': 'Bearer ' + localStorage.getItem('token'),
+                'Content-Type': 'application/json'
+            },
+        });
+        return { isError: false, data: response };
+    } catch (error) {
+        return { isError: true, data: error };
+    }
+}
+
 const userUpdateUnfriendAcceptRequest = async (targetId, option,conversationCreation) => {
     try {
         const response = await axios.post(baseURL + `/user-unfriend-accept-request/${targetId}/${option}`, conversationCreation, {
@@ -113,6 +127,7 @@ const userApi = {
     userUpdateFriendRequest: userUpdateFriendRequest,
     userUpdateUnfriendAcceptRequest: userUpdateUnfriendAcceptRequest,
     userUpdateBlockList: userUpdateBlockList,
+    rejectFriendRequest: rejectFriendRequest,
     userDelete: userDelete
 }
 

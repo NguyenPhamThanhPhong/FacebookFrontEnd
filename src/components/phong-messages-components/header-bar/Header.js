@@ -36,7 +36,6 @@ function Header(props) {
     const navigate = useNavigate();
     const handleNavigation = (path) => {
         navigate(path);
-        console.log(path);
     };
 
     if (hidePaths.includes(currentPath))

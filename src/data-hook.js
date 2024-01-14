@@ -178,6 +178,26 @@ function useDataHook() {
         }
     }
 
+    const rejectFriendRequest = async (targetId,option=0) => {
+        try{
+            const response = await userApi.userUpdateFriendRequest(targetId,option);
+            if (!response?.isError) {
+                if(globalState?.user?.friendRequestIds){
+                    let friendRequestIds = globalState?.user?.friendRequestIds;
+                    friendRequestIds = friendRequestIds.filter(x=>x!==targetId);
+                    let user = {
+                        ...globalState?.user,
+                        friendRequestIds
+                    }
+                    dispatchGlobalState(setUser(user));
+                }
+            }
+        }
+        catch (error) {
+            console.log(error)
+        }
+    }
+
     const unfriend = async (targetId,option=0) => {
         try {
             const response = await userApi.userUpdateUnfriendAcceptRequest(targetId,option,{});
@@ -199,7 +219,7 @@ function useDataHook() {
         }
     }
 
-    return { fetchMessages, sendMessage,updatePersonalInfo,sendFriendRequest,undoFriendRequest,acceptFriendRequest,unfriend }
+    return { fetchMessages, sendMessage,updatePersonalInfo,sendFriendRequest,undoFriendRequest,acceptFriendRequest,rejectFriendRequest,unfriend }
 }
 
 export { useDataHook }
