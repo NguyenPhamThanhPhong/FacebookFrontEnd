@@ -47,13 +47,12 @@
 .chat-message-row{
     display: flex;
     justify-content: flex-start;
-    align-items: flex-start;
-    background: 'red';
+    align-items: center;
     margin-bottom: 10px;
 }
 
 .message-item {
-    background: green;
+    background: black;
     flex-grow: 1;
     color: var(--text-color);
 }
