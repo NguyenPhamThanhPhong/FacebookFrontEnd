@@ -4,7 +4,7 @@ import Form from 'react-bootstrap/Form';
 
 const NewComment = () => {
   return (
-    <div className="d-flex flex-start mb-4">
+    <div className="d-flex flex-start mb-4" style={{margin:'20px'}}>
       <img
         className="rounded-circle shadow-1-strong me-3"
         src="https://mdbcdn.b-cdn.net/img/Photos/Avatars/img%20(32).webp"
