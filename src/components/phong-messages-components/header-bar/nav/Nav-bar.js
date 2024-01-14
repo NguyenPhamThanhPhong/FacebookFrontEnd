@@ -21,7 +21,6 @@ import FriendRequest from "../../Request-noti"
 import { pathNames } from '../../../../Routes/routes'
 import { useNavigate } from "react-router-dom";
 import { useGlobalContext } from "../../../../data-store"
-import { useState } from "react";
 
 const CustomToggle = React.forwardRef(({ children, onClick }, ref) => (
   <a
