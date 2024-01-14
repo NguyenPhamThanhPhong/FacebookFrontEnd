@@ -9,6 +9,7 @@ import "./first-column.css"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faEllipsis, faArrowLeft } from '@fortawesome/free-solid-svg-icons'
 import { faFacebookF } from "@fortawesome/free-brands-svg-icons";
+import { faPenToSquare } from '@fortawesome/free-solid-svg-icons'
 
 function FirstColumn(props) {
 
@@ -37,7 +38,7 @@ function FirstColumn(props) {
           Chats
         </h4>
         <RoundButton width={'35px'} height={'35px'} backgroundColor={'var(--container-color)'}
-          icon={faEllipsis}
+          icon={faPenToSquare}
           iconWidth={'90%'} iconHeight={'90%px'} />
       </div>
       <SearchBox backIcon={arrow} textboxContainerStyle={searchboxContainerStyle} />
