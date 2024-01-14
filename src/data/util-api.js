@@ -7,7 +7,7 @@ function GenerateFormData(data){
     }
     return form;
 }
-const baseURL='https://192.168.1.2:7095'
+const baseURL='https://192.168.2.80:7095'
 
 const jsonHeader={
     Headers:{
