@@ -21,7 +21,9 @@ function ChatTextbox(props) {
 
     const handleSend = async (content) => {
         if (globalState.realtime?.connection && conversation) {
-            sendMessage(conversation?.participantIds,conversation.id, globalState.user?.id, content, null, null)
+            let receiverIds = conversation?.participantIds.filter(x => x !== globalState.user?.id);
+            sendMessage(receiverIds,conversation.id, globalState.user?.id, content, null, null)
+            props.scrollToBottom();
         }
     }
 

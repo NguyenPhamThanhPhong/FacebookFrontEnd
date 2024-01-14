@@ -1,61 +1,100 @@
 import React, { useState } from "react";
 import "./avatar-bar.css";
-import Button from 'react-bootstrap/Button';
-import ButtonGroup from 'react-bootstrap/ButtonGroup';
-import DropdownButton from 'react-bootstrap/DropdownButton';
-import Dropdown from 'react-bootstrap/Dropdown';
+import ProfileEdit from "./profile-edit";
+import { useDataHook } from "../../data-hook"
 
+const friendState = {
+  friend: 'friend',
+  friendRequest: 'friendRequest',
+  friendWaitAccept: 'friendWaitAccept',
+  stranger: 'stranger',
+  self: 'self',
+}
 
 export default function AvatarBar(props) {
+
+
+  let user = props?.user || null;
+  let friendIds = user?.friendIds;
+  let avatarUrl = user?.personalInfo?.avatarUrl;
+
+  let relationship = props?.relationship;
+  console.log(relationship);
+  const { sendFriendRequest, undoFriendRequest, acceptFriendRequest,rejectFriendRequest, unfriend } = useDataHook();
+
+  const handleAddFriend = () => {
+    sendFriendRequest(user?.id);
+  }
+  const handleUndoFriendRequest = () => {
+    undoFriendRequest(user?.id);
+  }
+  const handleAcceptFriendRequest = () => {
+    acceptFriendRequest(user?.id, 1, user?.name, user?.avatarUrl);
+  }
+
+  const handleRejectFriendRequest = () => {
+    rejectFriendRequest(user?.id);
+  }
+
+  const handleUnfriend = () => {
+    unfriend(user?.id);
+  }
+
+
   return (
     <>
-    <div className="Profile-main">
-      <div className="ProfileCover">
+      {
+        user?.id && (
+          <div className="Profile-main">
+            <div className="ProfileCover">
               <img
                 className="profileCoverImg"
-                src="assets/post/3.jpeg"
+                src={avatarUrl}
                 alt=""
               />
               <img
                 className="profileUserImg"
-                src={props.img}
+                src={avatarUrl}
                 alt=""
               />
               <div className="profileInfo">
-                <h4 className="profileInfoName">Your Name</h4>
-                <span className="profileInfoDesc">999 Friends</span>
+                <h4 className="profileInfoName">{user?.personalInfo?.name}</h4>
+                <span className="profileInfoDesc">{friendIds?.length + 'friends'}</span>
+                {
+                  relationship === friendState.self && (
+                    <span className="profileEdit"> <ProfileEdit myUser={user} /> </span>
+                  )
+                }
+                {
+                  relationship === friendState?.stranger && (
+                    <span className="profileEdit"> <button onClick={handleAddFriend} >thêm bạn</button> </span>
+                  )
+                }
+                {
+                  relationship === friendState.friendWaitAccept && (
+                    <span className="profileEdit"> <button onClick={handleUndoFriendRequest}>thu hồi lời kết bạn</button> </span>
+                  )
+                }
+                {
+                  relationship === friendState.friendRequest && (
+                    <span>
+                      <span className="profileEdit"> <button onClick={handleRejectFriendRequest} >Từ chối</button> </span>
+                      <span className="profileEdit"> <button onClick={handleAcceptFriendRequest} >Chấp nhận</button> </span>
+                    </span>
+                  )
+                }
+                {
+                  relationship === friendState.friend && (
+                    <span className="profileEdit"> <button onClick={handleUnfriend}>hủy kết bạn</button> </span>
+                  )
+                }
+              </div>
+
             </div>
-      </div>
-            
-      <hr className="Crossline">
-           </hr>
 
-            {/* <div className="buttonContainer"> */}
-                    {/* <div className="button-interact" style={{ width: "100%" }}>
-
-            <Button variant="primary">Posts</Button>
-
-            <Button variant="primary">Introduction</Button>
-
-            <Button variant="primary">Friends</Button>
-
-            <Button variant="primary">Photos</Button>
-
-            <Button variant="primary">Videos</Button>
-
-            <DropdownButton
-              as={ButtonGroup}
-              title="..."
-              id="bg-nested-dropdown"
-            >
-              <Dropdown.Item eventKey="1">Dropdown link</Dropdown.Item>
-              <Dropdown.Item eventKey="2">Dropdown link</Dropdown.Item>
-            </DropdownButton>
-            </div>   */}
-            {/* </div> */}
-           
-           
-    </div>
+            <hr className="Crossline"></hr>
+          </div>)
+      }
     </>
   );
 };

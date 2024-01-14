@@ -1,24 +1,25 @@
 import NavBarCustom from "@components/phong-messages-components/header-bar/nav/Nav-bar";
-import RoundSquareNav from "@components/phong-messages-components/header-bar/nav/Round-square-nav";
+import RoundSquareNav from "../../phong-messages-components/header-bar/nav/Round-square-nav";
 import SearchBox from "@components/phong-messages-components/header-bar/search/Search-box";
 import RoundButton from "@components/phong-messages-components/Round-button";
 
 import './Header.css'
 
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faHouse, faUser, faUserGroup, faArrowLeft } from '@fortawesome/free-solid-svg-icons'
 import { faFacebookF, faFacebookMessenger } from "@fortawesome/free-brands-svg-icons";
 import { pathNames } from "@root/Routes/routes.js";
 import { useLocation, useNavigate } from "react-router-dom";
+import { useGlobalContext } from "../../../data-store"
 
 
 function Header(props) {
 
-    // const homeIcon = <FontAwesomeIcon icon={faHome} />;
+    const [globalState, dispatchGlobalState] = useGlobalContext();
+    let user = globalState?.user;
 
     let customLogo = <RoundButton width={'45px'} height={'45px'} iconWidth={'90%'} iconHeight={'90%'}
-    icon={faFacebookF} backgroundColor={'var(--facebook-color)'}
-    iconColor={'white'}/>
+        icon={faFacebookF} backgroundColor={'var(--facebook-color)'}
+        iconColor={'white'} />
 
     let arrow = <RoundButton width={'35px'} height={'35px'}
         icon={faArrowLeft}
@@ -34,9 +35,7 @@ function Header(props) {
 
     const navigate = useNavigate();
     const handleNavigation = (path) => {
-        // Programmatic navigation to '/home'
         navigate(path);
-        console.log("navigate to " + path);
     };
 
     if (hidePaths.includes(currentPath))
@@ -69,15 +68,22 @@ function Header(props) {
                     iconActiveStyle={iconActiveStyle}
                     icon={faFacebookMessenger}>
                 </RoundSquareNav>
-                <RoundSquareNav
-                    targetingPath={pathNames.profile}
-                    onClick={handleNavigation}
-                    active={currentPath === pathNames.profile}
-                    customNavStyle={NavCustomStyle}
-                    iconNormalStyle={iconNormalStyle}
-                    iconActiveStyle={iconActiveStyle}
-                    icon={faUser}>
-                </RoundSquareNav>
+                {
+                    user?.id && (
+                        <>
+
+                            <RoundSquareNav
+                                targetingPath={pathNames.profile + "/" + user?.id}
+                                onClick={handleNavigation}
+                                active={currentPath === pathNames.profile + "/" + user?.id}
+                                customNavStyle={NavCustomStyle}
+                                iconNormalStyle={iconNormalStyle}
+                                iconActiveStyle={iconActiveStyle}
+                                icon={faUser}>
+                            </RoundSquareNav>
+                        </>
+                    )
+                }
             </div>
             <NavBarCustom />
         </nav>

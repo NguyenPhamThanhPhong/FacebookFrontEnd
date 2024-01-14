@@ -1,0 +1,40 @@
+
+.modal{
+    backdrop-filter: blur(1px); 
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+.modal-header{
+    background-color: #3A3B3C;
+
+}
+.modal-title{
+    color: white;
+    font-weight: bolder;
+}
+.modal-body{
+    background-color: #3A3B3C;
+}
+.modal-footer{
+    background-color: #3A3B3C;
+
+}
+.profile-picture{
+        width: 168px;
+        height: 168px;
+        border-radius: 50%;
+}
+.cover-picture{
+    width: 500px;
+    height: fit-content;
+    border-radius: 5%;
+}
+.row1{
+    margin-top: 15px;
+}
+.row2{
+    margin-top: 15px;
+    justify-items: center;
+    text-align: center;
+}
+
