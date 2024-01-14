@@ -66,7 +66,7 @@ function GroupchatWindow(props) {
                                                         size="medium"
                                                         type="circle"
                                                     />
-                                                    <span className=''>{friend?.personalInfo?.name} onClick= {(e) => setSelectedFriends([e.target.value)} </span>
+                                                    <span className=''>{friend?.personalInfo?.name} onClick= {[e]} => setSelectedFriends{[e.target.value]} </span>
                                                 </div>
                                             ))}
                                     </div>
