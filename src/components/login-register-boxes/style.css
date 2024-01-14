@@ -76,6 +76,20 @@
     text-decoration: underline;
 }
 
+.password-button {
+    color: #f0e4ff;
+    font-weight: bold;
+    background: none;
+    border: none;
+    cursor: pointer;
+    transition: color 0.3s ease-in-out;
+}
+
+.password-button.dim {
+    font-weight: normal;
+    color: #E5D1FE; 
+}
+
 @media screen and (max-width: 1000px) {
     .form_container {
         width: 45%;

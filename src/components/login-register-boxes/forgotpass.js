@@ -135,7 +135,7 @@ function Forgotpass() {
                     )}
                     <br></br>
                     <p className='text-center'>
-                        Return to<Link to="/" className='textref-link ms-2 fw-bold'>Sign in</Link>
+                        Return to<Link to="/login" className='textref-link ms-2 fw-bold'>Sign in</Link>
                     </p>
                 </form>
             </div>

@@ -6,7 +6,12 @@ import { useNavigate } from "react-router-dom";
 import { useGlobalContext } from "../../data-store/Context";
 import { setUser } from "../../data-store/Actions";
 import {loginApi} from '../../data/index'
-
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import {
+    faEye,
+    faEyeSlash,
+    } 
+from "@fortawesome/free-solid-svg-icons";
 function Login(){
 
     const navigate = useNavigate();
@@ -15,7 +20,7 @@ function Login(){
     const [statusMessage, setStatusMessage] = useState('');
     const [emailError, setEmailError] = useState(false);
     const [passwordError, setPasswordError] = useState(false);
-
+    const [showPassword, setShowPassword] = useState(false);
     const [globalState, dispatchGlobalState] = useGlobalContext();
 
   
@@ -92,7 +97,7 @@ function Login(){
                 </div>
                 <div className='mb-3'>
                     <input 
-                        type="password" 
+                        type={showPassword ? "text" : "password"}
                         placeholder='Password'
                         className={`form_control ${passwordError ? 'error' : ''}`}
                         value={password}
@@ -101,15 +106,16 @@ function Login(){
                     />
                 </div>
                 <div className='mb-3 d-flex justify-content-between align-items-center' style={{ fontSize: '15px'}}>
-                        <div>
-                            <input type="checkbox" className='custom-control custom-checkbox' id="check" />
-                            <label htmlFor="check" className='custom-input-label ms-2'>
-                                Remember me
-                            </label>
-                        </div>
-                        <p className='mb-0' style={{ fontSize: '14px', textAlign: 'right'}}>
-                            <Link to="/recoverpass" className='textref-link'>Forgot Password?</Link>
-                        </p>
+                    <button
+                        type="button"
+                        onClick={() => setShowPassword(!showPassword)}
+                        className={`show-password-button ${showPassword ? 'bright' : 'dim'} password-button`}
+                    >
+                        <FontAwesomeIcon icon={showPassword ? faEyeSlash : faEye} /> {showPassword ? 'Hide Password' : 'Show Password'}
+                    </button>
+                    <p className='mb-0' style={{ fontSize: '14px', textAlign: 'right'}}>
+                        <Link to="/recoverpass" className='textref-link'>Forgot Password?</Link>
+                    </p>
                 </div>
                 {statusMessage && <div className="mb-2 text-danger fw-bold">{statusMessage}</div>}
                 <div className='d-grid'>
