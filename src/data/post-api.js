@@ -74,6 +74,7 @@ export const Postdata = [
     "FileUrls": {
       "hello.png": "https://res.cloudinary.com/dm45tt6nt/image/upload/v1701701000/User/w9m4gdo2ekzkwsvuzvez.png",
       "abc.png": "https://res.cloudinary.com/dm45tt6nt/image/upload/v1701701000/User/w9m4gdo2ekzkwsvuzvez.png",
+      
     },
     "Owner": {
       "UserId": "656de57f992e34373c23dc05",
@@ -124,8 +125,7 @@ export const Postdata = [
     "Content": "helloadsfasdfasdfasds",
     "SharedPost": null,
     "FileUrls": {
-      "abc.png": "https://res.cloudinary.com/dm45tt6nt/image/upload/v1701701000/User/w9m4gdo2ekzkwsvuzvez.png",
-      
+      "video.mp4": "https://res.cloudinary.com/dcag8pp44/video/upload/v1705221538/StudentFolderName/nrdt31pbasrkt7sysm6f.mp4"
     },
     "Owner": {
       "UserId": "656de57f992e34373c23dc05",
