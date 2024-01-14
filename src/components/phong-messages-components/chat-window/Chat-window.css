@@ -48,12 +48,22 @@
     display: flex;
     justify-content: flex-start;
     align-items: flex-start;
+    background: 'red';
     margin-bottom: 10px;
 }
 
 .message-item {
-    /* background-color: beige; */
+    background: green;
     flex-grow: 1;
+    color: var(--text-color);
+}
+.message-item-delete{
+    background-color: var(--facebook-color);
+
+}
+
+.message-item-owner{
+    background: red;
     color: var(--text-color);
 }
 

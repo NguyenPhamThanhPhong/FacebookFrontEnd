@@ -14,12 +14,52 @@ import Form from "react-bootstrap/Form";
 import Modal from "react-bootstrap/Modal";
 import { useState } from "react";
 import ImageIcon from '@mui/icons-material/Image';
+import { setUser,setPosts, useGlobalContext } from '../../data-store'
+import { postApi, CreatePostRequest, OwnerRepresentation } from '../../data/index'
 
 function NewPostModal(props) {
   const [content, setContent] = useState("");
   const [anhs, setAnhs] = useState([]);
 
-  
+  const [globalState, dispatchGlobalState] = useGlobalContext();
+
+  let user = globalState?.user;
+
+  const handleCreatePost = async (content, files) => {
+    const formData = new FormData();
+    // Append title and content as form fields
+    formData.append('Title', user?.personalInfo?.name);
+    formData.append('Content', content);
+    // Append each file to the FormData
+    for (let i = 0; i < files.length; i++) {
+      formData.append('Files', files[i]);
+    }
+    // Append Owner data
+    formData.append('Owner.UserId', user?.id);
+    formData.append('Owner.Name', user?.personalInfo?.name);
+    formData.append('Owner.AvatarUrl', user?.personalInfo?.avatarUrl);
+    // Append SharedPostId if needed
+    formData.append('SharedPostId', '');
+    try {
+      const response = await postApi.postCreate(formData);
+      if (!response.isError) {
+        let returnedPost = response?.data?.data;
+        let currentPostIds = user?.postIds;
+        dispatchGlobalState(setPosts([...globalState?.posts, returnedPost]))
+        dispatchGlobalState(setUser({ ...user, postIds: [...currentPostIds, returnedPost?.id] }))
+        return true;
+      }
+      else {
+        console.log(response?.data);
+      }
+    }
+    catch (error) {
+      console.log(error);
+    }
+    return false;
+  }
+
+
 
   const onFileUploadHandler = (e) => {
     setAnhs(e.target.files);
@@ -29,7 +69,7 @@ function NewPostModal(props) {
     return [...anhs].map((anh) => (
       <div>
         <div>
-          <img src={URL.createObjectURL(anh)} width={`100%`}/>
+          <img src={URL.createObjectURL(anh)} width={`100%`} />
         </div>
       </div>
     ));
@@ -45,8 +85,7 @@ function NewPostModal(props) {
             border: "1px solid white",
             padding: "10px",
             margin: "10px",
-          }}
-        >
+          }}>
           {incacanh()}
         </div>
       );
@@ -57,28 +96,15 @@ function NewPostModal(props) {
     setContent(userInput);
   };
 
-  const handlePost = () => {
+  const handlePost = async () => {
     // Tạo một đối tượng JSON với thông tin bài viết
-    const postData = {
-      content: content,
-      images: {}
-    };
-
-    [...anhs].forEach((anh, index) => {
-      const fileName = `image_${index + 1}.png`; // Tên tệp ngẫu nhiên hoặc duy nhất
-      const imageUrl = URL.createObjectURL(anh);
-  
-      // Thêm ảnh vào đối tượng images
-      postData.images[fileName] = imageUrl;
-    });
-    // Ghi đối tượng JSON vào console
-    console.log(postData);
-
+    let result = await handleCreatePost(content, anhs);
+    console.log(result);
   };
 
   return (
-    
-    <Modal 
+
+    <Modal
       {...props}
       size="lg"
       aria-labelledby="contained-modal-title-vcenter"
@@ -93,7 +119,7 @@ function NewPostModal(props) {
         <Modal.Body>
           <div style={{ marginBottom: "10px" }}>
             <Image src={props.imageuser} roundedCircle className="image-user" />
-            <span>hello {props.name}</span>
+            <span>{user?.name}</span>
           </div>
           <div style={{ minHeight: "200px" }}>
             <div
@@ -113,7 +139,7 @@ function NewPostModal(props) {
               onInput={handleInput}
             >
             </div>
-              {Checkanh()}
+            {Checkanh()}
           </div>
           <div>
             <ImageIcon

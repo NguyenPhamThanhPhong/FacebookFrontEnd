@@ -7,7 +7,7 @@ import RoundButton from '@root/components/phong-messages-components/Round-button
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faBellSlash, faCircleInfo, faPhone, faVideo } from '@fortawesome/free-solid-svg-icons'
 import { MessageBox, Avatar } from "react-chat-elements";
-import React, { useState, useEffect, useRef,useLayoutEffect } from 'react'
+import React, { useState, useEffect, useRef, useLayoutEffect } from 'react'
 
 import { useDataHook } from '../../../data-hook'
 import { useGlobalContext } from '../../../data-store';
@@ -78,7 +78,7 @@ function ChatWindow(props) {
                         let person = people.find(x => x.id === message.senderID);
                         let avatarUrl = person?.avatarUrl || 'https://www.w3schools.com/howto/img_avatar.png';
                         return (
-                            <div  className='chat-message-row' key={index}>
+                            <div className='chat-message-row' key={index}>
                                 {!isOwner && (
                                     <Avatar
                                         src={avatarUrl}
@@ -87,6 +87,13 @@ function ChatWindow(props) {
                                         type="circle"
                                     />
                                 )}
+                                {
+                                    isOwner && (
+                                        <button className='message-item-delete'>
+                                            Delete message
+                                        </button>
+                                    )
+                                }
                                 <MessageBox
                                     className='message-item'
                                     notchStyle={{ fill: position === 'right' ? 'var(--facebook-color)' : 'var(--message-color)' }}
@@ -94,6 +101,7 @@ function ChatWindow(props) {
                                     type="text"
                                     text={message.content}
                                 />
+
                             </div>
                         );
                     })
@@ -101,7 +109,6 @@ function ChatWindow(props) {
             </div>
             <div className='chat-footer'>
                 <ChatTextbox scrollToBottom={scrollToBottom} conversation={props.conversation} />
-
             </div>
         </div>
     );
