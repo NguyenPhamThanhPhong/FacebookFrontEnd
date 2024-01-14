@@ -1,0 +1,100 @@
+.conversation-item-container{
+
+    padding: 8px 8px;
+    border-radius: 10px;
+}
+
+.conversation-item-container:hover{
+    background-color: var(--hover-color);
+    cursor: pointer;
+}
+
+
+.inner-container{
+    width: 90%;
+    height: 90%;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.conversation-item-left{
+  width: 50px; /* Adjust the width and height as needed */
+  height: 60px;
+  display: grid;
+  grid-template-columns: 35px 15px 5px;
+}
+.flex-avatar-container{
+  height: 100%;
+  width: 55px;
+  grid-column: 1;
+  column-span: 2;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.avatar-container {
+  width: 55px;
+  height: 55px;
+  overflow: hidden;
+  border-radius: 50%; /* This creates a circular shape */
+}
+.round-avatar {
+  width: 98%;
+  height: 98%;
+  object-fit: cover; /* Ensures the image covers the entire container */
+  z-index: 0;
+}
+
+.friend-request-status{
+  height: 100%;
+  grid-column: 2/span 2;
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-end;
+}
+
+.fonline-status-div{
+  grid-column: 3;
+  column-span: 1;
+  width: 20px;
+  height: 20px;
+  border: var(--background-color) 2px solid;
+  background-color: blue; /* or any color you prefer */
+  border-radius: 50%; /* creates a round shape */
+  z-index: 2;
+  margin-bottom: 3px;
+}
+
+.request-content-div{
+  padding-left: 15px;
+}
+
+.request-content-div h7,
+.request-content-div p{
+  color: var(--text-color);
+  margin: 0;
+}
+.request-btn1{
+  border-radius: 12px;
+  background-color: blue;
+  color: white;
+  padding: 8px 16px;
+  border: none;
+  cursor: pointer;
+  font-weight: bold;
+}
+.request-btn2{
+  margin-left: 16px;
+  border-radius: 12px;
+  background-color: grey;
+  color: white;
+  padding: 8px 16px;
+  border: none;
+  cursor: pointer;
+  font-weight: bold;
+}
+.request-content-div h8{
+  color: white;
+}
+  
