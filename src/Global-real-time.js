@@ -12,7 +12,7 @@ const GlobalRealTime = () => {
 
     useEffect(() => {
         const newConnection = new signalR.HubConnectionBuilder()
-            .withUrl('https://192.168.2.80:7095/chathub') // Replace with your actual hub URL
+            .withUrl('https://192.168.1.2:7095/chathub') // Replace with your actual hub URL
             .build();
 
         setConnection(newConnection);
