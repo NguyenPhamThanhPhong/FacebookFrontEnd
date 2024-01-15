@@ -80,10 +80,10 @@
   
   input {
     color: var(--text-color);
-    width: 500px;
+    width: 400px;
     padding: 8px;
     background-color: rgba(58,59,60,255);
-    border: none;
+    border: var(--text-color);
     border-radius: 10px;
     box-sizing: border-box;
   }
