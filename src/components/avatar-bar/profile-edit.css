@@ -59,4 +59,11 @@
 .img-uploader{
     float:right;
 }
-
+.img-upload-button {
+    background-color: transparent; /* or use 'none' */
+    border: none;
+    border-radius: 50%;
+    width: 35px;
+    height: 35px;
+    color: white;
+  }
