@@ -42,11 +42,7 @@ function DataOnlyComponent() {
         }
     }
 
-    const logout = () => {
-        dispatchGlobalState(setUser(null));
-        localStorage.removeItem('token')
-        navigate(pathNames.login);
-    }
+    
 
     useEffect(() => {
         if (!globalState.user) {
@@ -58,6 +54,7 @@ function DataOnlyComponent() {
         try {
             const response = await postApi.postGetFromIds(ids);
             if (!response?.isError) {
+                console.log(response.data.data)
                 dispatchGlobalState(setPosts(response.data.data));
             }
         }
