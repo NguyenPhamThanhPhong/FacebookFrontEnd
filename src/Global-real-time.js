@@ -21,6 +21,7 @@ const GlobalRealTime = () => {
 
 
     useEffect(() => {
+        console.log("here")
         if (connection) {
             connection
                 .start()

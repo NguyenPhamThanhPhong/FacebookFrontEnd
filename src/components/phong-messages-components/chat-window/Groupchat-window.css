@@ -1,0 +1,120 @@
+.chat-window {
+    width: 75%;
+}
+
+.chat-header {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.chat-title-group {
+    display: flex;
+    padding-left: 10px;
+}
+
+.chat-conversation-title {
+    display: flex;
+    justify-content: center;
+    align-self: center;
+}
+
+.chat-conversation-title h5,
+.chat-notification-status {
+    margin: 0;
+    color: var(--text-color);
+}
+
+.chat-window {
+    height: 100%;
+    padding-top: 10px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.chat-window-chat-body {
+    width: 100%;
+
+    padding: 10px 10px;
+    flex-grow: 1;
+    margin-bottom: 10px;
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+
+.chat-message-row{
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+    margin-bottom: 10px;
+}
+
+.message-item {
+    /* background-color: beige; */
+    flex-grow: 1;
+    color: var(--text-color);
+}
+
+.rce-mbox {
+    background: var(--message-color) !important;
+    max-width: 45%;
+}
+
+.rce-mbox-right {
+    background: var(--facebook-color) !important;
+}
+/* Groupchat-window.css */
+
+.chat-header{
+    /* Your existing styles for the chat header */
+  }
+  
+  .friend-search {
+    position: relative;
+    display: flex;
+    align-items: center;
+  }
+  
+  input {
+    color: var(--text-color);
+    width: 500px;
+    padding: 8px;
+    background-color: rgba(58,59,60,255);
+    border: none;
+    border-radius: 10px;
+    box-sizing: border-box;
+  }
+  
+  .search-results {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    background-color: var(--container-color);
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    z-index: 1;
+  }
+  
+  .friend-result {
+    display: flex;
+    align-items: center;
+    padding: 8px;
+    
+    color: var(--text-color);
+  }
+  
+  .friend-result img {
+    margin-right: 8px;
+    border-radius: 50%;
+  }
+  
+  .friend-result:hover {
+    background-color: #4e4f50;
+  cursor: pointer;
+  }
+  /* Additional styles based on your design */
+  

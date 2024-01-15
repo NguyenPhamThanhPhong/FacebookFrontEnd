@@ -1,6 +1,7 @@
 import home from '../pages/home/home.js'
 import login_register from '../pages/login-register/login-register.js'
 import messages  from '../pages/messages/messages.js'
+import GroupMessages from '../pages/messages/group-messages.js'
 import profile from '../pages/profile/profile.js'
 import Login from '.././components/login-register-boxes/login.js'
 import Signup from '../components/login-register-boxes/register.js'
@@ -13,6 +14,7 @@ export const pathNames = {
     home: "/",
     login_register: "/login-register",
     messages: "/messages",
+    group_messages: "/group-messages",
     profile: "/profile",
     login: "/login",
     signup: "/signup",
@@ -29,6 +31,7 @@ export const publicRoutes = [
     {path: pathNames.home, component: home},
     {path: pathNames.login_register, component: login_register},
     {path: pathNames.messages, component: messages},
+    {path: pathNames.group_messages, component: GroupMessages},
     {path: pathNames.profile+'/:id', component: profile},
     {path: pathNames.test, component: ChatComponent}
 ]
