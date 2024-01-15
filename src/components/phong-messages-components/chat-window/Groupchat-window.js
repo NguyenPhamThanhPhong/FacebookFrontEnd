@@ -13,6 +13,7 @@ import { useDataHook } from '../../../data-hook'
 import { useGlobalContext } from '../../../data-store';
 import { faPenToSquare } from '@fortawesome/free-solid-svg-icons'
 import Modal from 'react-bootstrap/Modal';
+import GroupImageUploadd from '../../upload/groupimage-upload';
 
 function GroupchatWindow(props) {
 
@@ -85,19 +86,7 @@ function GroupchatWindow(props) {
                 <Modal.Body>
                     <div className='chat-window' >
                         <div className='friend-search'>
-                        <div className="group-chat-add">
-                            <button className="group-chat-add" onClick={handleButtonClick}>
-                                <FontAwesomeIcon icon={faCamera} />
-                            </button>
-                            <input
-                                ref={fileInputRef}
-                                id="file-input"
-                                type="file"
-                                accept="image/*"
-                                onChange={handleFileChange}
-                                style={{ display: 'none' }}
-                            />
-                        </div>
+                        <GroupImageUploadd/>
 
                         <input
                             type="text"
@@ -162,12 +151,12 @@ function GroupchatWindow(props) {
                             })}
                         </div>
                         <div className='chat-footer'>
-                            <Button variant="secondary" onClick={handleClose}>
+                            <button className="cancel-add-group-button" onClick={handleClose}>
                                 Close
-                            </Button>
-                            <Button variant="primary" onClick={handleSaveChanges}>
+                            </button>
+                            <button className='create-add-group-button' onClick={handleSaveChanges}>
                                 Create
-                            </Button>
+                            </button>
                         </div>
                     </div>
                 </Modal.Body>
