@@ -19,7 +19,6 @@ import PostTitleDisplay from './post-title-display.js'
 import { commentApi } from '../../data/index'
 
 
-
 const Posts = ({ propsPost, user, people, handleLikeUnlike }) => {
   const [modalShow, setModalShow] = React.useState(false);
   const [modalEditShow, setModalEditShow] = React.useState(false);

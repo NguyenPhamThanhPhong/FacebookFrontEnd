@@ -1,5 +1,5 @@
-import React from 'react';
-
+import React from "react";
+import ImageModal from "./post-image-modal";
 
 const checkUrlType = (url) => {
   const videoExtensions = ["mp4", "avi", "mov", "mkv"];
@@ -20,10 +20,20 @@ const checkUrlType = (url) => {
 };
 
 function PostDisplayWindow(props) {
+  const [modalImageShow, setModalImageShow] = React.useState(false);
+  const [selectedImageUrl, setSelectedImageUrl] = React.useState("");
   return (
     <div>
       {props.fileUrls && (
-        <div style={{ display: "flex", width: `100%`, minheight: "100px", flexDirection: 'column', gap: '5px' }}>
+        <div
+          style={{
+            display: "flex",
+            width: `100%`,
+            minheight: "100px",
+            flexDirection: "column",
+            gap: "5px",
+          }}
+        >
           <div>
             {props.fileUrls &&
               Object.values(props.fileUrls).map((fileUrl, index) => {
@@ -32,17 +42,33 @@ function PostDisplayWindow(props) {
                     <img
                       style={{
                         objectFit: "cover",
-                        maxWidth: '45%',
-                        minWidth: '30%',
+                        maxWidth: "45%",
+                        cursor: "pointer",
+                        minWidth: "30%",
                         // Sử dụng flex để tự co lại
+                      }}
+                      onClick={() => {
+                        setModalImageShow(true)
+                        setSelectedImageUrl(fileUrl)
                       }}
                       key={index}
                       src={fileUrl}
-                      alt="#" />);
+                      alt="#"
+                    />
+                  );
                 }
+
                 if (checkUrlType(fileUrl) === "video") {
                   return (
-                    <video key={index} controls style={{ width: '100%' }} >
+                    <video
+                      key={index}
+                      controls
+                      style={{ width: "100%" }}
+                      onClick={() => {
+                        setModalImageShow(true)
+                        setSelectedImageUrl(fileUrl)
+                      }}
+                    >
                       <source src={fileUrl} />
                     </video>
                   );
@@ -51,6 +77,11 @@ function PostDisplayWindow(props) {
           </div>
         </div>
       )}
+      <ImageModal
+        src = {selectedImageUrl}
+        show={modalImageShow}
+        onHide={() => setModalImageShow(false)}
+      />
     </div>
   );
 }

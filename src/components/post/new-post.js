@@ -13,9 +13,13 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import Form from "react-bootstrap/Form";
 import Modal from "react-bootstrap/Modal";
 import { useState } from "react";
-import ImageIcon from '@mui/icons-material/Image';
-import { setUser,setPosts, useGlobalContext } from '../../data-store'
-import { postApi, CreatePostRequest, OwnerRepresentation } from '../../data/index'
+import ImageIcon from "@mui/icons-material/Image";
+import { setUser, setPosts, useGlobalContext } from "../../data-store";
+import {
+  postApi,
+  CreatePostRequest,
+  OwnerRepresentation,
+} from "../../data/index";
 
 function NewPostModal(props) {
   const [content, setContent] = useState("");
@@ -28,49 +32,80 @@ function NewPostModal(props) {
   const handleCreatePost = async (content, files) => {
     const formData = new FormData();
     // Append title and content as form fields
-    formData.append('Title', user?.personalInfo?.name);
-    formData.append('Content', content);
+    formData.append("Title", user?.personalInfo?.name);
+    formData.append("Content", content);
     // Append each file to the FormData
     for (let i = 0; i < files.length; i++) {
-      formData.append('Files', files[i]);
+      formData.append("Files", files[i]);
     }
     // Append Owner data
-    formData.append('Owner.UserId', user?.id);
-    formData.append('Owner.Name', user?.personalInfo?.name);
-    formData.append('Owner.AvatarUrl', user?.personalInfo?.avatarUrl);
+    formData.append("Owner.UserId", user?.id);
+    formData.append("Owner.Name", user?.personalInfo?.name);
+    formData.append("Owner.AvatarUrl", user?.personalInfo?.avatarUrl);
     // Append SharedPostId if needed
-    formData.append('SharedPostId', '');
-    console.log(user?.personalInfo?.name)
+    formData.append("SharedPostId", "");
+    console.log(user?.personalInfo?.name);
     try {
       const response = await postApi.postCreate(formData);
       if (!response.isError) {
         let returnedPost = response?.data?.data;
         let currentPostIds = user?.postIds;
-        dispatchGlobalState(setPosts([...globalState?.posts, returnedPost]))
-        dispatchGlobalState(setUser({ ...user, postIds: [...currentPostIds, returnedPost?.id] }))
+        dispatchGlobalState(setPosts([...globalState?.posts, returnedPost]));
+        dispatchGlobalState(
+          setUser({ ...user, postIds: [...currentPostIds, returnedPost?.id] })
+        );
         return true;
-      }
-      else {
+      } else {
         console.log(response?.data);
       }
-    }
-    catch (error) {
+    } catch (error) {
       console.log(error);
     }
     return false;
-  }
+  };
 
+  const checkUrlType = (url) => {
+    const videoExtensions = ["mp4", "avi", "mov", "mkv"];
+    const imageExtensions = ["jpg", "jpeg", "png", "gif", "bmp"];
 
+    const fileExtension = url.split(".").pop().toLowerCase();
+
+    const isVideo = new RegExp(videoExtensions.join("|")).test(fileExtension);
+    const isImage = new RegExp(imageExtensions.join("|")).test(fileExtension);
+
+    if (isVideo) {
+      return "video";
+    } else if (isImage) {
+      return "image";
+    } else {
+      return "unknown";
+    }
+  };
 
   const onFileUploadHandler = (e) => {
     setAnhs(e.target.files);
   };
 
+  const isVideo = (blob) => {
+    return blob.type.startsWith('video/');
+  };
+  
+  const isImage = (blob) => {
+    return blob.type.startsWith('image/');
+  };
+
   const incacanh = () => {
     return [...anhs].map((anh) => (
       <div>
-        <div>
-          <img src={URL.createObjectURL(anh)} width={`100%`} />
+        <div width={`100%`}>
+          {isVideo(anh) && (
+          <video width="100%" controls>
+            <source src={URL.createObjectURL(anh)} type="video/mp4" />
+          </video>
+        )}
+        {isImage(anh) && (
+          <img src={URL.createObjectURL(anh)} width="100%" />
+        )}
         </div>
       </div>
     ));
@@ -86,7 +121,8 @@ function NewPostModal(props) {
             border: "1px solid white",
             padding: "10px",
             margin: "10px",
-          }}>
+          }}
+        >
           {incacanh()}
         </div>
       );
@@ -104,7 +140,6 @@ function NewPostModal(props) {
   };
 
   return (
-
     <Modal
       {...props}
       size="lg"
@@ -119,7 +154,11 @@ function NewPostModal(props) {
         </Modal.Header>
         <Modal.Body>
           <div style={{ marginBottom: "10px" }}>
-            <Image src={user?.personalInfo?.avatarUrl} roundedCircle className="image-user" />
+            <Image
+              src={user?.personalInfo?.avatarUrl}
+              roundedCircle
+              className="image-user"
+            />
             <span>{user?.personalInfo?.name}</span>
           </div>
           <div style={{ minHeight: "200px" }}>
@@ -138,8 +177,7 @@ function NewPostModal(props) {
               contentEditable
               spellCheck
               onInput={handleInput}
-            >
-            </div>
+            ></div>
             {Checkanh()}
           </div>
           <div>
@@ -162,7 +200,7 @@ function NewPostModal(props) {
         <Modal.Footer>
           <Button
             onClick={() => {
-              handlePost()
+              handlePost();
             }}
             style={{ width: "90%" }}
           >
@@ -175,22 +213,22 @@ function NewPostModal(props) {
 }
 
 const Newpost = (props) => {
-  const ImageUrl = 'assets/heart.png'
+  const ImageUrl = "assets/heart.png";
   const [modalShow, setModalShow] = React.useState(false);
   return (
     <div className="newpost-main">
       <div className="newpost-background">
         <div className="container-newpost">
           <div className="newpost-input">
-            <Image
-              src={props.image}
-              roundedCircle
-              className="image-user"
-            />
+            <Image src={props.image} roundedCircle className="image-user" />
             <div className="input-post" onClick={() => setModalShow(true)}>
               <span>What's in your mind SafaK?</span>
             </div>
-            <NewPostModal imageuser={props.image} show={modalShow} onHide={() => setModalShow(false)} />
+            <NewPostModal
+              imageuser={props.image}
+              show={modalShow}
+              onHide={() => setModalShow(false)}
+            />
           </div>
           <hr />
           <div className="newpost-service">
