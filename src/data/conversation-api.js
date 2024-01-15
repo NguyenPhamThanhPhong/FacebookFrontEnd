@@ -9,7 +9,7 @@ const formdataHeader = APIUtil.formdataHeader;
 const conversationCreate = async (createConversationRequest) => {
     try {
         const response = await axios.post(baseURL + `/conversation-create`, createConversationRequest, jsonHeader);
-        return { isError: false, data: response.data };
+       return { isError: false, data: response };
     } catch (error) {
         return { isError: true, data: error };
     }
@@ -28,7 +28,7 @@ const conversationGetFromIds = async (ids,skip) => {
 const conversationSearch = async (searchRequest) => {
     try {
         const response = await axios.post(baseURL + `/conversation-search`, searchRequest, jsonHeader);
-        return { isError: false, data: response.data };
+       return { isError: false, data: response };
     } catch (error) {
         return { isError: true, data: error };
     }

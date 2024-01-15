@@ -16,6 +16,7 @@ import PostDisplayWindow from './post-display-window.js'
 import PostsEdit from './post-edit.js'
 import CommentModal from './comment-modal.js'
 import PostTitleDisplay from './post-title-display.js'
+import { commentApi } from '../../data/index'
 
 
 
@@ -23,7 +24,26 @@ const Posts = ({ propsPost, user, people, handleLikeUnlike }) => {
   const [modalShow, setModalShow] = React.useState(false);
   const [modalEditShow, setModalEditShow] = React.useState(false);
 
-  let isLIked = propsPost?.likes?.some((item) => item.userId === user?.id);
+  let isLiked = propsPost?.likes?.some((item) => item.userId === user?.id);
+
+  const [comments, setComments] = useState(propsPost?.comments || []);
+
+  const fetchComments = async () => {
+    if (propsPost?.commentIds?.length > 0) {
+      const res = await commentApi.getMany(propsPost?.commentIds, 0);
+      if (!res.isError) {
+        setComments(res.data?.data);
+      }
+    }
+  }
+  const uniqueUserIdsSet = new Set(comments.map(comment => comment.userId));
+
+  // Convert the Set back to an array
+  const distinctUserIds = Array.from(uniqueUserIdsSet);
+
+  useEffect(() => {
+    fetchComments();
+  }, []);
 
   return (
     <div>
@@ -41,7 +61,7 @@ const Posts = ({ propsPost, user, people, handleLikeUnlike }) => {
             />
           </Card.Title>
           <Card.Text style={{ padding: "0 10px 0 10px" }}>
-            {propsPost.Content}
+            {propsPost.content}
           </Card.Text>
           <PostDisplayWindow fileUrls={propsPost?.fileUrls} />
         </Card.Body>
@@ -54,9 +74,12 @@ const Posts = ({ propsPost, user, people, handleLikeUnlike }) => {
                   {propsPost.likes &&
                     propsPost.likes.map((item) => {
                       let mypeople = people.find((p) => p.id === item.userId);
-                      (
-                        <span key={item.userId}> {mypeople?.personalInfo?.name || user?.personalInfo?.name}</span>
-                      )
+                      return (
+                        <span key={item.userId}>
+                          {" "}
+                          {mypeople?.personalInfo?.name || user?.personalInfo?.name}
+                        </span>
+                      );
                     })}
                 </Tooltip>
               }
@@ -71,53 +94,66 @@ const Posts = ({ propsPost, user, people, handleLikeUnlike }) => {
                 placement="bottom"
                 overlay={
                   <Tooltip id="span-tooltip">
-                    {propsPost.comments &&
-                      propsPost.comments.map((item) => (
-                        <span key={item.UserId}> {item.UserId}</span>
-                      ))}
+                    {distinctUserIds.map(userId => {
+                      let person = people.find((p) => p.id === userId);
+                      return (
+                        <div key={userId}>{person?.personalInfo?.name || user?.personalInfo?.name}</div>
+                      );
+                    })}
                   </Tooltip>
                 }
               >
                 <span style={{ marginRight: "10px" }} className="style-service">
-                  {propsPost?.comments?.length} bình luận
+                  {comments?.length || 0} bình luận
                 </span>
               </OverlayTrigger>
 
-              <span className="style-service">lượt chia sẻ</span>
             </div>
           </div>
           <hr style={{ margin: "1rem 16px" }} />
         </div>
         <div className="button-interact">
-          <Button style={{ height: '40px', background: isLIked ? 'blue' : 'pink' }}
-            onClick={async () => { await handleLikeUnlike(propsPost?.id, isLIked ? 2 : 1) }} > Thích</Button>
+          <Button style={{ height: '40px', background: isLiked ? 'blue' : 'pink' }}
+            onClick={async () => { await handleLikeUnlike(propsPost?.id, isLiked ? 2 : 1) }} > Thích</Button>
           <Button variant="primary" onClick={() => setModalShow(true)}>
             Bình luận
           </Button>
 
           <CommentModal
             handleLikeUnlike={handleLikeUnlike}
-            ownerId = {propsPost?.owner?.userId}
-            ownerName = {propsPost?.owner?.name}
+            ownerId={propsPost?.owner?.userId}
+            ownerName={propsPost?.owner?.name}
             postId={propsPost.postId}
+            user={user}
             people={people}
             image={propsPost.owner.avatarUrl}
             fileUrls={propsPost?.fileUrls}
             description={propsPost?.content}
             show={modalShow}
-            comments={propsPost?.comments}
+            comments={comments}
+            distinctUserIds={distinctUserIds}
             likes={propsPost?.likes || []}
+            isLiked={isLiked}
             onHide={() => setModalShow(false)}
           />
         </div>
         {
-          user && <NewComment postId={propsPost?.id} user={user} />
+          user && <NewComment postId={propsPost?.id} user={user} setComments={setComments} />
         }
-        {propsPost.Comments && (
+        {comments && (
           <div>
-            {propsPost.Comments.map((comment) => (
-              <Comment key={comment.Id} commentinfo={comment} />
-            ))}
+            {comments.slice(0, 2).map((comment) => {
+              let myperson = people.find((p) => p.id === comment.userId);
+              return (
+                <Comment
+                  key={comment.id}
+                  commentinfo={comment}
+                  setComments={setComments}
+                  personName={myperson?.personalInfo?.name || user?.personalInfo?.name}
+                  avatarUrl={myperson?.personalInfo?.avatarUrl || user?.personalInfo?.avatarUrl}
+                />
+              );
+            })}
           </div>
         )}
       </Card>

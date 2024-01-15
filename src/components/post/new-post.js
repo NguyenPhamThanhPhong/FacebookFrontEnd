@@ -40,6 +40,7 @@ function NewPostModal(props) {
     formData.append('Owner.AvatarUrl', user?.personalInfo?.avatarUrl);
     // Append SharedPostId if needed
     formData.append('SharedPostId', '');
+    console.log(user?.personalInfo?.name)
     try {
       const response = await postApi.postCreate(formData);
       if (!response.isError) {
@@ -118,8 +119,8 @@ function NewPostModal(props) {
         </Modal.Header>
         <Modal.Body>
           <div style={{ marginBottom: "10px" }}>
-            <Image src={props.imageuser} roundedCircle className="image-user" />
-            <span>{user?.name}</span>
+            <Image src={user?.personalInfo?.avatarUrl} roundedCircle className="image-user" />
+            <span>{user?.personalInfo?.name}</span>
           </div>
           <div style={{ minHeight: "200px" }}>
             <div

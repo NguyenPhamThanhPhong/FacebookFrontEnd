@@ -38,6 +38,8 @@ const CommentModal = (props) => {
 
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
+  const { user, people, comments } = props;
+
 
   let handleLikeUnlike = props.handleLikeUnlike;
   return (
@@ -61,14 +63,14 @@ const CommentModal = (props) => {
           >
             <Modal.Title id="contained-modal-title-vcenter">
               <Image
-              onClick={() => navigate(`/profile/${props?.ownerId}`)}
+                onClick={() => navigate(`/profile/${props?.ownerId}`)}
                 src={props.image}
                 roundedCircle
                 width={50}
                 height={50}
-                style={{ marginRight: "10px",cursor:'pointer' }}
+                style={{ marginRight: "10px", cursor: 'pointer' }}
               />
-              <span style={{cursor:'pointer'}} onClick={()=>{navigate(`/profile/${props?.ownerId}`)}} >{props?.ownerName}</span>
+              <span style={{ cursor: 'pointer' }} onClick={() => { navigate(`/profile/${props?.ownerId}`) }} >{props?.ownerName}</span>
             </Modal.Title>
           </Modal.Header>
           <Modal.Body style={{ padding: "0px", backgroundColor: "#242526" }}>
@@ -80,10 +82,16 @@ const CommentModal = (props) => {
                   placement="bottom"
                   overlay={
                     <Tooltip id="span-tooltip">
-                      {props?.likes &&
-                        props.likes.map((item) => (
-                          <span key={item.userId}> {item.name}</span>
-                        ))}
+                      {props.likes &&
+                        props.likes.map((item) => {
+                          let mypeople = props.people.find((p) => p.id === item.userId);
+                          return (
+                            <span key={item.userId}>
+                              {" "}
+                              {mypeople?.personalInfo?.name || props?.user?.personalInfo?.name}
+                            </span>
+                          );
+                        })}
                     </Tooltip>
                   }
                 >
@@ -96,38 +104,47 @@ const CommentModal = (props) => {
                     placement="bottom"
                     overlay={
                       <Tooltip id="span-tooltip">
-                        {props?.comments &&
-                          props.comments.map((item) => (
-                            <span key={item.UserId}> {item.UserId}</span>
-                          ))}
+                        {props?.distinctUserIds && props?.distinctUserIds.map(userId => {
+                          if (props.people) {
+                            let person = props.people.find((p) => p.id === userId);
+                            return (
+                              <div key={userId}>{person?.personalInfo?.name || props?.user?.personalInfo?.name}</div>
+                            );
+                          }
+                        })}
                       </Tooltip>
-                    }
-                  >
+                    }>
                     <span
                       style={{ marginRight: "10px" }}
-                      className="style-service"
-                    >
+                      className="style-service">
                       {props?.comments?.length || '0'} bình luận
                     </span>
                   </OverlayTrigger>
-                  <span className="style-service">lượt chia sẻ</span>
                 </div>
               </div>
             </div>
           </Modal.Body>
           <Modal.Body style={{ backgroundColor: "#242526" }}>
             <div className="button-interact" style={{ width: "100%" }}>
-              <Button style={{ height: '40px', background: props?.isLIked ? 'blue' : 'pink' }}
+              <Button style={{ height: '40px', background: props?.isLiked ? 'blue' : 'pink' }}
                 onClick={async () => { await handleLikeUnlike(props?.postId, props?.isLIked ? 2 : 1) }}>Thích</Button>
               <Button style={{ height: '40px' }} variant="primary">Bình luận</Button>
             </div>
           </Modal.Body>
 
-          {props.comments && (
+          {comments && (
             <div>
-              {props.comments.map((comment) => (
-                <Comment key={comment.Id} commentinfo={comment} />
-              ))}
+              {comments.map((comment) => {
+                let myperson = people.find((p) => p.id === comment.userId);
+                return (
+                  <Comment
+                    key={comment.id}
+                    commentinfo={comment}
+                    personName={myperson?.personalInfo?.name || user?.personalInfo?.name}
+                    avatarUrl={myperson?.personalInfo?.avatarUrl || user?.personalInfo?.avatarUrl}
+                  />
+                );
+              })}
             </div>
           )}
         </div>

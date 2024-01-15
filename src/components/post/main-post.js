@@ -20,7 +20,6 @@ const Mainpost = (props) => {
   const combinedPosts = []
 
   if (posts && Array.isArray(posts)) {
-    console.log(posts)
     combinedPosts.push(...posts);
   }
   if (homePosts && Array.isArray(homePosts)) {
@@ -33,7 +32,7 @@ const Mainpost = (props) => {
       <div className="containerpost">
         <Newpost image={imageuser}/>
         {combinedPosts.map((item,index) => {
-          console.log(item)
+          // console.log(item)
           return (
             <Posts
               user={user}
