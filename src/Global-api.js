@@ -54,7 +54,6 @@ function DataOnlyComponent() {
         try {
             const response = await postApi.postGetFromIds(ids);
             if (!response?.isError) {
-                console.log(response.data.data)
                 dispatchGlobalState(setPosts(response.data.data));
             }
         }
