@@ -60,6 +60,8 @@ export default function AvatarBar(props) {
               <div className="profileInfo">
                 <h4 className="profileInfoName">{user?.personalInfo?.name}</h4>
                 <span className="profileInfoDesc">{friendIds?.length + 'friends'}</span>
+              </div>
+                <div className="abcxyz">
                 {
                   relationship === friendState.self && (
                     <span className="profileEdit"> <ProfileEdit myUser={user} /> </span>
@@ -67,32 +69,34 @@ export default function AvatarBar(props) {
                 }
                 {
                   relationship === friendState?.stranger && (
-                    <span className="profileEdit"> <button onClick={handleAddFriend} >thêm bạn</button> </span>
+                    <span> <button className="Addfriend-button" onClick={handleAddFriend}> Add friend</button> </span>
                   )
                 }
                 {
                   relationship === friendState.friendWaitAccept && (
-                    <span className="profileEdit"> <button onClick={handleUndoFriendRequest}>thu hồi lời kết bạn</button> </span>
+                    <span> <button className="UndoRequest" onClick={handleUndoFriendRequest}>Undo request</button> </span>
                   )
                 }
                 {
                   relationship === friendState.friendRequest && (
-                    <span>
-                      <span className="profileEdit"> <button onClick={handleRejectFriendRequest} >Từ chối</button> </span>
-                      <span className="profileEdit"> <button onClick={handleAcceptFriendRequest} >Chấp nhận</button> </span>
-                    </span>
+                    <div className="friend-request-message">
+                      {user?.personalInfo?.name} sent you a friend request
+                      <span> <button className="AcceptRequest" onClick={handleAcceptFriendRequest} >Accept request</button> </span>
+                      <span> <button className="DenyRequest" onClick={handleRejectFriendRequest} >Deny request</button> </span> 
+                    </div>
                   )
                 }
                 {
                   relationship === friendState.friend && (
-                    <span className="profileEdit"> <button onClick={handleUnfriend}>hủy kết bạn</button> </span>
+                    <span > <button className="Unfriend-button" onClick={handleUnfriend}>Unfriend</button> </span>
                   )
                 }
-              </div>
+                </div>
+              
 
             </div>
 
-            <hr className="Crossline"></hr>
+
           </div>)
       }
     </>

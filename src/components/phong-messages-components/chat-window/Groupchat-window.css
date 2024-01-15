@@ -116,5 +116,19 @@
     background-color: #4e4f50;
   cursor: pointer;
   }
+  .group-chat-add {
+    background-color: transparent; /* or use 'none' */
+    border: none;
+    border-radius: 50%;
+    width: 35px;
+    height: 35px;
+    
+    color: white;
+  }
+  /* Optional: Add hover effect to make it visible on hover */
+  .group-chat-add:hover {
+    opacity: 1;
+    background-color: #4e4f50;
+  }
   /* Additional styles based on your design */
   

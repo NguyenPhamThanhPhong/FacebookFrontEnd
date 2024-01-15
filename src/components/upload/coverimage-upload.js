@@ -51,8 +51,8 @@ const CoverImageUploadd = (props) => {
               width={300}
               height={330}
               onCrop={onCrop}
-              onBeforeFileLoad={onBeforeFileLoad}
               exportAsSquare={true}
+              onBeforeFileLoad={onBeforeFileLoad}
               // Make sure to pass 'croppedImage' as the 'src' prop to show the cropped preview
               src={croppedImage}
             />
