@@ -17,7 +17,7 @@ import React, { useState } from "react";
 import Friend from "../../components/friends/friend";
 import Mainpost from "../../components/post/main-post";
 import { faBell, faX } from "@fortawesome/free-solid-svg-icons";
-
+import RecommendFriend from "../../components/friends/recommendfriend";
 import Header from "../../components/phong-messages-components/header-bar/Header";
 
 function Home(props) {
@@ -48,8 +48,8 @@ function Home(props) {
       <div className="homecontainer">
         <div className="container-item">
           <SidebarLeft />
-
-          <div style={{flex:'5.5',marginTop:'65px'}}>
+          <div style={{flex:'5.5',marginTop:'15px'}}>
+            {/* <RecommendFriend/> */}
             <Mainpost />
           </div>
 

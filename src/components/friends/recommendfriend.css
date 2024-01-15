@@ -1,0 +1,28 @@
+.background-rcm{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
+.container-rcm{
+    width: 90%;
+    background-color:#242526;
+}
+
+.item-rcm{
+    padding: 10px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.item-rcm:hover{
+    background-color: #3A3B3C;
+    cursor: pointer;
+    border-radius: 10px;
+}
+
+.img-user{
+    height: 50px;
+    width: 50px;
+}
