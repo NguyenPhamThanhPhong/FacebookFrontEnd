@@ -14,7 +14,7 @@ function PostTitleDisplay({propsPost,setModalEditShow}) {
       >
         <div style={{ display: "flex" }}>
           <Image
-            src={propsPost.Owner.AvatarUrl}
+            src={propsPost?.owner?.avatarUrl}
             roundedCircle
             width={50}
             height={50}
@@ -22,7 +22,7 @@ function PostTitleDisplay({propsPost,setModalEditShow}) {
           />
           <div style={{ display: "flex", flexDirection: "column" }}>
             <span style={{ marginTop: "15px" }}>
-              {propsPost.Owner.Name}
+              {propsPost.owner?.name}
             </span>
             <span
               style={{

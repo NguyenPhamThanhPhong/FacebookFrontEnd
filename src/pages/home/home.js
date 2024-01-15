@@ -57,10 +57,6 @@ function Home(props) {
             <SidebarRight />
             <Friend />
           </div>
-          {/* <div  className='chat-mini-window'>
-                    <ChatWindow customStyle={chatWindowCustomStyle} conversation={conversation} />
-                </div> */}
-          {/* <MessageShortcutColumn/> */}
         </div>
       </div>
     </div>

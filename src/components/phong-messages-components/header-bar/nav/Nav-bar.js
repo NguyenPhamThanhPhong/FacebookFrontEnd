@@ -4,7 +4,7 @@ import "./Nav-bar.css"
 
 //<=======Components here ==========>
 import NavItem from "./Nav-item";
-import CustomDropDownItem from "@components/phong-messages-components/header-bar/dropdown/Drop-down-item";
+import CustomDropDownItem from "../dropdown/Drop-down-item";
 import ConversationItem from '@components/phong-messages-components/Conversation-item';
 import RoundButton from "@components/phong-messages-components/Round-button";
 import SearchBox from "@components/phong-messages-components/header-bar/search/Search-box";
@@ -15,12 +15,12 @@ import { faGithub, faFacebookMessenger } from '@fortawesome/free-brands-svg-icon
 import { faUser,faArrowLeft,faPenToSquare, faEllipsis, faBell, faCog } from "@fortawesome/free-solid-svg-icons";
 import Dropdown from 'react-bootstrap/Dropdown';
 import React, { useState, useRef, useEffect } from "react";
-import { FormControl } from "react-bootstrap";
 import { CSSTransition } from "react-transition-group";
 import FriendRequest from "../../Request-noti"
 import { pathNames } from '../../../../Routes/routes'
 import { useNavigate } from "react-router-dom";
 import { useGlobalContext } from "../../../../data-store"
+import { useDataHook } from '../../../../data-hook'
 
 const CustomToggle = React.forwardRef(({ children, onClick }, ref) => (
   <a
@@ -76,6 +76,7 @@ function NavBarCustom(props) {
   const [activeMenu, setActiveMenu] = useState('main')
 
   const [globalState, dispatchGlobalState] = useGlobalContext();
+  const {logout} = useDataHook();
 
   const [userRequestPeople, setUserRequestPeople] = useState([]);
 
@@ -190,7 +191,7 @@ function NavBarCustom(props) {
                 goToMenu="main">
                 Settings nothing
               </CustomDropDownItem>
-              <CustomDropDownItem>Profile1</CustomDropDownItem>
+              <CustomDropDownItem onClick={logout} >logout</CustomDropDownItem>
               <CustomDropDownItem>Profile2</CustomDropDownItem>
             </div>
           </CSSTransition>

@@ -4,9 +4,14 @@ import "./Drop-down-item.css"
 
 function DropDownItem(props) {
 
+    let myonClick = ()=>{}
+    if(props.onClick){
+        myonClick = props.onClick
+    }
 
     return (
         <a href="#" className="menu-item" 
+        onClick={myonClick}
         // onClick={()=>props.setActiveMenu(props.goToMenu)}
         >
             <span className="icon-button">

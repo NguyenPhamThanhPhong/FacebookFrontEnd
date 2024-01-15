@@ -2,6 +2,7 @@ import { useGlobalContext, initialState } from './data-store/Context'
 
 import {
     setUser,
+    setLogout,
     setPosts,
     appendPosts,
     removePost,
@@ -16,10 +17,11 @@ import {
 import { userApi, loginApi, postApi, commentApi, messageApi, conversationApi } from './data/index'
 import { pathNames } from './Routes/routes';
 
-import { useNavigate, useLocation } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { useEffect } from "react";
 
 function useDataHook() {
+    const navigate = useNavigate();
     const [globalState, dispatchGlobalState] = useGlobalContext();
 
     const fetchMessages = async (conversationId, ids, skip) => {
@@ -219,7 +221,164 @@ function useDataHook() {
         }
     }
 
-    return { fetchMessages, sendMessage, updatePersonalInfo, sendFriendRequest, undoFriendRequest, acceptFriendRequest, rejectFriendRequest, unfriend }
+    const likeUnlikePost = async (postId, option = 1, userId, emoji = 1) => {
+        let likeRepresentation = {
+            emo: emoji,
+            userId
+        }
+        try {
+            const response = await postApi.postLikeUnlike(postId, option, likeRepresentation);
+            if (!response?.isError) {
+                let index = globalState?.posts.findIndex(x => x.id === postId);
+                if (index !== null && index !== undefined && index !== -1) {
+                    let post = globalState?.posts[index]
+                    if (option === 1) {
+                        post.likes.push(likeRepresentation);
+                    }
+                    else {
+                        post.likes = post.likes.filter(x => x.userId !== userId);
+                    }
+                    let myposts = globalState.posts;
+                    myposts[index] = post;
+                    dispatchGlobalState(setPosts(myposts));
+                }
+                else {
+                    let index = globalState?.homePosts?.find(x => x.id === postId);
+                    if (index !== null && index !== undefined && index !== -1) {
+                        let post = globalState?.homePosts[index]
+                        if (option === 1) {
+                            post.likes.push(likeRepresentation);
+                        }
+                        else {
+                            post.likes = post.likes.filter(x => x.userId !== userId);
+                        }
+                        let myposts = globalState.homePosts;
+                        myposts[index] = post;
+                        dispatchGlobalState(setPosts(myposts));
+                    }
+                }
+                return response.data;
+            }
+
+        }
+        catch (error) {
+            console.log(error)
+        }
+    }
+
+    const doComment = async (postId, parentId, userId, content, files = []) => {
+
+        const formData = new FormData();
+        formData.append("Content", content);
+        formData.append("UserId", userId);
+        formData.append("PostId", postId);
+        formData.append("ParentId", parentId);
+        for (let file of files) {
+            formData.append("Files", file);
+        }
+        try {
+            const response = await commentApi.create(formData);
+            if (!response?.isError) {
+                let index = globalState?.posts.findIndex(x => x.id === postId);
+                if (index !== null && index !== undefined && index !== -1) {
+                    let post = globalState?.posts[index]
+                    post.comments.push(response.data?.data);
+                    let myposts = globalState.posts;
+                    myposts[index] = post;
+                    dispatchGlobalState(setPosts(myposts));
+                }
+                else {
+                    let index = globalState?.homePosts?.find(x => x.id === postId);
+                    if (index !== null && index !== undefined && index !== -1) {
+                        let post = globalState?.homePosts[index]
+                        post.comments.push(response.data?.data);
+                        let myposts = globalState.homePosts;
+                        myposts[index] = post;
+                        dispatchGlobalState(setPosts(myposts));
+                    }
+                }
+                return response.data;
+            }
+        }
+        catch (error) {
+            console.log(error)
+        }
+    }
+
+    const deleteComment = async (postId, commentId) => {
+        try {
+            const response = await commentApi.deleteComment(commentId);
+            if (!response?.isError) {
+                let index = globalState?.posts.findIndex(x => x.id === postId);
+                if (index !== null && index !== undefined && index !== -1) {
+                    let post = globalState?.posts[index]
+                    post.comments = post.comments.filter(x => x.id !== commentId);
+                    let myposts = globalState.posts;
+                    myposts[index] = post;
+                    dispatchGlobalState(setPosts(myposts));
+                }
+                else {
+                    let index = globalState?.homePosts?.find(x => x.id === postId);
+                    if (index !== null && index !== undefined && index !== -1) {
+                        let post = globalState?.homePosts[index]
+                        post.comments = post.comments.filter(x => x.id !== commentId);
+                        let myposts = globalState.homePosts;
+                        myposts[index] = post;
+                        dispatchGlobalState(setPosts(myposts));
+                    }
+                }
+                return response.data;
+            }
+        }
+        catch (error) {
+            console.log(error)
+        }
+    }
+
+    const updateComment = async (postId, commentId, content) => {
+        try {
+            const response = await commentApi.updateComment(commentId, content);
+            if (!response?.isError) {
+                let index = globalState?.posts.findIndex(x => x.id === postId);
+                if (index !== null && index !== undefined && index !== -1) {
+                    let post = globalState?.posts[index]
+                    let comment = post.comments.find(x => x.id === commentId);
+                    comment.content = content;
+                    let myposts = globalState.posts;
+                    myposts[index] = post;
+                    dispatchGlobalState(setPosts(myposts));
+                }
+                else {
+                    let index = globalState?.homePosts?.find(x => x.id === postId);
+                    if (index !== null && index !== undefined && index !== -1) {
+                        let post = globalState?.homePosts[index]
+                        let comment = post.comments.find(x => x.id === commentId);
+                        comment.content = content;
+                        let myposts = globalState.homePosts;
+                        myposts[index] = post;
+                        dispatchGlobalState(setPosts(myposts));
+                    }
+                }
+                return response.data;
+            }
+        }
+        catch (error) {
+            console.log(error)
+        }
+    }
+
+    const logout = () => {
+        dispatchGlobalState(setLogout({}));
+        localStorage.removeItem('token')
+        navigate(pathNames.login);
+    }
+
+    return {
+        fetchMessages, sendMessage, updatePersonalInfo,
+        sendFriendRequest, undoFriendRequest, acceptFriendRequest, rejectFriendRequest, unfriend,
+        logout, likeUnlikePost,
+        doComment, deleteComment, updateComment
+    }
 }
 
 export { useDataHook }

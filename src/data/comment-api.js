@@ -17,8 +17,7 @@ const getMany = async (ids, skip) => {
 
 const create = async (createCommentRequest) => {
     try {
-        let request = APIUtil.GenerateFormData(createCommentRequest);
-        const response = await axios.post(baseURL + `/comment-create`, request, jsonHeader);
+        const response = await axios.post(baseURL + `/comment-create`, createCommentRequest, jsonHeader);
         return { isError: false, data: response.data };
 
     } catch (error) {

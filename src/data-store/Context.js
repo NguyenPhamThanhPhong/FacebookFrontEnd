@@ -46,7 +46,6 @@ function reducer(state, action) {
                 isLoggedIn: true
             }
         case SET_USER:
-
             return {
                 ...state,
                 user: action.payload
