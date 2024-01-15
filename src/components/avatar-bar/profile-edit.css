@@ -1,4 +1,23 @@
-
+.edit-profile-button {
+    display: inline-block;
+    padding: 8px 16px;
+    background-color: #1877f2; /* Facebook blue color */
+    color: #ffffff; /* White text color */
+    border: none;
+    border-radius: 5px;
+    font-size: 14px;
+    font-weight: bold;
+    cursor: pointer;
+    text-align: center;
+    text-decoration: none;
+    transition: background-color 0.3s ease;
+  }
+  
+  .edit-profile-button:hover {
+    background-color: #1267e7;
+    cursor: pointer;
+  }
+  
 .modal{
     backdrop-filter: blur(1px); 
   background-color: rgba(0, 0, 0, 0.5);
@@ -36,5 +55,8 @@
     margin-top: 15px;
     justify-items: center;
     text-align: center;
+}
+.img-uploader{
+    float:right;
 }
 

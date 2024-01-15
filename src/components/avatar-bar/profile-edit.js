@@ -70,9 +70,9 @@ function ProfileEdit(props) {
 
   return (
     <>
-      <Button variant="primary" size="lg" onClick={handleShow}>
+      <button  className='edit-profile-button' onClick={handleShow}>
         Edit profile
-      </Button>
+      </button>
 
       <Modal size='lg' centered show={show} onHide={handleClose}>
         <Modal.Header closeButton>
@@ -109,7 +109,7 @@ function ProfileEdit(props) {
                   // UPload profile here!!!!!!!!!!!!!!!!!!!!!!
                   // UPload profile here!!!!!!!!!!!!!!!!!!!!!!
                 }
-                <ImageUploadd setBlobProfilePicture={setBlobProfilePicture} />
+                <ImageUploadd className="img-uploader" setBlobProfilePicture={setBlobProfilePicture} />
               </Modal.Title>
               <Row bsPrefix='row2'>
                 <img

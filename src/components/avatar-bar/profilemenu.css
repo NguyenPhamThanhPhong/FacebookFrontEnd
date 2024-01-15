@@ -2,7 +2,7 @@
     display: flex;
     flex-wrap: wrap;
     height: 70px;
-    margin-top: -75px;
+   margin-top: -50px;
     width: 100%;
     text-align: center;
     justify-content: center;
@@ -37,12 +37,7 @@
     background-color: var(--background-home-dark);
     border-radius: 10px 10px 10px 10px;
 }
-.pane2{
-    margin-top: -45%;
-}
-.pane3{
-    margin-top: -153%;
-}
+
 .navdropdown-item{
     height: 60px;
     text-align: center;
@@ -59,9 +54,3 @@
     width: 100%;
     margin-top: 80px;
 }
-
-/* .AboutContainer {
-  position: relative;
-  top: 0;
-  padding: 20px;
-} */

@@ -26,11 +26,18 @@ function GroupchatWindow(props) {
     const [show, setShow] = useState(false);
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
-    const handleSelectedFriends = () => {
-        setSelectedFriends(friend.personalInfo?.userId);
-        onSelectUser(friend.personalInfo?.userId); 
     let people = globalState?.people;
 
+
+    const [isInputFocused, setIsInputFocused] = useState(false);
+
+        const handleInputFocus = () => {
+            setIsInputFocused(true);
+        };
+
+            const handleInputBlur = () => {
+                setIsInputFocused(false);
+            };
     // Filter friends based on search input
     const filteredFriends = people && people.filter(friend =>
         friend.personalInfo?.name && friend.personalInfo?.name.toLowerCase().includes(searchInput.toLowerCase())
@@ -42,36 +49,40 @@ function GroupchatWindow(props) {
     return (
 
         <>
-            <Button hidden={true} icon={faPenToSquare} onClick={handleShow} />
+            <button className='group-chat-add' onClick={handleShow}>
+            <FontAwesomeIcon icon={faPenToSquare}/>
+                </button>
 
             <Modal size='lg' centered show={show} onHide={handleClose}>
                 <Modal.Body>
                     <div className='chat-window' >
                         <div className='chat-header'>
-                            <div className='friend-search'>
-                                <input
-                                    type="text"
-                                    placeholder="To :"
-                                    value={searchInput}
-                                    onChange={(e) => setSearchInput(e.target.value)}
-                                />
-                                {filteredFriends.length > 0 && (
-                                    <div className='search-results'>
-                                        {filteredFriends.map((friend, index) => (
-                                                <div key={index} className='friend-result'>
-                                                    {/* You can customize the appearance of each friend result */}
-                                                    <Avatar
-                                                        src={friend.avatarUrl || 'https://www.w3schools.com/howto/img_avatar.png'}
-                                                        alt="avatar"
-                                                        size="medium"
-                                                        type="circle"
-                                                    />
-                                                    <span className=''>{friend?.personalInfo?.name} onClick= {[e]} => setSelectedFriends{[e.target.value]} </span>
-                                                </div>
-                                            ))}
-                                    </div>
-                                )}
-                            </div>
+                        <div className='friend-search'>
+      <input
+        type="text"
+        placeholder="To :"
+        value={searchInput}
+        onChange={(e) => setSearchInput(e.target.value)}
+        onFocus={handleInputFocus}
+        onBlur={handleInputBlur}
+      />
+      {isInputFocused && filteredFriends.length > 0 && (
+        <div className='search-results'>
+          {filteredFriends.map((friend, index) => (
+            <div key={index} className='friend-result'>
+              {/* You can customize the appearance of each friend result */}
+              <Avatar
+                src={friend.avatarUrl || 'https://www.w3schools.com/howto/img_avatar.png'}
+                alt="avatar"
+                size="medium"
+                type="circle"
+              />
+              <span className=''>{friend?.personalInfo?.name}</span>
+            </div>
+          ))}
+        </div>
+      )}
+    </div>
 
                             <div className='chat-button-group'>
                                 <RoundButton width={'40px'} height={'40px'}
@@ -119,5 +130,6 @@ function GroupchatWindow(props) {
 
     );
 }
+
 
 export default GroupchatWindow;
