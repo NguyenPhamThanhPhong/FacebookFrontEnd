@@ -21,6 +21,8 @@ function GroupchatWindow(props) {
     const [globalState, dispatchGlobalState] = useGlobalContext();
     const [searchInput, setSearchInput] = useState('');
     const [selectedFriends, setSelectedFriends] = useState([]);
+
+    const [selectedFile, setSelectedFile] = useState(null); // storing the uploaded file
     const fileInputRef = useRef(null);
 
     const handleButtonClick = () => {
@@ -28,9 +30,9 @@ function GroupchatWindow(props) {
     };
 
     const handleFileChange = (e) => {
-        const file = e.target.files[0];
-        // Do something with the selected file
-        console.log('Selected File:', file.name);
+        if (e.target?.files && e.target?.files.length > 0) {
+            setSelectedFile(e.target.files[0]);
+        }
     };
 
     const [show, setShow] = useState(false);
@@ -53,14 +55,26 @@ function GroupchatWindow(props) {
         friend.personalInfo?.name && friend.personalInfo?.name.toLowerCase().includes(searchInput.toLowerCase())
     );
 
-    const {updatePersonalInfo} = useDataHook();
+    const { updatePersonalInfo } = useDataHook();
     const [GroupChatName, setGroupChatName] = useState('');
     const [blobGroupChatPicture, setblobGroupChatPicture] = useState('');
+
+
+    const handleSelectChange = (value) => {
+        console.log(value);
+        if(value)
+        {
+            let person = people.find(person => person.id === value);
+            setSelectedFriends([...selectedFriends, person]);
+            console.log(selectedFriends);
+            console.log(value)
+        }
+    }
 
     const handleClear = () => {
         setGroupChatName('');
         setblobGroupChatPicture(null);
-      }
+    }
 
     const handleSaveChanges = () => {
         console.log(GroupChatName);
@@ -68,7 +82,7 @@ function GroupchatWindow(props) {
         handleClear();
         handleClose();
         updatePersonalInfo();
-      }
+    }
 
     let myMessages = [{ position: '', text: "\n" }, { position: 'right' }, { position: '' }, { position: '' }, { position: '' }, { position: '' }]
 
@@ -84,28 +98,45 @@ function GroupchatWindow(props) {
                 </Modal.Header>
                 <Modal.Body>
                     <div className='chat-window' >
+                        <img style={{ maxWidth: '100%', maxHeight: "400px" }} src={selectedFile && URL.createObjectURL(selectedFile)} >
+                        </img>
                         <div className='friend-search'>
-                        <div className="group-chat-add">
-                            <button className="group-chat-add" onClick={handleButtonClick}>
-                                <FontAwesomeIcon icon={faCamera} />
-                            </button>
+                            <div className="group-chat-add">
+                                <button className="group-chat-add" onClick={handleButtonClick}>
+                                    <FontAwesomeIcon icon={faCamera} />
+                                </button>
+                                <input
+                                    ref={fileInputRef}
+                                    id="file-input"
+                                    type="file"
+                                    accept="image/*"
+                                    onChange={handleFileChange}
+                                    style={{ display: 'none' }}
+                                />
+                            </div>
+
                             <input
-                                ref={fileInputRef}
-                                id="file-input"
-                                type="file"
-                                accept="image/*"
-                                onChange={handleFileChange}
-                                style={{ display: 'none' }}
+                                type="text"
+                                placeholder="Group chat's name"
+                                
                             />
                         </div>
-
-                        <input
-                            type="text"
-                            placeholder="Group chat's name"
-                            value={searchInput}        
-                        />
+                        <div style={{display:'flex'}} >
+                            {
+                                selectedFriends && selectedFriends.map((friend, index) => (
+                                    <div key={index} className='friend-result'>
+                                        <Avatar
+                                            src={friend.personalInfo?.avatarUrl || 'https://www.w3schools.com/howto/img_avatar.png'}
+                                            alt="avatar"
+                                            size="medium"
+                                            type="circle"
+                                        />
+                                        <span className=''>{friend?.personalInfo?.name}</span>
+                                    </div>
+                                ))
+                            }
                         </div>
-                        
+
                         <div className='friend-search'>
                             <input
                                 type="text"
@@ -118,10 +149,9 @@ function GroupchatWindow(props) {
                             {isInputFocused && filteredFriends.length > 0 && (
                                 <div className='search-results'>
                                     {filteredFriends.map((friend, index) => (
-                                        <div key={index} className='friend-result'>
-                                            {/* You can customize the appearance of each friend result */}
+                                        <div key={friend?.id} onClick={()=>{console.log('clikas')}} className='friend-result'>
                                             <Avatar
-                                                src={friend.avatarUrl || 'https://www.w3schools.com/howto/img_avatar.png'}
+                                                src={friend.personalInfo?.avatarUrl || 'https://www.w3schools.com/howto/img_avatar.png'}
                                                 alt="avatar"
                                                 size="medium"
                                                 type="circle"
@@ -132,35 +162,7 @@ function GroupchatWindow(props) {
                                 </div>
                             )}
                         </div>
-                        
 
-                        <div className='chat-window-chat-body'>
-                            {selectedConversation?.messages && selectedConversation?.messages.map((message, index) => {
-                                let position = message.senderID === hostId ? 'right' : 'left';
-
-                                let person = people.find(x => x.id === message.senderID);
-                                let avatarUrl = person?.avatarUrl || 'https://www.w3schools.com/howto/img_avatar.png';
-                                return (
-                                    <div className='chat-message-row' key={index}>
-                                        {message.senderID !== hostId && (
-                                            <Avatar
-                                                src={avatarUrl}
-                                                alt="avatar"
-                                                size="xlarge"
-                                                type="circle"
-                                            />
-                                        )}
-                                        <MessageBox
-                                            className='message-item'
-                                            notchStyle={{ fill: position === 'right' ? 'var(--facebook-color)' : 'var(--message-color)' }}
-                                            position={position}
-                                            type="text"
-                                            text={message.content}
-                                        />
-                                    </div>
-                                );
-                            })}
-                        </div>
                         <div className='chat-footer'>
                             <Button variant="secondary" onClick={handleClose}>
                                 Close
