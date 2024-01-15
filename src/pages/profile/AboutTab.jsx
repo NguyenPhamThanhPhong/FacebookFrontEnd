@@ -56,21 +56,6 @@ const About = (props) => {
                     </div>
                 </div>
 
-                <div class="row">
-                    <div className="rowcontain">
-                        <div className="iconcontain">
-                            <FontAwesomeIcon 
-                            icon={faGraduationCap}
-                            size="lg"
-                            style={{color: "#fff"}} />
-                        </div>
-                        <div className="infocontain">
-                        <span class="Info">Studies at University of Information Technology</span>
-                        <span class="SmallInfo">Started in 2021</span>
-                        </div>
-                    </div>
-                </div>
-
             <div class="row">
                 <div className="rowcontain">
                     <div className="iconcontain">
@@ -108,7 +93,7 @@ const About = (props) => {
                     style={{color: "#fff"}} />
                     </div>
                     <div className="infocontain">
-                        <span class="Info">In a relationship</span>
+                        <span class="Info">Status here</span>
                     </div>
                 </div>
             </div>
